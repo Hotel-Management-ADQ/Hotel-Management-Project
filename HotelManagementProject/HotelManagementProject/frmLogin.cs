@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
 
 namespace HotelManagementProject
 {
@@ -51,6 +52,34 @@ namespace HotelManagementProject
             picHidden.Visible = false;
             picVisible.Visible = true;
             txtPassword.PasswordChar = '*';
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            TaiKhoanBLL tk = new TaiKhoanBLL();
+            if (tk.CheckTaiKhoanTonTai(txtUsername.Text))
+            {
+                if (tk.CheckHoatDong(txtUsername.Text) == 0)
+                {
+                    MessageBox.Show("Tài khoản đã bị khóa");
+                }
+                else
+                {
+                    string username = tk.GetTenDangNhap(txtUsername.Text.Trim());
+                    string password = tk.GetMatKhau(txtUsername.Text.Trim());
+
+                    if (!(username.Equals(txtUsername.Text.Trim()) && password.Equals(txtPassword.Text.Trim())))
+                    {
+                        MessageBox.Show("Tên tài khoản hoặc mật khẩu không chính xác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Tên tài khoản hoặc mật khẩu không chính xác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

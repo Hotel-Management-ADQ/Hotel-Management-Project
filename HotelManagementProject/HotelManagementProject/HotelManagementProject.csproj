@@ -33,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BLL">
+      <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>..\..\..\..\..\..\..\Users\user\Downloads\TestFramework\TestFramework\bin\Debug\Guna.UI2.dll</HintPath>
+      <HintPath>..\..\..\..\..\Users\PEERT\Documents\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
