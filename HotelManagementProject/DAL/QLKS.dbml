@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLKS" Class="QLKSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-P250IPBQ;Initial Catalog=QLKS;User ID=sa" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="QLKSConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Tuan-Anh;Initial Catalog=QLKS;User ID=sa" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="QLKSConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.chitietsudungdv" Member="chitietsudungdvs">
     <Type Name="chitietsudungdv">
       <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />

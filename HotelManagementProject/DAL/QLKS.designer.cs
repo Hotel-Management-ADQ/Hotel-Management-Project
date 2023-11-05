@@ -69,7 +69,7 @@ namespace DAL
     #endregion
 		
 		public QLKSDataContext() : 
-				base(global::DAL.Properties.Settings.Default.QLKSConnectionString1, mappingSource)
+				base(global::DAL.Properties.Settings.Default.QLKSConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
