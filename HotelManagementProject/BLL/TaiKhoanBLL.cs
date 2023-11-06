@@ -57,5 +57,17 @@ namespace BLL
             else
                 return true;
         }
+        public string GetTenTaiKhoan(string tendangnhap)
+        {
+            var query = from t in _qLKSDataContext.taikhoans
+                        join n in _qLKSDataContext.nhanviens on t.id_nhanvien equals n.id_nhanvien
+                        where t.ten_dang_nhap == tendangnhap
+                        select n.ten_nhanvien;
+
+            string tenNhanVien = query.FirstOrDefault();
+
+            return tenNhanVien;
+        }
+
     }
 }
