@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
-using DAL;
 
 namespace BLL
 {
