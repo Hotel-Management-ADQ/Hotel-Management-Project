@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
 
 namespace AllControl
 {
     public partial class RoomPanel : UserControl
     {
-        public RoomPanel(string tenphong, string sotang, string loaiphong, string trangthai)
+        PhongBLL phongBLL;
+        public string id_phong;
+        public RoomPanel() { }
+        public RoomPanel(string tenphong, string sotang, string loaiphong, string trangthai, string idphong)
         {
             InitializeComponent();
+            phongBLL = new PhongBLL();
+            id_phong = idphong;
             label1.Text.ToUpper();
             label1.Text = tenphong;
             label3.Text = sotang;
@@ -24,12 +30,43 @@ namespace AllControl
             {
                 tableLayoutPanel1.BackColor = Color.Green;
                 tableLayoutPanel1.ForeColor = Color.White;
+                btnCheckIn.Visible = true;
+                btnCheckOut.Visible = false;
+                btnHuyDonPhong.Visible = false;
             }
             else if (trangthai.Equals("Đang sử dụng"))
             {
                 tableLayoutPanel1.BackColor = Color.Red;
                 tableLayoutPanel1.ForeColor = Color.White;
+                btnCheckOut.Visible = true;
+                btnCheckIn.Visible = false;
+                btnHuyDonPhong.Visible = false;
             }
+            else if (trangthai.Equals("Đang dọn dẹp"))
+            {
+                tableLayoutPanel1.BackColor = Color.Yellow;
+                tableLayoutPanel1.ForeColor = Color.Black;
+                btnCheckOut.Visible = false;
+                btnCheckIn.Visible = false;
+                btnDonPhong.Visible = false;
+                btnHuyDonPhong.Visible = true;
+            }
+            else if (trangthai.Equals("Đang dọn dẹp-used"))
+            {
+                tableLayoutPanel1.BackColor = Color.Yellow;
+                tableLayoutPanel1.ForeColor = Color.Black;
+                btnCheckOut.Visible = false;
+                btnCheckIn.Visible = false;
+                btnDonPhong.Visible = false;
+                btnHuyDonPhong.Visible = true;
+            }
+            this.btnDonPhong.Click += BtnDonPhong_Click;
+        }
+
+        private void BtnDonPhong_Click(object sender, EventArgs e)
+        {
+            phongBLL.GetIdPhongFromRoomPanel(id_phong);
+            MessageBox.Show(id_phong);
         }
 
         private Color borderColor;
@@ -39,6 +76,5 @@ namespace AllControl
             get { return borderColor; }
             set { borderColor = value; }
         }
-
     }
 }

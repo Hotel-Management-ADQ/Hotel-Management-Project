@@ -77,7 +77,7 @@ namespace HotelManagementProject
                 {
                     tentaikhoan = tk.GetTenTaiKhoan(txtUsername.Text.Trim());
                     MessageBox.Show("Thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Program.mainForm = new frmMain();
+                    Program.mainForm = new FrmMain();
                     Program.mainForm.Show();
                     this.Visible = false;
                 }

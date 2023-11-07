@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Contexts;
 
 namespace BLL
 {
@@ -28,6 +29,21 @@ namespace BLL
                 Console.WriteLine(ex);
                 throw ex;
             }
+        }
+        public void UpdatePhongTrangThai(string idPhong, string newTrangThai)
+        {
+            using (_qLKSDataContext)
+            {
+                var phongToUpdate = _qLKSDataContext.phongs.FirstOrDefault(p => p.id_phong == idPhong);
+
+                if (phongToUpdate != null)
+                    phongToUpdate.trang_thai = newTrangThai;
+                _qLKSDataContext.SubmitChanges();
+            }
+        }
+        public string GetIdPhongFromRoomPanel(string str)
+        {
+            return str;
         }
     }
 
