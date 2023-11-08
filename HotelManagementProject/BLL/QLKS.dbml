@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLKS" Class="QLKSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=Tuan-Anh;Initial Catalog=QLKS;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-P250IPBQ;Initial Catalog=QLKS;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.chitietsudungdv" Member="chitietsudungdvs">
     <Type Name="chitietsudungdv">
       <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
@@ -158,4 +158,9 @@
       <Association Name="tang_phong" Member="phongs" ThisKey="id_tang" OtherKey="id_tang" Type="phong" />
     </Type>
   </Table>
+  <Function Name="dbo.Them_Dich_Vu" Method="Them_Dich_Vu">
+    <Parameter Name="ten_dichvu" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="gia" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

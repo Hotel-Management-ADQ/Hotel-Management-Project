@@ -209,6 +209,13 @@ namespace BLL
 				return this.GetTable<tang>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Them_Dich_Vu")]
+		public int Them_Dich_Vu([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string ten_dichvu, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> gia)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), ten_dichvu, gia);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.chitietsudungdv")]

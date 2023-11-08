@@ -62,6 +62,9 @@
     <Compile Include="RoomPanel.Designer.cs">
       <DependentUpon>RoomPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextBoxOnlyNumber.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RoomPanel.resx">

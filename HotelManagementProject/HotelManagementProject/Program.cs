@@ -10,6 +10,7 @@ namespace HotelManagementProject
     {
         public static frmLogin loginForm = null;
         public static FrmMain mainForm = null;
+        public static frmService serviceForm = null;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -18,7 +19,7 @@ namespace HotelManagementProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            Application.Run(new frmService());
         }
     }
 }
