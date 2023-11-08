@@ -60,13 +60,6 @@ namespace AllControl
                 btnDonPhong.Visible = false;
                 btnHuyDonPhong.Visible = true;
             }
-            this.btnDonPhong.Click += BtnDonPhong_Click;
-        }
-
-        private void BtnDonPhong_Click(object sender, EventArgs e)
-        {
-            phongBLL.GetIdPhongFromRoomPanel(id_phong);
-            MessageBox.Show(id_phong);
         }
 
         private Color borderColor;
@@ -75,6 +68,16 @@ namespace AllControl
         {
             get { return borderColor; }
             set { borderColor = value; }
+        }
+
+        private void btnDonPhong_Click(object sender, EventArgs e)
+        {
+            phongBLL.UpdatePhongTrangThai(id_phong, "Đang dọn dẹp");
+        }
+
+        private void btnHuyDonPhong_Click(object sender, EventArgs e)
+        {
+            phongBLL.UpdatePhongTrangThai(id_phong, "Còn trống");
         }
     }
 }

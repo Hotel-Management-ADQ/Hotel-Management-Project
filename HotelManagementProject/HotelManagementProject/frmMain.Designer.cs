@@ -44,10 +44,10 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
-            this.currentTimeLabelApp2 = new AllControl.CurrentTimeLabelApp();
-            this.currentDateLabelApp2 = new AllControl.CurrentDateLabelApp();
             this.panel4 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.currentTimeLabelApp2 = new AllControl.CurrentTimeLabelApp();
+            this.currentDateLabelApp2 = new AllControl.CurrentDateLabelApp();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -224,7 +224,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.51017F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.48983F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 221F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.currentTimeLabelApp2, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.currentDateLabelApp2, 1, 0);
@@ -245,36 +245,10 @@
             this.label10.Location = new System.Drawing.Point(2, 0);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(575, 65);
+            this.label10.Size = new System.Drawing.Size(571, 65);
             this.label10.TabIndex = 0;
             this.label10.Text = "Khách sạn ABC";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // currentTimeLabelApp2
-            // 
-            this.currentTimeLabelApp2.AutoSize = true;
-            this.currentTimeLabelApp2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentTimeLabelApp2.Font = new System.Drawing.Font("Calibri", 30.75F);
-            this.currentTimeLabelApp2.Location = new System.Drawing.Point(873, 0);
-            this.currentTimeLabelApp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.currentTimeLabelApp2.Name = "currentTimeLabelApp2";
-            this.currentTimeLabelApp2.Size = new System.Drawing.Size(218, 65);
-            this.currentTimeLabelApp2.TabIndex = 1;
-            this.currentTimeLabelApp2.Text = "15:19:03";
-            this.currentTimeLabelApp2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // currentDateLabelApp2
-            // 
-            this.currentDateLabelApp2.AutoSize = true;
-            this.currentDateLabelApp2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentDateLabelApp2.Font = new System.Drawing.Font("Calibri", 30.75F);
-            this.currentDateLabelApp2.Location = new System.Drawing.Point(581, 0);
-            this.currentDateLabelApp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.currentDateLabelApp2.Name = "currentDateLabelApp2";
-            this.currentDateLabelApp2.Size = new System.Drawing.Size(288, 65);
-            this.currentDateLabelApp2.TabIndex = 2;
-            this.currentDateLabelApp2.Text = "07/11/2023";
-            this.currentDateLabelApp2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel4
             // 
@@ -291,6 +265,32 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1403, 806);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // currentTimeLabelApp2
+            // 
+            this.currentTimeLabelApp2.AutoSize = true;
+            this.currentTimeLabelApp2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentTimeLabelApp2.Font = new System.Drawing.Font("Calibri", 30.75F);
+            this.currentTimeLabelApp2.Location = new System.Drawing.Point(866, 0);
+            this.currentTimeLabelApp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.currentTimeLabelApp2.Name = "currentTimeLabelApp2";
+            this.currentTimeLabelApp2.Size = new System.Drawing.Size(225, 65);
+            this.currentTimeLabelApp2.TabIndex = 1;
+            this.currentTimeLabelApp2.Text = "13:18:54";
+            this.currentTimeLabelApp2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // currentDateLabelApp2
+            // 
+            this.currentDateLabelApp2.AutoSize = true;
+            this.currentDateLabelApp2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentDateLabelApp2.Font = new System.Drawing.Font("Calibri", 30.75F);
+            this.currentDateLabelApp2.Location = new System.Drawing.Point(577, 0);
+            this.currentDateLabelApp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.currentDateLabelApp2.Name = "currentDateLabelApp2";
+            this.currentDateLabelApp2.Size = new System.Drawing.Size(285, 65);
+            this.currentDateLabelApp2.TabIndex = 2;
+            this.currentDateLabelApp2.Text = "08/11/2023";
+            this.currentDateLabelApp2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FrmMain
             // 

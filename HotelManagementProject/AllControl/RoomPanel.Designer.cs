@@ -185,6 +185,7 @@
             this.btnHuyDonPhong.TabIndex = 3;
             this.btnHuyDonPhong.Text = "Hủy Dọn Phòng";
             this.btnHuyDonPhong.UseVisualStyleBackColor = false;
+            this.btnHuyDonPhong.Click += new System.EventHandler(this.btnHuyDonPhong_Click);
             // 
             // btnCheckOut
             // 
@@ -212,6 +213,7 @@
             this.btnDonPhong.TabIndex = 1;
             this.btnDonPhong.Text = "Dọn phòng";
             this.btnDonPhong.UseVisualStyleBackColor = false;
+            this.btnDonPhong.Click += new System.EventHandler(this.btnDonPhong_Click);
             // 
             // btnCheckIn
             // 

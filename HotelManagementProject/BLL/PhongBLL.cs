@@ -32,12 +32,11 @@ namespace BLL
         }
         public void UpdatePhongTrangThai(string idPhong, string newTrangThai)
         {
-            using (_qLKSDataContext)
-            {
-                var phongToUpdate = _qLKSDataContext.phongs.FirstOrDefault(p => p.id_phong == idPhong);
+            var phongToUpdate = _qLKSDataContext.phongs.SingleOrDefault(p => p.id_phong == idPhong);
 
-                if (phongToUpdate != null)
-                    phongToUpdate.trang_thai = newTrangThai;
+            if (phongToUpdate != null)
+            {
+                phongToUpdate.trang_thai = newTrangThai;
                 _qLKSDataContext.SubmitChanges();
             }
         }

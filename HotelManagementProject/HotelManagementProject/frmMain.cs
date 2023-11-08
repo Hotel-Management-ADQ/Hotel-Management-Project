@@ -28,6 +28,7 @@ namespace HotelManagementProject
         {
             DesignLayoutFormMain();
         }
+        string str;
         private void DesignLayoutFormMain()
         {
             List<phong> phongList = phongBLL.GetPhongList();
@@ -35,6 +36,7 @@ namespace HotelManagementProject
 
             foreach (phong phong in phongList)
             {
+                str = phong.ten;
                 string idphong = phong.id_phong;
                 string tenphong = phong.ten;
                 string loaiphong = "abc";
@@ -45,18 +47,24 @@ namespace HotelManagementProject
                 Button btn3 = panelroom.Controls.Find("btnDonPhong", true).FirstOrDefault() as Button;
                 if (btn3 != null)
                     btn3.Click += btnDonPhong_Click;
+                Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
+                if (btn4 != null)
+                    btn4.Click += btnHuyDonPhong_Click;
             }
+        }
+
+        private void btnHuyDonPhong_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.mainForm = new FrmMain();
+            Program.mainForm.Show();
         }
 
         private void btnDonPhong_Click(object sender, EventArgs e)
         {
-            //Label tenphong_label = panelroom.Controls.Find("label1", true).FirstOrDefault() as Label;
-            //if (tenphong_label != null)
-            //{
-            //    string str = tenphong_label.Text;
-            //    MessageBox.Show(str);
-            //}    
-            
+            this.Visible = false;
+            Program.mainForm = new FrmMain();
+            Program.mainForm.Show();
         }
     }
 }
