@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,7 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTenDichVu = new System.Windows.Forms.TextBox();
-            this.txtGiaDichVu = new AllControl.TextBoxOnlyNumber();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLuu = new Guna.UI2.WinForms.Guna2Button();
@@ -62,6 +61,7 @@
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSua = new Guna.UI2.WinForms.Guna2Button();
+            this.txtGiaDichVu = new AllControl.TextBoxOnlyNumber();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblDichVu)).BeginInit();
@@ -123,7 +123,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel3.Controls.Add(this.tblDichVu, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 167);
@@ -137,26 +137,26 @@
             // 
             // tblDichVu
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.tblDichVu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tblDichVu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.tblDichVu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tblDichVu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tblDichVu.ColumnHeadersHeight = 35;
             this.tblDichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tblDichVu.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tblDichVu.DefaultCellStyle = dataGridViewCellStyle3;
             this.tblDichVu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblDichVu.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tblDichVu.Location = new System.Drawing.Point(36, 2);
@@ -165,7 +165,7 @@
             this.tblDichVu.ReadOnly = true;
             this.tblDichVu.RowHeadersVisible = false;
             this.tblDichVu.RowTemplate.Height = 24;
-            this.tblDichVu.Size = new System.Drawing.Size(1350, 389);
+            this.tblDichVu.Size = new System.Drawing.Size(1346, 389);
             this.tblDichVu.TabIndex = 0;
             this.tblDichVu.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tblDichVu.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -188,6 +188,7 @@
             this.tblDichVu.ThemeStyle.RowsStyle.Height = 24;
             this.tblDichVu.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tblDichVu.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.tblDichVu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblDichVu_CellContentClick);
             this.tblDichVu.Click += new System.EventHandler(this.tblDichVu_Click);
             // 
             // tableLayoutPanel4
@@ -402,18 +403,6 @@
             this.txtTenDichVu.TabIndex = 2;
             this.txtTenDichVu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTenDichVu.TextChanged += new System.EventHandler(this.txtTenDichVu_TextChanged);
-            // 
-            // txtGiaDichVu
-            // 
-            this.txtGiaDichVu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtGiaDichVu.Enabled = false;
-            this.txtGiaDichVu.Location = new System.Drawing.Point(338, 98);
-            this.txtGiaDichVu.Margin = new System.Windows.Forms.Padding(2);
-            this.txtGiaDichVu.Name = "txtGiaDichVu";
-            this.txtGiaDichVu.Size = new System.Drawing.Size(333, 40);
-            this.txtGiaDichVu.TabIndex = 3;
-            this.txtGiaDichVu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtGiaDichVu.TextChanged += new System.EventHandler(this.txtGiaDichVu_TextChanged);
             // 
             // tableLayoutPanel6
             // 
@@ -661,6 +650,18 @@
             this.btnSua.TabIndex = 0;
             this.btnSua.Text = "Sửa";
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // txtGiaDichVu
+            // 
+            this.txtGiaDichVu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtGiaDichVu.Enabled = false;
+            this.txtGiaDichVu.Location = new System.Drawing.Point(338, 98);
+            this.txtGiaDichVu.Margin = new System.Windows.Forms.Padding(2);
+            this.txtGiaDichVu.Name = "txtGiaDichVu";
+            this.txtGiaDichVu.Size = new System.Drawing.Size(333, 40);
+            this.txtGiaDichVu.TabIndex = 3;
+            this.txtGiaDichVu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtGiaDichVu.TextChanged += new System.EventHandler(this.txtGiaDichVu_TextChanged);
             // 
             // frmService
             // 

@@ -12,6 +12,8 @@ namespace HotelManagementProject
         public static FrmMain mainForm = null;
         public static frmService serviceForm = null;
         public static frmDevice deviceForm = null;
+        public static frmCustomer customerForm = null;
+
 
         /// <summary>
         /// The main entry point for the application.
@@ -21,7 +23,7 @@ namespace HotelManagementProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDevice());
+            Application.Run(new FrmMain());
         }
     }
 }

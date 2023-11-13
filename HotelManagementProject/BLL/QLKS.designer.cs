@@ -69,7 +69,7 @@ namespace BLL
     #endregion
 		
 		public QLKSDataContext() : 
-				base(global::BLL.Properties.Settings.Default.QLKSConnectionString, mappingSource)
+				base(global::BLL.Properties.Settings.Default.QLKSConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -221,6 +221,13 @@ namespace BLL
 		public int Them_Thiet_Bi([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string ten_thietbi, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> gia)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), ten_thietbi, gia);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Them_Khach_Hang")]
+		public int Them_Khach_Hang([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string ten_khachhang, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> ngay_sinh, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string dia_chi, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string sdt, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cmnd, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(6)")] string gioi_tinh)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), ten_khachhang, ngay_sinh, dia_chi, sdt, cmnd, gioi_tinh);
 			return ((int)(result.ReturnValue));
 		}
 	}

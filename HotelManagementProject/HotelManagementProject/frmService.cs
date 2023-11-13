@@ -19,13 +19,14 @@ namespace HotelManagementProject
 
         public frmService()
         {
-            InitializeComponent();
             dvbll = new DichVuBLL();
+            InitializeComponent();         
         }
 
         private void frmService_Load(object sender, EventArgs e)
         {
             LoadTableDichVu();
+            
         }
 
         public void LoadTableDichVu()
@@ -232,6 +233,11 @@ namespace HotelManagementProject
         }
 
         private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tblDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
