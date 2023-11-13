@@ -152,5 +152,12 @@ namespace HotelManagementProject
             Program.customerForm = new frmCustomer();
             Program.customerForm.Show();
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.mainForm = new FrmMain();
+            Program.mainForm.Show();
+        }
     }
 }

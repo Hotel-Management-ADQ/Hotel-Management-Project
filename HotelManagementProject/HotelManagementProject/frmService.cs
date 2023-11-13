@@ -219,7 +219,9 @@ namespace HotelManagementProject
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            Program.mainForm = new FrmMain();
+            Program.mainForm.Show();
         }
 
         private void tableLayoutPanel9_Paint(object sender, PaintEventArgs e)

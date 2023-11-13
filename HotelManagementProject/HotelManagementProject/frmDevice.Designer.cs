@@ -187,6 +187,7 @@
             this.btnThoat.Size = new System.Drawing.Size(172, 46);
             this.btnThoat.TabIndex = 0;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // tableLayoutPanel10
             // 
@@ -536,7 +537,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel3.Controls.Add(this.tblThietBi, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 167);
@@ -577,7 +578,7 @@
             this.tblThietBi.ReadOnly = true;
             this.tblThietBi.RowHeadersVisible = false;
             this.tblThietBi.RowTemplate.Height = 24;
-            this.tblThietBi.Size = new System.Drawing.Size(1347, 389);
+            this.tblThietBi.Size = new System.Drawing.Size(1346, 389);
             this.tblThietBi.TabIndex = 0;
             this.tblThietBi.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tblThietBi.ThemeStyle.AlternatingRowsStyle.Font = null;

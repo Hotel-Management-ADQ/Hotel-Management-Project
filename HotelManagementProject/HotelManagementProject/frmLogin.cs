@@ -16,27 +16,25 @@ namespace HotelManagementProject
         //private Timer opacityTimer = new Timer();
         public static string tentaikhoan = "";
         TaiKhoanBLL tk;
+        private Timer opacityTimer = new Timer();
+
         public frmLogin()
         {
             InitializeComponent();
             tk = new TaiKhoanBLL();
-            //this.Opacity = 0;
-            //opacityTimer.Interval = 5;
-            //opacityTimer.Tick += new EventHandler(OnTimerTick);
-            //opacityTimer.Start();
+            this.Opacity = 0;
+            opacityTimer.Interval = 5;
+            opacityTimer.Tick += new EventHandler(OnTimerTick);
+            opacityTimer.Start();
         }
 
-        //private void OnTimerTick(object sender, EventArgs e)
-        //{
-        //    if (this.Opacity < 1.0)
-        //    {
-        //        this.Opacity += 0.05;
-        //    }
-        //    else
-        //    {
-        //        opacityTimer.Stop();
-        //    }
-        //}
+        private void OnTimerTick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1.0)
+                this.Opacity += 0.09;
+            else
+                opacityTimer.Stop();
+        }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
@@ -59,29 +57,38 @@ namespace HotelManagementProject
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            
-            if (tk.CheckHoatDong(txtUsername.Text) == 0)
-            {
-                MessageBox.Show("Tài khoản đã bị khóa");
-            }
+            string username = tk.GetTenDangNhap(txtUsername.Text.Trim());
+            string password = tk.GetMatKhau(txtUsername.Text.Trim());
+
+            if (txtUsername.Text.Equals(string.Empty))
+                MessageBox.Show("Chưa nhập tên đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                string username = tk.GetTenDangNhap(txtUsername.Text.Trim());
-                string password = tk.GetMatKhau(txtUsername.Text.Trim());
-
-                if (!(username.Equals(txtUsername.Text.Trim()) && password.Equals(txtPassword.Text.Trim())))
-                {
-                    MessageBox.Show("Tên tài khoản hoặc mật khẩu không chính xác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                if (txtPassword.Text.Equals(string.Empty))
+                    MessageBox.Show("Chưa nhập mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    tentaikhoan = tk.GetTenTaiKhoan(txtUsername.Text.Trim());
-                    MessageBox.Show("Thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Program.mainForm = new FrmMain();
-                    Program.mainForm.Show();
-                    this.Visible = false;
+                    if (!(username.Equals(txtUsername.Text.Trim()) && password.Equals(txtPassword.Text.Trim())))
+                    {
+                        MessageBox.Show("Tên tài khoản hoặc mật khẩu không chính xác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        tentaikhoan = tk.GetTenTaiKhoan(txtUsername.Text.Trim());
+                        MessageBox.Show("Thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Program.mainForm = new FrmMain();
+                        Program.mainForm.Show();
+                        this.Visible = false;
+                    }
                 }
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+                this.Dispose();
         }
     }
 }

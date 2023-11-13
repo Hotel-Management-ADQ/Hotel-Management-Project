@@ -111,5 +111,12 @@ namespace HotelManagementProject
                     MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.mainForm = new FrmMain();
+            Program.mainForm.Show();
+        }
     }
 }

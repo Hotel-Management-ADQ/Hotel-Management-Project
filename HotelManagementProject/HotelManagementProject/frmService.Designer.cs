@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTenDichVu = new System.Windows.Forms.TextBox();
+            this.txtGiaDichVu = new AllControl.TextBoxOnlyNumber();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLuu = new Guna.UI2.WinForms.Guna2Button();
@@ -61,7 +62,6 @@
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSua = new Guna.UI2.WinForms.Guna2Button();
-            this.txtGiaDichVu = new AllControl.TextBoxOnlyNumber();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblDichVu)).BeginInit();
@@ -123,7 +123,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel3.Controls.Add(this.tblDichVu, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 167);
@@ -165,7 +165,7 @@
             this.tblDichVu.ReadOnly = true;
             this.tblDichVu.RowHeadersVisible = false;
             this.tblDichVu.RowTemplate.Height = 24;
-            this.tblDichVu.Size = new System.Drawing.Size(1346, 389);
+            this.tblDichVu.Size = new System.Drawing.Size(1345, 389);
             this.tblDichVu.TabIndex = 0;
             this.tblDichVu.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tblDichVu.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -403,6 +403,18 @@
             this.txtTenDichVu.TabIndex = 2;
             this.txtTenDichVu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTenDichVu.TextChanged += new System.EventHandler(this.txtTenDichVu_TextChanged);
+            // 
+            // txtGiaDichVu
+            // 
+            this.txtGiaDichVu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtGiaDichVu.Enabled = false;
+            this.txtGiaDichVu.Location = new System.Drawing.Point(338, 98);
+            this.txtGiaDichVu.Margin = new System.Windows.Forms.Padding(2);
+            this.txtGiaDichVu.Name = "txtGiaDichVu";
+            this.txtGiaDichVu.Size = new System.Drawing.Size(333, 40);
+            this.txtGiaDichVu.TabIndex = 3;
+            this.txtGiaDichVu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtGiaDichVu.TextChanged += new System.EventHandler(this.txtGiaDichVu_TextChanged);
             // 
             // tableLayoutPanel6
             // 
@@ -650,18 +662,6 @@
             this.btnSua.TabIndex = 0;
             this.btnSua.Text = "Sửa";
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // txtGiaDichVu
-            // 
-            this.txtGiaDichVu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtGiaDichVu.Enabled = false;
-            this.txtGiaDichVu.Location = new System.Drawing.Point(338, 98);
-            this.txtGiaDichVu.Margin = new System.Windows.Forms.Padding(2);
-            this.txtGiaDichVu.Name = "txtGiaDichVu";
-            this.txtGiaDichVu.Size = new System.Drawing.Size(333, 40);
-            this.txtGiaDichVu.TabIndex = 3;
-            this.txtGiaDichVu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtGiaDichVu.TextChanged += new System.EventHandler(this.txtGiaDichVu_TextChanged);
             // 
             // frmService
             // 

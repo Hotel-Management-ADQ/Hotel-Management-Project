@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.picHidden = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.picVisible = new System.Windows.Forms.PictureBox();
@@ -38,35 +37,17 @@
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picHidden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picVisible)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.picHidden);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.picVisible);
-            this.panel1.Controls.Add(this.btnDangNhap);
-            this.panel1.Controls.Add(this.txtPassword);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(40, 38);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(445, 349);
-            this.panel1.TabIndex = 0;
             // 
             // picHidden
             // 
             this.picHidden.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picHidden.Image = global::HotelManagementProject.Properties.Resources.hidden;
-            this.picHidden.Location = new System.Drawing.Point(363, 222);
-            this.picHidden.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picHidden.Location = new System.Drawing.Point(353, 215);
+            this.picHidden.Margin = new System.Windows.Forms.Padding(2);
             this.picHidden.Name = "picHidden";
             this.picHidden.Size = new System.Drawing.Size(33, 36);
             this.picHidden.TabIndex = 9;
@@ -77,8 +58,8 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.button2.Location = new System.Drawing.Point(238, 281);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(228, 274);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(158, 46);
             this.button2.TabIndex = 8;
@@ -89,8 +70,8 @@
             // 
             this.picVisible.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picVisible.Image = global::HotelManagementProject.Properties.Resources.visible;
-            this.picVisible.Location = new System.Drawing.Point(363, 222);
-            this.picVisible.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picVisible.Location = new System.Drawing.Point(353, 215);
+            this.picVisible.Margin = new System.Windows.Forms.Padding(2);
             this.picVisible.Name = "picVisible";
             this.picVisible.Size = new System.Drawing.Size(33, 36);
             this.picVisible.TabIndex = 7;
@@ -102,8 +83,8 @@
             this.btnDangNhap.BackColor = System.Drawing.Color.Green;
             this.btnDangNhap.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDangNhap.Location = new System.Drawing.Point(46, 281);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDangNhap.Location = new System.Drawing.Point(36, 274);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(187, 46);
             this.btnDangNhap.TabIndex = 5;
@@ -122,7 +103,8 @@
             this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(46, 222);
+            this.txtPassword.Location = new System.Drawing.Point(36, 215);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderText = "";
@@ -135,7 +117,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(43, 188);
+            this.label3.Location = new System.Drawing.Point(33, 181);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 20);
@@ -153,7 +135,8 @@
             this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUsername.Location = new System.Drawing.Point(46, 138);
+            this.txtUsername.Location = new System.Drawing.Point(36, 131);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PasswordChar = '\0';
             this.txtUsername.PlaceholderText = "";
@@ -166,7 +149,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(43, 105);
+            this.label2.Location = new System.Drawing.Point(33, 98);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 20);
@@ -178,38 +161,55 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(39, 33);
+            this.label1.Location = new System.Drawing.Point(29, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 47);
             this.label1.TabIndex = 0;
             this.label1.Text = "Login";
             // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(378, -4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 46);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "x";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(530, 425);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(435, 348);
             this.ControlBox = false;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.picVisible);
+            this.Controls.Add(this.picHidden);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnDangNhap);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
             this.Load += new System.EventHandler(this.frmLogin_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHidden)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picVisible)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
@@ -219,5 +219,6 @@
         private System.Windows.Forms.PictureBox picVisible;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox picHidden;
+        private System.Windows.Forms.Label label4;
     }
 }
