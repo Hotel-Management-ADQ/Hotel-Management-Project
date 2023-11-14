@@ -15,12 +15,23 @@ namespace HotelManagementProject
     {
         DichVuBLL dvbll;
         private BindingList<dichvu> datadichvu = new BindingList<dichvu>();
-
+        private Timer opacityTimer = new Timer();
 
         public frmService()
         {
             dvbll = new DichVuBLL();
-            InitializeComponent();         
+            InitializeComponent();
+            this.Opacity = 0;
+            opacityTimer.Interval = 5;
+            opacityTimer.Tick += new EventHandler(OnTimerTick);
+            opacityTimer.Start();
+        }
+        private void OnTimerTick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1.0)
+                this.Opacity += 0.1;
+            else
+                opacityTimer.Stop();
         }
 
         private void frmService_Load(object sender, EventArgs e)

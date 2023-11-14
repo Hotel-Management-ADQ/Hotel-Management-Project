@@ -75,6 +75,7 @@ namespace HotelManagementProject
                     else
                     {
                         tentaikhoan = tk.GetTenTaiKhoan(txtUsername.Text.Trim());
+                        txtUsername.Text = ""; txtPassword.Text = "";
                         MessageBox.Show("Thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Program.mainForm = new FrmMain();
                         Program.mainForm.Show();
@@ -88,7 +89,7 @@ namespace HotelManagementProject
         {
             DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-                this.Dispose();
+                Application.Exit();
         }
     }
 }

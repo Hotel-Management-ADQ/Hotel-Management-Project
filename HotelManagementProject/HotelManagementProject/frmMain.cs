@@ -228,5 +228,12 @@ namespace HotelManagementProject
             Program.deviceForm = new frmDevice();
             Program.deviceForm.Show();
         }
+
+        private void btnQLPhong_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.roomForm = new frmRoom();
+            Program.roomForm.Show();
+        }
     }
 }

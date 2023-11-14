@@ -17,11 +17,23 @@ namespace HotelManagementProject
     {
         KhachHangBLL khbll;
         private BindingList<khachhang> datakhachhang = new BindingList<khachhang>();
+        private Timer opacityTimer = new Timer();
 
         public frmCustomer()
         {
             khbll = new KhachHangBLL();
             InitializeComponent();
+            this.Opacity = 0;
+            opacityTimer.Interval = 5;
+            opacityTimer.Tick += new EventHandler(OnTimerTick);
+            opacityTimer.Start();
+        }
+        private void OnTimerTick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1.0)
+                this.Opacity += 0.1;
+            else
+                opacityTimer.Stop();
         }
 
         private void frmCustomer_Load(object sender, EventArgs e)

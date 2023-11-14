@@ -537,7 +537,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel3.Controls.Add(this.tblThietBi, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 167);
@@ -578,7 +578,7 @@
             this.tblThietBi.ReadOnly = true;
             this.tblThietBi.RowHeadersVisible = false;
             this.tblThietBi.RowTemplate.Height = 24;
-            this.tblThietBi.Size = new System.Drawing.Size(1345, 389);
+            this.tblThietBi.Size = new System.Drawing.Size(1344, 389);
             this.tblThietBi.TabIndex = 0;
             this.tblThietBi.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tblThietBi.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -645,6 +645,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1443, 862);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDevice";
             this.Text = "frmDevice";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

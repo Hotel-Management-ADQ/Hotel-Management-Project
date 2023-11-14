@@ -15,11 +15,23 @@ namespace HotelManagementProject
     {
         ThietBiBLL tbbll;
         private BindingList<thietbi> datathietbi = new BindingList<thietbi>();
+        private Timer opacityTimer = new Timer();
 
         public frmDevice()
         {
             InitializeComponent();
             tbbll = new ThietBiBLL();
+            this.Opacity = 0;
+            opacityTimer.Interval = 5;
+            opacityTimer.Tick += new EventHandler(OnTimerTick);
+            opacityTimer.Start();
+        }
+        private void OnTimerTick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1.0)
+                this.Opacity += 0.1;
+            else
+                opacityTimer.Stop();
         }
 
         private void frmDevice_Load(object sender, EventArgs e)

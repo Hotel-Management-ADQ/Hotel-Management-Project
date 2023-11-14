@@ -205,6 +205,7 @@
             this.btnQLPhong.TabIndex = 5;
             this.btnQLPhong.Text = "      Quản Lý Phòng";
             this.btnQLPhong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLPhong.Click += new System.EventHandler(this.btnQLPhong_Click);
             // 
             // btnQLThietBi
             // 
@@ -526,7 +527,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.464041F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 335F));
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.currentTimeLabelApp2, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.currentDateLabelApp2, 2, 0);
@@ -550,7 +551,7 @@
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label10.Size = new System.Drawing.Size(791, 82);
+            this.label10.Size = new System.Drawing.Size(788, 82);
             this.label10.TabIndex = 0;
             this.label10.Text = "Khách sạn ABC";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -560,12 +561,12 @@
             this.currentTimeLabelApp2.AutoSize = true;
             this.currentTimeLabelApp2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.currentTimeLabelApp2.Font = new System.Drawing.Font("Calibri", 30.75F);
-            this.currentTimeLabelApp2.Location = new System.Drawing.Point(1161, 0);
+            this.currentTimeLabelApp2.Location = new System.Drawing.Point(1158, 0);
             this.currentTimeLabelApp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentTimeLabelApp2.Name = "currentTimeLabelApp2";
-            this.currentTimeLabelApp2.Size = new System.Drawing.Size(329, 82);
+            this.currentTimeLabelApp2.Size = new System.Drawing.Size(332, 82);
             this.currentTimeLabelApp2.TabIndex = 1;
-            this.currentTimeLabelApp2.Text = "22:28:14";
+            this.currentTimeLabelApp2.Text = "02:23:16";
             this.currentTimeLabelApp2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // currentDateLabelApp2
@@ -574,19 +575,19 @@
             this.currentDateLabelApp2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.currentDateLabelApp2.Font = new System.Drawing.Font("Calibri", 30.75F);
             this.currentDateLabelApp2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.currentDateLabelApp2.Location = new System.Drawing.Point(851, 0);
+            this.currentDateLabelApp2.Location = new System.Drawing.Point(848, 0);
             this.currentDateLabelApp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentDateLabelApp2.Name = "currentDateLabelApp2";
             this.currentDateLabelApp2.Size = new System.Drawing.Size(224, 82);
             this.currentDateLabelApp2.TabIndex = 2;
-            this.currentDateLabelApp2.Text = "14/11/2023";
+            this.currentDateLabelApp2.Text = "15/11/2023";
             this.currentDateLabelApp2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label18
             // 
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Image = ((System.Drawing.Image)(resources.GetObject("label18.Image")));
-            this.label18.Location = new System.Drawing.Point(1080, 0);
+            this.label18.Location = new System.Drawing.Point(1077, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(76, 82);
             this.label18.TabIndex = 5;
@@ -595,7 +596,7 @@
             // 
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label19.Image = ((System.Drawing.Image)(resources.GetObject("label19.Image")));
-            this.label19.Location = new System.Drawing.Point(798, 0);
+            this.label19.Location = new System.Drawing.Point(795, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(48, 82);
             this.label19.TabIndex = 6;
@@ -744,7 +745,7 @@
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1297, 935);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1297, 922);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // FrmMain
