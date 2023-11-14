@@ -20,6 +20,7 @@ namespace HotelManagementProject
         RoomPanel panelroom;
         private Timer opacityTimer = new Timer();
         List<PhongDTO> phongList;
+        public static string idphongfrmMain;
 
         public FrmMain()
         {
@@ -64,6 +65,16 @@ namespace HotelManagementProject
                 Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
                 if (btn4 != null)
                     btn4.Click += btnHuyDonPhong_Click;
+                Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
+                if (btn5 != null)
+                    btn5.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
             }
         }
 
