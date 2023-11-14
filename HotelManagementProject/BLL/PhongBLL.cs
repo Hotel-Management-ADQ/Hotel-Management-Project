@@ -3,6 +3,7 @@ using System.Data.Linq;
 using System;
 using System.Linq;
 using DTO;
+using System.Runtime.Remoting.Contexts;
 
 namespace BLL
 {
@@ -68,6 +69,31 @@ namespace BLL
         public string GetIdPhongFromRoomPanel(string str)
         {
             return str;
+        }
+        public string GetTenLoaiPhong(string idPhong)
+        {
+            var tenLoaiPhong = (from p in _qLKSDataContext.phongs
+                                join lp in _qLKSDataContext.loaiphongs on p.id_loaiphong equals lp.id_loaiphong
+                                where p.id_phong == idPhong
+                                select lp.ten_loai).FirstOrDefault();
+
+            return tenLoaiPhong;
+        }
+        public string GetTenPhongByIdPhong(string idPhong)
+        {
+            try
+            {
+                var tenPhong = (from phong in _qLKSDataContext.phongs
+                                where phong.id_phong == idPhong
+                                select phong.ten).FirstOrDefault();
+
+                return tenPhong;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
         }
     }
 

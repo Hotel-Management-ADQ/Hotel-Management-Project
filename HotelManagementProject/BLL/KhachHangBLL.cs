@@ -28,6 +28,22 @@ namespace BLL
             }
         }
 
+        public List<string> GetTenKhachHangList()
+        {
+            try
+            {
+                var tenKhachHangList = _qLKSDataContext.khachhangs
+                    .Select(kh => kh.ten_khachhang)
+                    .ToList();
+                return tenKhachHangList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
 
         public void XoaKhachHang(string id_khachhang)
         {
@@ -66,6 +82,21 @@ namespace BLL
                         select kh;
 
             return query.ToList();
+        }
+        public string GetTenKhachHangByCMND(string cmnd)
+        {
+            try
+            {
+                var tenKhachHang = (from kh in _qLKSDataContext.khachhangs
+                                    where kh.cmnd == cmnd
+                                    select kh.ten_khachhang).FirstOrDefault();
+                return tenKhachHang;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
         }
     }
 }

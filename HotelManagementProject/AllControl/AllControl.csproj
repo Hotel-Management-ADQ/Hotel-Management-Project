@@ -66,6 +66,9 @@
     <Compile Include="RoomPanel.Designer.cs">
       <DependentUpon>RoomPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextBoxForIdentificationCard.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TextBoxOnlyNumber.cs">
       <SubType>Component</SubType>
     </Compile>

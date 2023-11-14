@@ -12,7 +12,7 @@ using BLL;
 
 namespace HotelManagementProject
 {
-    
+
     public partial class frmCustomer : Form
     {
         KhachHangBLL khbll;
@@ -79,8 +79,8 @@ namespace HotelManagementProject
 
         private void btnThem_Click_1(object sender, EventArgs e)
         {
-            txtTen.Enabled = true; dateNgaySinh.Enabled = true; txtDiaChi.Enabled = true; txtSdt.Enabled = true; txtCmnd.Enabled = true; 
-            txtTen.Text = string.Empty; dateNgaySinh.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty; 
+            txtTen.Enabled = true; dateNgaySinh.Enabled = true; txtDiaChi.Enabled = true; txtSdt.Enabled = true; txtCmnd.Enabled = true;
+            txtTen.Text = string.Empty; dateNgaySinh.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
             txtTen.Focus();
         }
 
@@ -104,12 +104,12 @@ namespace HotelManagementProject
 
             if (result == DialogResult.Yes)
             {
-                if(rdNam.Checked)
+                if (rdNam.Checked)
                 {
                     khbll.ThemKhachHang(txtTen.Text.Trim(), DateTime.Parse(dateNgaySinh.Text.Trim()), txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNam.Text);
 
                 }
-                else if(rdNu.Checked) 
+                else if (rdNu.Checked)
                 {
                     khbll.ThemKhachHang(txtTen.Text.Trim(), DateTime.Parse(dateNgaySinh.Text.Trim()), txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNu.Text);
 

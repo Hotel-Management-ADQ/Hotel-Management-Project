@@ -526,7 +526,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.464041F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 331F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332F));
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.currentTimeLabelApp2, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.currentDateLabelApp2, 2, 0);
@@ -565,7 +565,7 @@
             this.currentTimeLabelApp2.Name = "currentTimeLabelApp2";
             this.currentTimeLabelApp2.Size = new System.Drawing.Size(328, 82);
             this.currentTimeLabelApp2.TabIndex = 1;
-            this.currentTimeLabelApp2.Text = "10:42:14";
+            this.currentTimeLabelApp2.Text = "14:09:14";
             this.currentTimeLabelApp2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // currentDateLabelApp2

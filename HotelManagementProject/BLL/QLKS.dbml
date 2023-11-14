@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLKS" Class="QLKSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-P250IPBQ;Initial Catalog=QLKS;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Tuan-Anh;Initial Catalog=QLKS;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.chitietsudungdv" Member="chitietsudungdvs">
     <Type Name="chitietsudungdv">
       <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
@@ -156,6 +156,19 @@
       <Column Name="id_tang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ten_tang" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="tang_phong" Member="phongs" ThisKey="id_tang" OtherKey="id_tang" Type="phong" />
+    </Type>
+  </Table>
+  <Table Name="dbo.view_datphong2" Member="view_datphong2s">
+    <Type Name="view_datphong2">
+      <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="ten" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="loai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="check_in" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="check_out" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="trang_thai" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="tong_thoi_gian" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ten_nhanvien" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ten_khachhang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.Them_Dich_Vu" Method="Them_Dich_Vu">
