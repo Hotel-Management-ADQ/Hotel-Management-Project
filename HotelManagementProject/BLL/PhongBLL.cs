@@ -32,6 +32,24 @@ namespace BLL
                 throw ex;
             }
         }
+
+        public List<PhongDTO1> GetPhongDTO1()
+        {
+            var query = from ph in _qLKSDataContext.phongs
+                        join lp in _qLKSDataContext.loaiphongs on ph.id_loaiphong equals lp.id_loaiphong
+                        select new PhongDTO1
+                        {
+                            Idphong = ph.id_phong,
+                            Loaiphong = lp.ten_loai,
+                            Sotang = ph.id_tang,
+                            Tenphong = ph.ten,
+                            Trangthai = ph.trang_thai,
+                            Gia = ph.gia
+                        };
+
+            return query.ToList();
+        }
+
         public List<PhongDTO> GetPhongListCoTenLoaiPhong()
         {
             try

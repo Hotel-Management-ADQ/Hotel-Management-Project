@@ -79,8 +79,8 @@ namespace HotelManagementProject
 
         private void btnThem_Click_1(object sender, EventArgs e)
         {
-            txtTen.Enabled = true; dateNgaySinh.Enabled = true; txtDiaChi.Enabled = true; txtSdt.Enabled = true; txtCmnd.Enabled = true;
-            txtTen.Text = string.Empty; dateNgaySinh.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
+            
+            txtTen.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
             txtTen.Focus();
         }
 
