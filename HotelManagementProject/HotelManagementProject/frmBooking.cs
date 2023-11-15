@@ -60,6 +60,7 @@ namespace HotelManagementProject
             lblTenPhong.Text = dpbll.GetTenPhong(idphong.Trim()).ToUpper();
             lblGiaTien.Text = dpbll.GetGiaPhong(idphong.Trim()) + " VND";
             lblTenNhanVien.Text = "Nhân Viên: " + frmLogin.tentaikhoan.ToUpper();
+            dateTimePicker1.Value = DateTime.Now;
         }
         private void LoadDataForBody()
         {
@@ -130,18 +131,87 @@ namespace HotelManagementProject
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnTimKiemKH_Click(object sender, EventArgs e)
+        {
+            var tenkhbycmnd = khbll.GetTenKhachHangByCMND(txtCCCDTimKiemKH.Text);
+            if (tenkhbycmnd == null)
+                MessageBox.Show("Không kiếm thấy khách hàng");
+            else
+            {
+                cboKhachHang.Text = tenkhbycmnd.ToString();
+                txtCCCDTimKiemKH.Text = string.Empty;
+            }
+        }
+
+        private void tblDichVu_Click(object sender, EventArgs e)
+        {
+            int i = tblDichVu.CurrentRow.Index;
+            lblTenDichVu.Text = tblDichVu.Rows[i].Cells[1].Value.ToString();
+            lblGiaDichVu.Text = int.Parse(tblDichVu.Rows[i].Cells[2].Value.ToString().Trim()).ToString("N0") + "đ";
+            //label19.Text = lblGiaDichVu.Text.ToString().Replace(",","");
+        }
+
+        private void tblThietBi_Click(object sender, EventArgs e)
+        {
+            int i = tblThietBi.CurrentRow.Index;
+            lblTenThietBi.Text = tblThietBi.Rows[i].Cells[1].Value.ToString();
+            lblGiaThietBi.Text = int.Parse(tblThietBi.Rows[i].Cells[2].Value.ToString().Trim()).ToString("N0") + "đ";
+            //label19.Text = lblGiaThietBi.Text.ToString().Replace(",","");
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            tblDichVu.DataSource = dvbll.GetDichVuList();
+            tblHoaDonDichVu.DataSource = ctdvbll.GetThongTinSuDungDichVu();
+            lblTenDichVu.Text = "Dịch vụ chọn là?";
+            lblGiaDichVu.Text = "0đ";
+            lblTongTienDV.Text = "0đ";
+            txtSoLuongDV.Text = string.Empty;
+            txtTimKiemDV.Text = string.Empty;
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            tblThietBi.DataSource = tbbll.GetThietBiList();
+            tblHoaDonThietBi.DataSource = cttbbll.GetThongTinSuDungThietBi();
+            lblTenThietBi.Text = "Thiết bị đang chọn?";
+            lblGiaThietBi.Text = "0đ";
+            lblTongTienTB.Text = "0đ";
+            txtSoLuongTB.Text = string.Empty;
+            txtTimKiemTB.Text = string.Empty;
+        }
+
+        private void txtTienKhachDua_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (txtTienKhachDua.Text == string.Empty)
+                lblTienKhachDua.Text = "0đ";
+            else
+            {
+                lblTienKhachDua.Text = Int64.Parse(txtTienKhachDua.Text.Trim()).ToString("N0") + "đ";
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
             this.Visible = false;
             Program.mainForm = new FrmMain();
             Program.mainForm.Show();
         }
 
-        private void btnTimKiemKH_Click(object sender, EventArgs e)
+        private void cboKhachHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var tenkhbycmnd = khbll.GetTenKhachHangByCMND(txtCCCD.Text);
-            if (tenkhbycmnd == null)
-                MessageBox.Show("Không kiếm thấy khách hàng");
-            else
-                cboKhachHang.Text = tenkhbycmnd.ToString();
+            string tenkh = cboKhachHang.SelectedValue.ToString();
+            lblTenKhInGroupbox.Text = cboKhachHang.SelectedValue.ToString().Trim();
+            lblNgaySinhInGroupbox.Text = khbll.GetNgaySinhByTen(tenkh).ToString("dd/MM/yyyy");
+            lblSdtInGroupbox.Text = khbll.GetSdtByTen(tenkh);
+            lblCccdInGroupbox.Text = khbll.GetCccdByTen(tenkh);
+            lblGioiTinhInGroupbox.Text = khbll.GetGioiTinhByTen(tenkh);
         }
     }
 }

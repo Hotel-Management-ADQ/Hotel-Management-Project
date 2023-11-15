@@ -98,5 +98,34 @@ namespace BLL
                 throw ex;
             }
         }
+
+        //Function for form Booking
+        public DateTime GetNgaySinhByTen(string ten)
+        {
+            var ngaysinh = (from kh in _qLKSDataContext.khachhangs where kh.ten_khachhang == ten.Trim()
+                                select kh.ngay_sinh).FirstOrDefault();
+            return ngaysinh;
+        }
+        public string GetSdtByTen(string ten)
+        {
+            var sdt = (from kh in _qLKSDataContext.khachhangs
+                                where kh.ten_khachhang == ten.Trim()
+                                select kh.sdt).FirstOrDefault();
+            return sdt;
+        }
+        public string GetCccdByTen(string ten)
+        {
+            var cccd = (from kh in _qLKSDataContext.khachhangs
+                                where kh.ten_khachhang == ten.Trim()
+                                select kh.cmnd).FirstOrDefault();
+            return cccd;
+        }
+        public string GetGioiTinhByTen(string ten)
+        {
+            var gioitinh = (from kh in _qLKSDataContext.khachhangs
+                        where kh.ten_khachhang == ten.Trim()
+                        select kh.gioi_tinh).FirstOrDefault();
+            return gioitinh;
+        }
     }
 }

@@ -192,25 +192,29 @@
             this.btnDonPhong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDonPhong.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDonPhong.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDonPhong.Image = global::AllControl.Properties.Resources.broom;
+            this.btnDonPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDonPhong.Location = new System.Drawing.Point(127, 19);
             this.btnDonPhong.Name = "btnDonPhong";
             this.btnDonPhong.Size = new System.Drawing.Size(97, 31);
             this.btnDonPhong.TabIndex = 1;
-            this.btnDonPhong.Text = "Dọn phòng";
+            this.btnDonPhong.Text = "   Dọn";
             this.btnDonPhong.UseVisualStyleBackColor = false;
             this.btnDonPhong.Click += new System.EventHandler(this.btnDonPhong_Click);
             // 
             // btnCheckIn
             // 
-            this.btnCheckIn.BackColor = System.Drawing.Color.Navy;
+            this.btnCheckIn.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCheckIn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckIn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCheckIn.Image = global::AllControl.Properties.Resources.check_in;
+            this.btnCheckIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCheckIn.Location = new System.Drawing.Point(24, 19);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(97, 31);
             this.btnCheckIn.TabIndex = 0;
-            this.btnCheckIn.Text = "Check-in";
+            this.btnCheckIn.Text = "    Check-in";
             this.btnCheckIn.UseVisualStyleBackColor = false;
             // 
             // label7
