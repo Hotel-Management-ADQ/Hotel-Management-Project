@@ -50,6 +50,52 @@ namespace BLL
             return query.ToList();
         }
 
+        public void XoaPhong(string id_phong)
+        {
+            var phongToRemove = _qLKSDataContext.phongs.SingleOrDefault(dv => dv.id_phong == id_phong);
+            if (phongToRemove != null)
+            {
+                _qLKSDataContext.phongs.DeleteOnSubmit(phongToRemove);
+                _qLKSDataContext.SubmitChanges();
+            }
+        }
+        public void ThemPhong(int id_loaiphong, int id_tang, string tenphong, string trangthai, int gia)
+        {
+            _qLKSDataContext.Them_Phong(id_loaiphong, id_tang, tenphong, trangthai, gia);
+            _qLKSDataContext.SubmitChanges();
+        }
+        public void CapNhatPhong(string id_phong, int id_loaiphong, int id_tang, string tenphong, string trangthai, int gia)
+        {
+            var phongToUpdate = _qLKSDataContext.phongs.SingleOrDefault(dv => dv.id_phong == id_phong);
+            if (phongToUpdate != null)
+            {
+                phongToUpdate.id_phong = id_phong;
+                phongToUpdate.id_loaiphong = id_loaiphong;
+                phongToUpdate.id_tang = id_tang;
+                phongToUpdate.trang_thai = tenphong;
+                phongToUpdate.ten = trangthai;
+                phongToUpdate.gia = gia;
+                _qLKSDataContext.SubmitChanges();
+            }
+        }
+        public List<PhongDTO1> TimKiemPhong(string timkiem)
+        {
+            var query = from p in _qLKSDataContext.phongs
+                        where p.id_phong == timkiem || p.ten == timkiem
+                        select new PhongDTO1
+                        {
+                            Idphong = p.id_phong,
+                            Loaiphong = p.id_loaiphong.ToString(),
+                            Sotang = p.id_tang,
+                            Tenphong = p.ten,
+                            Trangthai = p.trang_thai,
+                            Gia = p.gia
+                        };
+
+            return query.ToList();
+        }
+
+
         public List<PhongDTO> GetPhongListCoTenLoaiPhong()
         {
             try

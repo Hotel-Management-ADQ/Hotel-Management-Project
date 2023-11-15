@@ -259,7 +259,7 @@ namespace HotelManagementProject
         private void DesignLayoutFormMain_Layout_DangDonDep()
         {
             List<PhongDTO> phongList = new List<PhongDTO>();
-            phongList = phongBLL.GetPhongListCoTenLoaiPhongTheoTrangThai("Đang dọn dẹp");
+            phongList = phongBLL.GetPhongListCoTenLoaiPhongTheoTrangThai("Đang dọn phòng");
             flowLayoutPanel_DangDonDep.AutoScroll = true;
 
             foreach (PhongDTO phong in phongList)

@@ -43,7 +43,7 @@ namespace AllControl
                 btnCheckIn.Visible = false;
                 btnHuyDonPhong.Visible = false;
             }
-            else if (trangthai.Equals("Đang dọn dẹp"))
+            else if (trangthai.Equals("Đang dọn phòng"))
             {
                 tableLayoutPanel1.BackColor = Color.Yellow;
                 tableLayoutPanel1.ForeColor = Color.Black;
@@ -52,7 +52,7 @@ namespace AllControl
                 btnDonPhong.Visible = false;
                 btnHuyDonPhong.Visible = true;
             }
-            else if (trangthai.Equals("Đang dọn dẹp-used"))
+            else if (trangthai.Equals("Dọn phòng đang dùng"))
             {
                 tableLayoutPanel1.BackColor = Color.Yellow;
                 tableLayoutPanel1.ForeColor = Color.Black;
@@ -73,7 +73,7 @@ namespace AllControl
 
         private void btnDonPhong_Click(object sender, EventArgs e)
         {
-            phongBLL.UpdatePhongTrangThai(id_phong, "Đang dọn dẹp");
+            phongBLL.UpdatePhongTrangThai(id_phong, "Đang dọn phòng");
         }
 
         private void btnHuyDonPhong_Click(object sender, EventArgs e)
