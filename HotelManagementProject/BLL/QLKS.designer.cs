@@ -245,6 +245,27 @@ namespace BLL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_loaiphong, id_tang, ten, trang_thai, gia);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Dat_Phong")]
+		public int Dat_Phong([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string id_nhanvien, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string id_khachhang, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string id_phong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> check_in, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> check_out, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> so_nguoi_o, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string loai, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> dat_coc)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_nhanvien, id_khachhang, id_phong, check_in, check_out, so_nguoi_o, loai, dat_coc);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Update_TrangThaiPhong_1")]
+		public int Update_TrangThaiPhong_1([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string idphong)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idphong);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Them_chi_tiet_su_dung_dv")]
+		public int Them_chi_tiet_su_dung_dv([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string id_datphong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string id_dvu, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> ngaythue, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> so_luong)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_datphong, id_dvu, ngaythue, so_luong);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.chitietsudungdv")]

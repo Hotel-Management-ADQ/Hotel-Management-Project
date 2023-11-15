@@ -19,8 +19,8 @@ namespace HotelManagementProject
         PhongBLL phongBLL;
         RoomPanel panelroom;
         private Timer opacityTimer = new Timer();
-        
-        public static string idphongfrmMain;
+
+        public static string idphongfrmMain, trangthaifrmMain;
 
         public FrmMain()
         {
@@ -48,56 +48,6 @@ namespace HotelManagementProject
                 this.Opacity += 0.1;
             else
                 opacityTimer.Stop();
-        }
-
-        string str;
-        private void DesignLayoutFormMain()
-        {
-            List<PhongDTO> phongList = new List<PhongDTO>();
-            phongList = phongBLL.GetPhongListCoTenLoaiPhong();
-            flowLayoutPanel_All.AutoScroll = true;
-
-            foreach (PhongDTO phong in phongList)
-            {
-                str = phong.TenPhong;
-                string idphong = phong.IdPhong;
-                string tenphong = phong.TenPhong.ToUpper();
-                string loaiphong = phong.TenLoaiPhong;
-                string sotang = phong.SoTang.ToString();
-                string trangthai = phong.TrangThai;
-                panelroom = new RoomPanel(tenphong, sotang, loaiphong, trangthai, idphong);
-                flowLayoutPanel_All.Controls.Add(panelroom);
-                Button btn3 = panelroom.Controls.Find("btnDonPhong", true).FirstOrDefault() as Button;
-                if (btn3 != null)
-                    btn3.Click += btnDonPhong_Click;
-                Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
-                if (btn4 != null)
-                    btn4.Click += btnHuyDonPhong_Click;
-                Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
-                if (btn5 != null)
-                    btn5.Click += (sender, e) =>
-                    {
-                        idphongfrmMain = idphong;
-                        frmBooking frm = new frmBooking();
-                        frm.Show();
-                        this.Visible = false;
-                        //MessageBox.Show(idphong);
-                    };
-            }
-        }
-
-        private void btnHuyDonPhong_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Program.mainForm = new FrmMain();
-            Program.mainForm.Show();
-        }
-
-        private void btnDonPhong_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Program.mainForm = new FrmMain();
-            Program.mainForm.Show();
         }
 
         public void InitializeBtnFromLabel()
@@ -204,6 +154,60 @@ namespace HotelManagementProject
 
         }
 
+        string str;
+        private void DesignLayoutFormMain()
+        {
+            List<PhongDTO> phongList = new List<PhongDTO>();
+            phongList = phongBLL.GetPhongListCoTenLoaiPhong();
+            flowLayoutPanel_All.AutoScroll = true;
+
+            foreach (PhongDTO phong in phongList)
+            {
+                str = phong.TenPhong;
+                string idphong = phong.IdPhong;
+                string tenphong = phong.TenPhong.ToUpper();
+                string loaiphong = phong.TenLoaiPhong;
+                string sotang = phong.SoTang.ToString();
+                string trangthai = phong.TrangThai;
+                panelroom = new RoomPanel(tenphong, sotang, loaiphong, trangthai, idphong);
+                flowLayoutPanel_All.Controls.Add(panelroom);
+                Button btn3 = panelroom.Controls.Find("btnDonPhongConTrong", true).FirstOrDefault() as Button;
+                if (btn3 != null)
+                    btn3.Click += btn_Click;
+                Button btn4 = panelroom.Controls.Find("btnHuyDonPhongConTrong", true).FirstOrDefault() as Button;
+                if (btn4 != null)
+                    btn4.Click += btn_Click;
+                Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
+                if (btn5 != null)
+                    btn5.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        trangthaifrmMain = trangthai;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
+                Button btn6 = panelroom.Controls.Find("btnCheckOut", true).FirstOrDefault() as Button;
+                if (btn6 != null)
+                    btn6.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        trangthaifrmMain = trangthai;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
+                Button btn7 = panelroom.Controls.Find("btnDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn7 != null)
+                    btn7.Click += btn_Click;
+                Button btn8 = panelroom.Controls.Find("btnHuyDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn8 != null)
+                    btn8.Click += btn_Click;
+            }
+        }
+
         private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -272,12 +276,12 @@ namespace HotelManagementProject
                 string trangthai = phong.TrangThai;
                 panelroom = new RoomPanel(tenphong, sotang, loaiphong, trangthai, idphong);
                 flowLayoutPanel_DangDonDep.Controls.Add(panelroom);
-                Button btn3 = panelroom.Controls.Find("btnDonPhong", true).FirstOrDefault() as Button;
+                Button btn3 = panelroom.Controls.Find("btnDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn3 != null)
-                    btn3.Click += btnDonPhong_Click;
-                Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
+                    btn3.Click += btn_Click;
+                Button btn4 = panelroom.Controls.Find("btnHuyDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn4 != null)
-                    btn4.Click += btnHuyDonPhong_Click;
+                    btn4.Click += btn_Click;
                 Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
                 if (btn5 != null)
                     btn5.Click += (sender, e) =>
@@ -288,6 +292,23 @@ namespace HotelManagementProject
                         this.Visible = false;
                         //MessageBox.Show(idphong);
                     };
+                Button btn6 = panelroom.Controls.Find("btnCheckOut", true).FirstOrDefault() as Button;
+                if (btn6 != null)
+                    btn6.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        trangthaifrmMain = trangthai;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
+                Button btn7 = panelroom.Controls.Find("btnDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn7 != null)
+                    btn7.Click += btn_Click;
+                Button btn8 = panelroom.Controls.Find("btnHuyDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn8 != null)
+                    btn8.Click += btn_Click;
             }
         }
 
@@ -319,12 +340,12 @@ namespace HotelManagementProject
                 string trangthai = phong.TrangThai;
                 panelroom = new RoomPanel(tenphong, sotang, loaiphong, trangthai, idphong);
                 flowLayoutPanel_DangSuDung.Controls.Add(panelroom);
-                Button btn3 = panelroom.Controls.Find("btnDonPhong", true).FirstOrDefault() as Button;
+                Button btn3 = panelroom.Controls.Find("btnDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn3 != null)
-                    btn3.Click += btnDonPhong_Click;
-                Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
+                    btn3.Click += btn_Click;
+                Button btn4 = panelroom.Controls.Find("btnHuyDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn4 != null)
-                    btn4.Click += btnHuyDonPhong_Click;
+                    btn4.Click += btn_Click;
                 Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
                 if (btn5 != null)
                     btn5.Click += (sender, e) =>
@@ -335,6 +356,23 @@ namespace HotelManagementProject
                         this.Visible = false;
                         //MessageBox.Show(idphong);
                     };
+                Button btn6 = panelroom.Controls.Find("btnCheckOut", true).FirstOrDefault() as Button;
+                if (btn6 != null)
+                    btn6.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        trangthaifrmMain = trangthai;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
+                Button btn7 = panelroom.Controls.Find("btnDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn7 != null)
+                    btn7.Click += btn_Click;
+                Button btn8 = panelroom.Controls.Find("btnHuyDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn8 != null)
+                    btn8.Click += btn_Click;
             }
         }
 
@@ -366,12 +404,12 @@ namespace HotelManagementProject
                 string trangthai = phong.TrangThai;
                 panelroom = new RoomPanel(tenphong, sotang, loaiphong, trangthai, idphong);
                 flowLayoutPanel_ConTrong.Controls.Add(panelroom);
-                Button btn3 = panelroom.Controls.Find("btnDonPhong", true).FirstOrDefault() as Button;
+                Button btn3 = panelroom.Controls.Find("btnDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn3 != null)
-                    btn3.Click += btnDonPhong_Click;
-                Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
+                    btn3.Click += btn_Click;
+                Button btn4 = panelroom.Controls.Find("btnHuyDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn4 != null)
-                    btn4.Click += btnHuyDonPhong_Click;
+                    btn4.Click += btn_Click;
                 Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
                 if (btn5 != null)
                     btn5.Click += (sender, e) =>
@@ -382,6 +420,23 @@ namespace HotelManagementProject
                         this.Visible = false;
                         //MessageBox.Show(idphong);
                     };
+                Button btn6 = panelroom.Controls.Find("btnCheckOut", true).FirstOrDefault() as Button;
+                if (btn6 != null)
+                    btn6.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        trangthaifrmMain = trangthai;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
+                Button btn7 = panelroom.Controls.Find("btnDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn7 != null)
+                    btn7.Click += btn_Click;
+                Button btn8 = panelroom.Controls.Find("btnHuyDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn8 != null)
+                    btn8.Click += btn_Click;
             }
         }
 
@@ -425,12 +480,12 @@ namespace HotelManagementProject
                 string trangthai = phong.TrangThai;
                 panelroom = new RoomPanel(tenphong, sotang, loaiphong, trangthai, idphong);
                 flowLayoutPanel_Tang1.Controls.Add(panelroom);
-                Button btn3 = panelroom.Controls.Find("btnDonPhong", true).FirstOrDefault() as Button;
+                Button btn3 = panelroom.Controls.Find("btnDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn3 != null)
-                    btn3.Click += btnDonPhong_Click;
-                Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
+                    btn3.Click += btn_Click;
+                Button btn4 = panelroom.Controls.Find("btnHuyDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn4 != null)
-                    btn4.Click += btnHuyDonPhong_Click;
+                    btn4.Click += btn_Click;
                 Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
                 if (btn5 != null)
                     btn5.Click += (sender, e) =>
@@ -441,6 +496,23 @@ namespace HotelManagementProject
                         this.Visible = false;
                         //MessageBox.Show(idphong);
                     };
+                Button btn6 = panelroom.Controls.Find("btnCheckOut", true).FirstOrDefault() as Button;
+                if (btn6 != null)
+                    btn6.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        trangthaifrmMain = trangthai;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
+                Button btn7 = panelroom.Controls.Find("btnDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn7 != null)
+                    btn7.Click += btn_Click;
+                Button btn8 = panelroom.Controls.Find("btnHuyDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn8 != null)
+                    btn8.Click += btn_Click;
             }
         }
 
@@ -460,12 +532,12 @@ namespace HotelManagementProject
                 string trangthai = phong.TrangThai;
                 panelroom = new RoomPanel(tenphong, sotang, loaiphong, trangthai, idphong);
                 flowLayoutPanel_Tang2.Controls.Add(panelroom);
-                Button btn3 = panelroom.Controls.Find("btnDonPhong", true).FirstOrDefault() as Button;
+                Button btn3 = panelroom.Controls.Find("btnDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn3 != null)
-                    btn3.Click += btnDonPhong_Click;
-                Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
+                    btn3.Click += btn_Click;
+                Button btn4 = panelroom.Controls.Find("btnHuyDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn4 != null)
-                    btn4.Click += btnHuyDonPhong_Click;
+                    btn4.Click += btn_Click;
                 Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
                 if (btn5 != null)
                     btn5.Click += (sender, e) =>
@@ -476,6 +548,23 @@ namespace HotelManagementProject
                         this.Visible = false;
                         //MessageBox.Show(idphong);
                     };
+                Button btn6 = panelroom.Controls.Find("btnCheckOut", true).FirstOrDefault() as Button;
+                if (btn6 != null)
+                    btn6.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        trangthaifrmMain = trangthai;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
+                Button btn7 = panelroom.Controls.Find("btnDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn7 != null)
+                    btn7.Click += btn_Click;
+                Button btn8 = panelroom.Controls.Find("btnHuyDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn8 != null)
+                    btn8.Click += btn_Click;
             }
         }
 
@@ -518,12 +607,12 @@ namespace HotelManagementProject
                 string trangthai = phong.TrangThai;
                 panelroom = new RoomPanel(tenphong, sotang, loaiphong, trangthai, idphong);
                 flowLayoutPanel_Tang3.Controls.Add(panelroom);
-                Button btn3 = panelroom.Controls.Find("btnDonPhong", true).FirstOrDefault() as Button;
+                Button btn3 = panelroom.Controls.Find("btnDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn3 != null)
-                    btn3.Click += btnDonPhong_Click;
-                Button btn4 = panelroom.Controls.Find("btnHuyDonPhong", true).FirstOrDefault() as Button;
+                    btn3.Click += btn_Click;
+                Button btn4 = panelroom.Controls.Find("btnHuyDonPhongConTrong", true).FirstOrDefault() as Button;
                 if (btn4 != null)
-                    btn4.Click += btnHuyDonPhong_Click;
+                    btn4.Click += btn_Click;
                 Button btn5 = panelroom.Controls.Find("btnCheckIn", true).FirstOrDefault() as Button;
                 if (btn5 != null)
                     btn5.Click += (sender, e) =>
@@ -534,7 +623,59 @@ namespace HotelManagementProject
                         this.Visible = false;
                         //MessageBox.Show(idphong);
                     };
+                Button btn6 = panelroom.Controls.Find("btnCheckOut", true).FirstOrDefault() as Button;
+                if (btn6 != null)
+                    btn6.Click += (sender, e) =>
+                    {
+                        idphongfrmMain = idphong;
+                        trangthaifrmMain = trangthai;
+                        frmBooking frm = new frmBooking();
+                        frm.Show();
+                        this.Visible = false;
+                        //MessageBox.Show(idphong);
+                    };
+                Button btn7 = panelroom.Controls.Find("btnDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn7 != null)
+                    btn7.Click += btn_Click;
+                Button btn8 = panelroom.Controls.Find("btnHuyDonPhongDangSuDung", true).FirstOrDefault() as Button;
+                if (btn8 != null)
+                    btn8.Click += btn_Click;
             }
         }
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.mainForm = new FrmMain();
+            Program.mainForm.Show();
+        }
+
+        //private void btnHuyDonPhongDangSuDung_Click(object sender, EventArgs e)
+        //{
+        //    this.Visible = false;
+        //    Program.mainForm = new FrmMain();
+        //    Program.mainForm.Show();
+        //}
+
+        //private void btnDonPhongDangSuDung_Click(object sender, EventArgs e)
+        //{
+        //    this.Visible = false;
+        //    Program.mainForm = new FrmMain();
+        //    Program.mainForm.Show();
+        //}
+
+        //private void btnHuyDonPhong_Click(object sender, EventArgs e)
+        //{
+        //    this.Visible = false;
+        //    Program.mainForm = new FrmMain();
+        //    Program.mainForm.Show();
+        //}
+
+        //private void btnDonPhong_Click(object sender, EventArgs e)
+        //{
+        //    this.Visible = false;
+        //    Program.mainForm = new FrmMain();
+        //    Program.mainForm.Show();
+        //}
     }
 }

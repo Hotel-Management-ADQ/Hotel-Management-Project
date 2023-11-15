@@ -37,5 +37,24 @@ namespace BLL
                                 select lp.id_loaiphong).FirstOrDefault();
             return idloaiphong;
         }
+
+        public int GetSoNguoiOByIdPhong(string idPhong)
+        {
+            try
+            {
+                var soNguoiO = (from p in _qLKSDataContext.phongs
+                                join lp in _qLKSDataContext.loaiphongs on p.id_loaiphong equals lp.id_loaiphong
+                                where p.id_phong == idPhong
+                                select lp.so_luong_nguoi).FirstOrDefault();
+
+                return soNguoiO;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
     }
 }

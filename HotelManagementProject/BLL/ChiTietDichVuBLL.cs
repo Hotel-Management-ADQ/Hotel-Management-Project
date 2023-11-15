@@ -10,7 +10,7 @@ namespace BLL
 {
     public class ChiTietDichVuBLL
     {
-        private QLKSDataContext qLKSDataContext;
+        public QLKSDataContext qLKSDataContext;
         public ChiTietDichVuBLL()
         {
             qLKSDataContext = new QLKSDataContext();
@@ -30,5 +30,68 @@ namespace BLL
 
             return query.ToList();
         }
+        public void ThemChiTietDichVu(string idhoadon, string iddv, DateTime thoigian, int soluong)
+        {
+            qLKSDataContext.Them_chi_tiet_su_dung_dv(idhoadon, iddv, thoigian, soluong);
+            qLKSDataContext.SubmitChanges();
+        }
+        public double TinhTongTienDichVuTheoIDDatPhong(string idDatPhong)
+        {
+            try
+            {
+                var tongTienDichVu = qLKSDataContext.chitietsudungdvs
+                    .Where(ct => ct.id_datphong == idDatPhong)
+                    .Sum(ct => ct.tong_tien_dv);
+
+                return (double)tongTienDichVu;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+        public void XoaChiTietSuDungDichVu(string mahd, string madv)
+        {
+            try
+            {
+                var chiTiet = qLKSDataContext.chitietsudungdvs
+                    .Where(ct => ct.id_datphong == mahd && ct.id_dichvu == madv)
+                    .FirstOrDefault();
+
+                if (chiTiet != null)
+                {
+                    qLKSDataContext.chitietsudungdvs.DeleteOnSubmit(chiTiet);
+                    qLKSDataContext.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+        public void SuaSoLuongChiTietSuDungDichVu(string idDatPhong, string idDichVu, int soLuongMoi)
+        {
+            try
+            {
+                var chiTiet = qLKSDataContext.chitietsudungdvs
+                    .Where(ct => ct.id_datphong == idDatPhong && ct.id_dichvu == idDichVu)
+                    .FirstOrDefault();
+
+                if (chiTiet != null)
+                {
+                    chiTiet.so_luong = soLuongMoi;
+                    qLKSDataContext.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+
     }
 }

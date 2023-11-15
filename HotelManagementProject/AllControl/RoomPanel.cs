@@ -33,34 +33,68 @@ namespace AllControl
                 tableLayoutPanel1.ForeColor = Color.White;
                 btnCheckIn.Visible = true;
                 btnCheckOut.Visible = false;
-                btnHuyDonPhong.Visible = false;
+                btnDonPhongConTrong.Visible = true;
+                btnHuyDonPhongConTrong.Visible = false;
+                btnDonPhongDangSuDung.Visible = false;
+                btnHuyDonPhongDangSuDung.Visible = false;
             }
             else if (trangthai.Equals("Đang sử dụng"))
             {
                 tableLayoutPanel1.BackColor = Color.Red;
                 tableLayoutPanel1.ForeColor = Color.White;
-                btnCheckOut.Visible = true;
                 btnCheckIn.Visible = false;
-                btnHuyDonPhong.Visible = false;
+                btnCheckOut.Visible = true;
+                btnDonPhongConTrong.Visible = false;
+                btnHuyDonPhongConTrong.Visible = false;
+                btnDonPhongDangSuDung.Visible = true;
+                btnHuyDonPhongDangSuDung.Visible = false;
             }
             else if (trangthai.Equals("Đang dọn phòng"))
             {
                 tableLayoutPanel1.BackColor = Color.Yellow;
                 tableLayoutPanel1.ForeColor = Color.Black;
-                btnCheckOut.Visible = false;
                 btnCheckIn.Visible = false;
-                btnDonPhong.Visible = false;
-                btnHuyDonPhong.Visible = true;
+                btnCheckOut.Visible = false;
+                btnDonPhongConTrong.Visible = false;
+                btnHuyDonPhongConTrong.Visible = true;
+                btnDonPhongDangSuDung.Visible = false;
+                btnHuyDonPhongDangSuDung.Visible = false;
             }
             else if (trangthai.Equals("Dọn phòng đang dùng"))
             {
                 tableLayoutPanel1.BackColor = Color.Yellow;
                 tableLayoutPanel1.ForeColor = Color.Black;
-                btnCheckOut.Visible = false;
                 btnCheckIn.Visible = false;
-                btnDonPhong.Visible = false;
-                btnHuyDonPhong.Visible = true;
+                btnCheckOut.Visible = false;
+                btnDonPhongConTrong.Visible = false;
+                btnHuyDonPhongConTrong.Visible = false;
+                btnDonPhongDangSuDung.Visible = false;
+                btnHuyDonPhongDangSuDung.Visible = true;
             }
+            btnDonPhongConTrong.Click += BtnDonPhongConTrong_Click;
+            btnHuyDonPhongConTrong.Click += BtnHuyDonPhongConTrong_Click;
+            btnDonPhongDangSuDung.Click += BtnDonPhongDangSuDung_Click;
+            btnHuyDonPhongDangSuDung.Click += BtnHuyDonPhongDangSuDung_Click;
+        }
+
+        private void BtnHuyDonPhongDangSuDung_Click(object sender, EventArgs e)
+        {
+            phongBLL.UpdatePhongTrangThai(id_phong, "Đang sử dụng");
+        }
+
+        private void BtnDonPhongDangSuDung_Click(object sender, EventArgs e)
+        {
+            phongBLL.UpdatePhongTrangThai(id_phong, "Dọn phòng đang dùng");
+        }
+
+        private void BtnHuyDonPhongConTrong_Click(object sender, EventArgs e)
+        {
+            phongBLL.UpdatePhongTrangThai(id_phong, "Còn trống");
+        }
+
+        private void BtnDonPhongConTrong_Click(object sender, EventArgs e)
+        {
+            phongBLL.UpdatePhongTrangThai(id_phong, "Đang dọn phòng");
         }
 
         private Color borderColor;
@@ -71,14 +105,12 @@ namespace AllControl
             set { borderColor = value; }
         }
 
-        private void btnDonPhong_Click(object sender, EventArgs e)
-        {
-            phongBLL.UpdatePhongTrangThai(id_phong, "Đang dọn phòng");
-        }
 
-        private void btnHuyDonPhong_Click(object sender, EventArgs e)
-        {
-            phongBLL.UpdatePhongTrangThai(id_phong, "Còn trống");
-        }
+        //phongBLL.UpdatePhongTrangThai(id_phong, "Dọn phòng đang dùng");
+        //phongBLL.UpdatePhongTrangThai(id_phong, "Đang sử dụng");
+        //phongBLL.UpdatePhongTrangThai(id_phong, "Đang dọn phòng");
+        //phongBLL.UpdatePhongTrangThai(id_phong, "Còn trống");
+
+        
     }
 }

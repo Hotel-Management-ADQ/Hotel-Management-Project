@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ChiTietSuDungDichVu.cs" />
     <Compile Include="ChiTietSuDungThietBi.cs" />
+    <Compile Include="PhieuDatPhongDTO.cs" />
     <Compile Include="PhongDTO.cs" />
     <Compile Include="PhongDTO1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

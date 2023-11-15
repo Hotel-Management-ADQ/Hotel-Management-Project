@@ -60,6 +60,23 @@ namespace BLL
 
             return query.ToList();
         }
+        public string LayIDDichVuByTenDichVu(string tenDichVu)
+        {
+            try
+            {
+                var idDichVu = _qLKSDataContext.dichvus
+                    .Where(dv => dv.ten_dichvu == tenDichVu)
+                    .Select(dv => dv.id_dichvu)
+                    .FirstOrDefault();
+
+                return idDichVu;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
 
     }
 }

@@ -36,9 +36,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnHuyDonPhong = new System.Windows.Forms.Button();
+            this.btnHuyDonPhongDangSuDung = new System.Windows.Forms.Button();
+            this.btnDonPhongDangSuDung = new System.Windows.Forms.Button();
+            this.btnHuyDonPhongConTrong = new System.Windows.Forms.Button();
             this.btnCheckOut = new System.Windows.Forms.Button();
-            this.btnDonPhong = new System.Windows.Forms.Button();
+            this.btnDonPhongConTrong = new System.Windows.Forms.Button();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -148,9 +150,11 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnHuyDonPhong);
+            this.panel1.Controls.Add(this.btnHuyDonPhongDangSuDung);
+            this.panel1.Controls.Add(this.btnDonPhongDangSuDung);
+            this.panel1.Controls.Add(this.btnHuyDonPhongConTrong);
             this.panel1.Controls.Add(this.btnCheckOut);
-            this.panel1.Controls.Add(this.btnDonPhong);
+            this.panel1.Controls.Add(this.btnDonPhongConTrong);
             this.panel1.Controls.Add(this.btnCheckIn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 230);
@@ -158,19 +162,49 @@
             this.panel1.Size = new System.Drawing.Size(248, 67);
             this.panel1.TabIndex = 7;
             // 
-            // btnHuyDonPhong
+            // btnHuyDonPhongDangSuDung
             // 
-            this.btnHuyDonPhong.BackColor = System.Drawing.Color.Red;
-            this.btnHuyDonPhong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHuyDonPhong.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuyDonPhong.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnHuyDonPhong.Location = new System.Drawing.Point(24, 19);
-            this.btnHuyDonPhong.Name = "btnHuyDonPhong";
-            this.btnHuyDonPhong.Size = new System.Drawing.Size(200, 31);
-            this.btnHuyDonPhong.TabIndex = 3;
-            this.btnHuyDonPhong.Text = "Hủy Dọn Phòng";
-            this.btnHuyDonPhong.UseVisualStyleBackColor = false;
-            this.btnHuyDonPhong.Click += new System.EventHandler(this.btnHuyDonPhong_Click);
+            this.btnHuyDonPhongDangSuDung.BackColor = System.Drawing.Color.Red;
+            this.btnHuyDonPhongDangSuDung.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnHuyDonPhongDangSuDung.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuyDonPhongDangSuDung.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnHuyDonPhongDangSuDung.Location = new System.Drawing.Point(24, 19);
+            this.btnHuyDonPhongDangSuDung.Name = "btnHuyDonPhongDangSuDung";
+            this.btnHuyDonPhongDangSuDung.Size = new System.Drawing.Size(200, 31);
+            this.btnHuyDonPhongDangSuDung.TabIndex = 5;
+            this.btnHuyDonPhongDangSuDung.Text = "Hủy Dọn Phòng";
+            this.btnHuyDonPhongDangSuDung.UseVisualStyleBackColor = false;
+            this.btnHuyDonPhongDangSuDung.Visible = false;
+            // 
+            // btnDonPhongDangSuDung
+            // 
+            this.btnDonPhongDangSuDung.BackColor = System.Drawing.Color.Yellow;
+            this.btnDonPhongDangSuDung.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDonPhongDangSuDung.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDonPhongDangSuDung.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDonPhongDangSuDung.Image = global::AllControl.Properties.Resources.broom;
+            this.btnDonPhongDangSuDung.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDonPhongDangSuDung.Location = new System.Drawing.Point(127, 19);
+            this.btnDonPhongDangSuDung.Name = "btnDonPhongDangSuDung";
+            this.btnDonPhongDangSuDung.Size = new System.Drawing.Size(97, 31);
+            this.btnDonPhongDangSuDung.TabIndex = 4;
+            this.btnDonPhongDangSuDung.Text = "   Dọn";
+            this.btnDonPhongDangSuDung.UseVisualStyleBackColor = false;
+            this.btnDonPhongDangSuDung.Visible = false;
+            // 
+            // btnHuyDonPhongConTrong
+            // 
+            this.btnHuyDonPhongConTrong.BackColor = System.Drawing.Color.Red;
+            this.btnHuyDonPhongConTrong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnHuyDonPhongConTrong.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuyDonPhongConTrong.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnHuyDonPhongConTrong.Location = new System.Drawing.Point(24, 19);
+            this.btnHuyDonPhongConTrong.Name = "btnHuyDonPhongConTrong";
+            this.btnHuyDonPhongConTrong.Size = new System.Drawing.Size(200, 31);
+            this.btnHuyDonPhongConTrong.TabIndex = 3;
+            this.btnHuyDonPhongConTrong.Text = "Hủy Dọn Phòng";
+            this.btnHuyDonPhongConTrong.UseVisualStyleBackColor = false;
+            this.btnHuyDonPhongConTrong.Visible = false;
             // 
             // btnCheckOut
             // 
@@ -186,21 +220,21 @@
             this.btnCheckOut.UseVisualStyleBackColor = false;
             this.btnCheckOut.Visible = false;
             // 
-            // btnDonPhong
+            // btnDonPhongConTrong
             // 
-            this.btnDonPhong.BackColor = System.Drawing.Color.Yellow;
-            this.btnDonPhong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDonPhong.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDonPhong.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnDonPhong.Image = global::AllControl.Properties.Resources.broom;
-            this.btnDonPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDonPhong.Location = new System.Drawing.Point(127, 19);
-            this.btnDonPhong.Name = "btnDonPhong";
-            this.btnDonPhong.Size = new System.Drawing.Size(97, 31);
-            this.btnDonPhong.TabIndex = 1;
-            this.btnDonPhong.Text = "   Dọn";
-            this.btnDonPhong.UseVisualStyleBackColor = false;
-            this.btnDonPhong.Click += new System.EventHandler(this.btnDonPhong_Click);
+            this.btnDonPhongConTrong.BackColor = System.Drawing.Color.Yellow;
+            this.btnDonPhongConTrong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDonPhongConTrong.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDonPhongConTrong.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDonPhongConTrong.Image = global::AllControl.Properties.Resources.broom;
+            this.btnDonPhongConTrong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDonPhongConTrong.Location = new System.Drawing.Point(127, 19);
+            this.btnDonPhongConTrong.Name = "btnDonPhongConTrong";
+            this.btnDonPhongConTrong.Size = new System.Drawing.Size(97, 31);
+            this.btnDonPhongConTrong.TabIndex = 1;
+            this.btnDonPhongConTrong.Text = "   Dọn";
+            this.btnDonPhongConTrong.UseVisualStyleBackColor = false;
+            this.btnDonPhongConTrong.Visible = false;
             // 
             // btnCheckIn
             // 
@@ -216,6 +250,7 @@
             this.btnCheckIn.TabIndex = 0;
             this.btnCheckIn.Text = "    Check-in";
             this.btnCheckIn.UseVisualStyleBackColor = false;
+            this.btnCheckIn.Visible = false;
             // 
             // label7
             // 
@@ -259,10 +294,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnDonPhong;
+        private System.Windows.Forms.Button btnDonPhongConTrong;
         private System.Windows.Forms.Button btnCheckIn;
         private System.Windows.Forms.Button btnCheckOut;
-        private System.Windows.Forms.Button btnHuyDonPhong;
+        private System.Windows.Forms.Button btnHuyDonPhongConTrong;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnDonPhongDangSuDung;
+        private System.Windows.Forms.Button btnHuyDonPhongDangSuDung;
     }
 }

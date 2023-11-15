@@ -100,6 +100,13 @@ namespace BLL
         }
 
         //Function for form Booking
+        public string GetIdKHByTen(string ten)
+        {
+            var sdt = (from kh in _qLKSDataContext.khachhangs
+                       where kh.ten_khachhang == ten.Trim()
+                       select kh.id_khachhang).FirstOrDefault();
+            return sdt;
+        }
         public DateTime GetNgaySinhByTen(string ten)
         {
             var ngaysinh = (from kh in _qLKSDataContext.khachhangs where kh.ten_khachhang == ten.Trim()
