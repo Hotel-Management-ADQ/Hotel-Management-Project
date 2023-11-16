@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLKS" Class="QLKSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-P250IPBQ;Initial Catalog=QLKS;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Tuan-Anh;Initial Catalog=QLKS;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.thietbi" Member="thietbis">
     <Type Name="thietbi">
       <Column Name="id_thietbi" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -247,6 +247,14 @@
     <Parameter Name="id_tbi" Type="System.String" DbType="VarChar(5)" />
     <Parameter Name="ngaythue" Type="System.DateTime" DbType="Date" />
     <Parameter Name="so_luong" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Tinh_Tong_Tien_Phuthu" Method="Tinh_Tong_Tien_Phuthu">
+    <Parameter Name="mychoose" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="id_datphong" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="tong_tien" Type="System.Double" DbType="Float" Direction="InOut" />
+    <Parameter Name="tien_phuthu" Type="System.Double" DbType="Float" Direction="InOut" />
+    <Parameter Name="tien_phuthu1" Type="System.Double" DbType="Float" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

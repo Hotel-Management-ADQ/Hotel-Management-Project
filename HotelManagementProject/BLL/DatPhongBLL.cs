@@ -1,6 +1,7 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Objects;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -271,6 +272,31 @@ namespace BLL
             }
         }
 
+        public (double tongTien, double tienPhuthu, double tienPhuthu1) TinhTongTienPhuThu(string loaithue, string idDatPhong)
+        {
+            double? tongTienOutput = 0;
+            double? tienPhuthuOutput = 0;
+            double? tienPhuthu1Output = 0;
 
+            int returnValue = _qLKSDataContext.Tinh_Tong_Tien_Phuthu(loaithue, idDatPhong, ref tongTienOutput, ref tienPhuthuOutput, ref tienPhuthu1Output);
+
+            if (returnValue != 0)
+            {
+                Console.WriteLine($"Lỗi khi thực hiện procedure. Mã lỗi: {returnValue}");
+            }
+            return (tongTienOutput ?? 0, tienPhuthuOutput ?? 0, tienPhuthu1Output ?? 0);
+        }
+
+        public void CapNhatPhuThuThongTinDatPhong(string idDatPhong, double phuThuCheckin, double phuThuCheckout, double tongTien)
+        {
+            var datphong = _qLKSDataContext.datphongs.SingleOrDefault(dp => dp.id_datphong == idDatPhong);
+            if (datphong != null)
+            {
+                datphong.phu_thu_checkin = phuThuCheckin;
+                datphong.phu_thu_checkout = phuThuCheckout;
+                datphong.tong_tien = tongTien;
+                _qLKSDataContext.SubmitChanges();
+            }
+        }
     }
 }

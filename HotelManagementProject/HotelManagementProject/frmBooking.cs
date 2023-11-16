@@ -53,7 +53,7 @@ namespace HotelManagementProject
             else if (FrmMain.trangthaifrmMain.Equals("Đang sử dụng"))
             {
                 btnCheckIn.Visible = false;
-                btnCheckOut.Visible = true;
+                btnCheckOut.Visible = false;
                 btnCheckOut.Enabled = true;
                 cboKhachHang.Enabled = false;
                 btnTimKiemKH.Enabled = false;
@@ -75,18 +75,28 @@ namespace HotelManagementProject
         private void LoadFormForCheckOutHaveIdDatPhong()
         {
             txtIDHoaDonBookingForm.Text = dpbll.LayIdDatPhongChuaThanhToan(idphong);
-            txtNhanVien.Text = dpbll.GetTenNhanVienByIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-            cboKhachHang.Text = dpbll.GetTenKhachHangByIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-            cboLoaiThue.Text = dpbll.GetLoaiThueByIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-            txtSoNguoiO.Text = dpbll.GetSoNguoiOByIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString();
-            txtDatCoc.Text = dpbll.GetTienDatCocIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
-            dateCheckIn.Value = dpbll.GetCheckInIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-            dateCheckOut.Value = dpbll.GetCheckOutIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-            label13.Text = dpbll.GetTrangThaiHoaDonByIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-            label23.Text = dpbll.GetTienDatCocIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
 
-            int tienphong = int.Parse(lblTongThoiGianNgayVaGio.Text) * dpbll.LayGiaPhongByIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-            label27.Text = tienphong.ToString("N0") + " đ";
+            txtNhanVien.Text = dpbll.GetTenNhanVienByIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong));
+            cboKhachHang.Text = dpbll.GetTenKhachHangByIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong));
+            cboLoaiThue.Text = dpbll.GetLoaiThueByIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong));
+            txtSoNguoiO.Text = dpbll.GetSoNguoiOByIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong)).ToString();
+            txtDatCoc.Text = dpbll.GetTienDatCocIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong)).ToString("N0") + " đ";
+            dateCheckIn.Value = dpbll.GetCheckInIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong));
+            dateCheckOut.Value = dpbll.GetCheckOutIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong));
+            label13.Text = dpbll.GetTrangThaiHoaDonByIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong));
+            label23.Text = dpbll.GetTienDatCocIDDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong)).ToString("N0") + " đ";
+
+
+            double phuThuCheckIn = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tienPhuthu;
+            double phuThuCheckOut = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tienPhuthu1;
+            double tongTienPhuThuBaoGomTienPhong = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tongTien;
+            double tongTienPhong = tongTienPhuThuBaoGomTienPhong - phuThuCheckIn - phuThuCheckOut;
+            //int tienphong = int.Parse(lblTongThoiGianNgayVaGio.Text) * dpbll.LayGiaPhongByIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
+            label27.Text = tongTienPhong.ToString("N0") + " đ";
+
+            lblPhuThuCheckIn.Text = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tienPhuthu.ToString("N0") + " đ";
+            lblPhuThuCheckOut.Text = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tienPhuthu1.ToString("N0") + " đ";
+
 
             if (ctdvbll.DemSoLuongIDDatPhongTrongChiTietSuDungDichVu(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
             {
@@ -278,13 +288,6 @@ namespace HotelManagementProject
             {
                 lblTienKhachDua.Text = Int64.Parse(txtTienKhachDua.Text.Trim()).ToString("N0") + "đ";
             }
-        }
-
-        private void button19_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Program.mainForm = new FrmMain();
-            Program.mainForm.Show();
         }
 
         private void cboKhachHang_SelectedIndexChanged(object sender, EventArgs e)
@@ -666,6 +669,50 @@ namespace HotelManagementProject
             btnXoaTB.Enabled = true;
             lblTenThietBi.Text = tblHoaDonThietBi.Rows[i].Cells[1].Value.ToString();
             lblGiaThietBi.Text = tbbll.LayGiaByTenThietBi(tblHoaDonThietBi.Rows[i].Cells[1].Value.ToString()).ToString();
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn thanh toán hóa đơn này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                double phuThuCheckIn = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tienPhuthu;
+                double phuThuCheckOut = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tienPhuthu1;
+                double tongTienPhuThuBaoGomTienPhong = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tongTien;
+                double tienDatCoc = dpbll.GetTienDatCocIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
+                //double tongTienPhuThu = phuThuCheckIn + phuThuCheckOut;
+                //double tongTienPhong = tongTienPhuThuBaoGomTienPhong - phuThuCheckIn - phuThuCheckOut;
+                double tienDichVu = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
+                double tienThietBi = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
+
+                double thanhToanTong = tongTienPhuThuBaoGomTienPhong - tienDatCoc + tienDichVu + tienThietBi;
+                lblTongTienThanhToan.Text = thanhToanTong.ToString("N0") + " đ";
+
+                dpbll.CapNhatPhuThuThongTinDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong), 
+                    phuThuCheckIn, phuThuCheckOut, thanhToanTong);
+
+                btnThoat.Visible = false;
+                btnCheckOut.Visible = true;
+                btnCheckOut.Enabled = true;
+                btnInHoaDon.Enabled = true;
+            }
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.mainForm = new FrmMain();
+            Program.mainForm.Show();
+        }
+
+        private void btnInHoaDon_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

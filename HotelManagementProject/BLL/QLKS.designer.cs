@@ -307,6 +307,16 @@ namespace BLL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_datphong, id_tbi, ngaythue, so_luong);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Tinh_Tong_Tien_Phuthu")]
+		public int Tinh_Tong_Tien_Phuthu([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] string mychoose, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string id_datphong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] ref System.Nullable<double> tong_tien, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] ref System.Nullable<double> tien_phuthu, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] ref System.Nullable<double> tien_phuthu1)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mychoose, id_datphong, tong_tien, tien_phuthu, tien_phuthu1);
+			tong_tien = ((System.Nullable<double>)(result.GetParameterValue(2)));
+			tien_phuthu = ((System.Nullable<double>)(result.GetParameterValue(3)));
+			tien_phuthu1 = ((System.Nullable<double>)(result.GetParameterValue(4)));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.thietbi")]
