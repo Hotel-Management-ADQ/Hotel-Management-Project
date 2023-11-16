@@ -53,8 +53,8 @@ namespace HotelManagementProject
             else if (FrmMain.trangthaifrmMain.Equals("Đang sử dụng"))
             {
                 btnCheckIn.Visible = false;
-                btnCheckOut.Visible = false;
-                btnCheckOut.Enabled = true;
+                btnCheckOut.Visible = true;
+                btnCheckOut.Enabled = false;
                 cboKhachHang.Enabled = false;
                 btnTimKiemKH.Enabled = false;
                 txtCCCDTimKiemKH.Enabled = false;
@@ -68,6 +68,7 @@ namespace HotelManagementProject
                 btnCapNhat.Enabled = true;
                 btnDoiPhong.Enabled = true;
                 btnThanhToan.Enabled = true;
+                btnInHoaDon.Enabled = false;
                 LoadFormForCheckOutHaveIdDatPhong();
             }
 
@@ -685,21 +686,26 @@ namespace HotelManagementProject
                 double phuThuCheckOut = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tienPhuthu1;
                 double tongTienPhuThuBaoGomTienPhong = dpbll.TinhTongTienPhuThu(cboLoaiThue.Text.Trim(), dpbll.LayIdDatPhongChuaThanhToan(idphong)).tongTien;
                 double tienDatCoc = dpbll.GetTienDatCocIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-                //double tongTienPhuThu = phuThuCheckIn + phuThuCheckOut;
-                //double tongTienPhong = tongTienPhuThuBaoGomTienPhong - phuThuCheckIn - phuThuCheckOut;
-                double tienDichVu = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-                double tienThietBi = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
-
+                double tongTienPhong = tongTienPhuThuBaoGomTienPhong - phuThuCheckIn - phuThuCheckOut;
+                double tienDichVu = dpbll.TinhTongTienDichVu(txtIDHoaDonBookingForm.Text.Trim());
+                double tienThietBi = dpbll.TinhTongTienThietBi(txtIDHoaDonBookingForm.Text.Trim());
+                double tongTienHD = tongTienPhuThuBaoGomTienPhong + tienDichVu + tienThietBi;
                 double thanhToanTong = tongTienPhuThuBaoGomTienPhong - tienDatCoc + tienDichVu + tienThietBi;
+
+                lblTongHoaDon.Text = tongTienHD.ToString("N0") + " đ";
                 lblTongTienThanhToan.Text = thanhToanTong.ToString("N0") + " đ";
 
                 dpbll.CapNhatPhuThuThongTinDatPhong(dpbll.LayIdDatPhongChuaThanhToan(idphong), 
-                    phuThuCheckIn, phuThuCheckOut, thanhToanTong);
+                    phuThuCheckIn, phuThuCheckOut, thanhToanTong, tongTienPhong, tienDichVu, tienThietBi, tongTienHD);
 
-                btnThoat.Visible = false;
+                btnThoat.Visible = true;
+                btnThoat.Enabled = false;
                 btnCheckOut.Visible = true;
                 btnCheckOut.Enabled = true;
                 btnInHoaDon.Enabled = true;
+                btnDoiPhong.Enabled = false;
+                btnDatCoc.Enabled = false;
+                btnCapNhat.Enabled = false;
             }
         }
 

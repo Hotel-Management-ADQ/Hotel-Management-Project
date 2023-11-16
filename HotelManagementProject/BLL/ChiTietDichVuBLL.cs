@@ -40,7 +40,7 @@ namespace BLL
             try
             {
                 var tongTienDichVu = qLKSDataContext.chitietsudungdvs
-                    .Where(ct => ct.id_datphong == idDatPhong && ct.tong_tien_dv != null)
+                    .Where(ct => ct.id_datphong == idDatPhong)
                     .Sum(ct => ct.tong_tien_dv ?? 0.0);
 
                 return (double)tongTienDichVu;

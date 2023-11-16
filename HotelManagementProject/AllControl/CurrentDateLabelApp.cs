@@ -19,7 +19,8 @@ namespace AllControl
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            this.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            this.Text = DateTime.Now.Day.ToString() + "/" + DateTime.Now.Month.ToString() + 
+                "/" + DateTime.Now.Year.ToString();
         }
 
         public static void Main()

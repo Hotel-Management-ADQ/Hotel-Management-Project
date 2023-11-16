@@ -287,7 +287,7 @@ namespace BLL
             return (tongTienOutput ?? 0, tienPhuthuOutput ?? 0, tienPhuthu1Output ?? 0);
         }
 
-        public void CapNhatPhuThuThongTinDatPhong(string idDatPhong, double phuThuCheckin, double phuThuCheckout, double tongTien)
+        public void CapNhatPhuThuThongTinDatPhong(string idDatPhong, double phuThuCheckin, double phuThuCheckout, double tongTien, double tienPhong, double tongTienDV, double tongTienTB, double tongTienHD)
         {
             var datphong = _qLKSDataContext.datphongs.SingleOrDefault(dp => dp.id_datphong == idDatPhong);
             if (datphong != null)
@@ -295,8 +295,41 @@ namespace BLL
                 datphong.phu_thu_checkin = phuThuCheckin;
                 datphong.phu_thu_checkout = phuThuCheckout;
                 datphong.tong_tien = tongTien;
+                datphong.tien_phong = tienPhong;
+                datphong.tong_tien_dv = tongTienDV;
+                datphong.tong_tien_tb = tongTienTB;
+                datphong.tong_tien_hoa_don = tongTienHD;
                 _qLKSDataContext.SubmitChanges();
             }
         }
+
+        public double TinhTongTienDichVu(string idDatPhong)
+        {
+            double? tongTienDVOutput = 0;
+
+            var result = _qLKSDataContext.Tinh_Tong_Tien_DichVu(idDatPhong, ref tongTienDVOutput);
+
+            if (result != 0)
+            {
+                Console.WriteLine($"Lỗi khi thực hiện procedure. Mã lỗi: {result}");
+            }
+
+            return tongTienDVOutput ?? 0;
+        }
+
+        public double TinhTongTienThietBi(string idDatPhong)
+        {
+            double? tongTienTBOutput = 0;
+
+            var result = _qLKSDataContext.Tinh_Tong_Tien_ThietBi(idDatPhong, ref tongTienTBOutput);
+
+            if (result != 0)
+            {
+                Console.WriteLine($"Lỗi khi thực hiện procedure. Mã lỗi: {result}");
+            }
+
+            return tongTienTBOutput ?? 0;
+        }
+
     }
 }
