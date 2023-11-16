@@ -88,8 +88,16 @@ namespace HotelManagementProject
             int tienphong = int.Parse(lblTongThoiGianNgayVaGio.Text) * dpbll.LayGiaPhongByIDDatPhong(txtIDHoaDonBookingForm.Text.Trim());
             label27.Text = tienphong.ToString("N0") + " đ";
 
-            lblTongTienDV1.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
-            lblTongTienDV2.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+            if (ctdvbll.DemSoLuongIDDatPhongTrongChiTietSuDungDichVu(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
+            {
+                lblTongTienDV1.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                lblTongTienDV2.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+            }
+            else
+            {
+                lblTongTienDV1.Text = "0";
+                lblTongTienDV2.Text = "0";
+            }
         }
         private void DesignAnimationForForm()
         {
@@ -427,8 +435,19 @@ namespace HotelManagementProject
                     lblTenDichVu.Text = string.Empty;
                     lblGiaDichVu.Text = string.Empty;
                     txtSoLuongDV.Text = string.Empty;
-                    lblTongTienDV1.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
-                    lblTongTienDV2.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                    if (ctdvbll.DemSoLuongIDDatPhongTrongChiTietSuDungDichVu(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
+                    {
+                        lblTongTienDV1.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                        lblTongTienDV2.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                    }
+                    else
+                    {
+                        lblTongTienDV1.Text = "0";
+                        lblTongTienDV2.Text = "0";
+                    }
+                    lblTenDichVu.Text = "";
+                    lblGiaDichVu.Text = "";
+                    txtSoLuongDV.Text = "";
                 }
             }
         }
@@ -443,25 +462,80 @@ namespace HotelManagementProject
                 string iddatphong = txtIDHoaDonBookingForm.Text.Trim();
                 ctdvbll.XoaChiTietSuDungDichVu(iddatphong, iddv);
                 LoadDataChiTietDichVu();
-                lblTongTienDV1.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
-                lblTongTienDV2.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                if (ctdvbll.DemSoLuongIDDatPhongTrongChiTietSuDungDichVu(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
+                {
+                    lblTongTienDV1.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                    lblTongTienDV2.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                }
+                else
+                {
+                    lblTongTienDV1.Text = "0";
+                    lblTongTienDV2.Text = "0";
+                }
+                lblTenDichVu.Text = "";
+                lblGiaDichVu.Text = "";
+                txtSoLuongDV.Text = "";
             }
         }
 
         private void tblHoaDonDichVu_Click(object sender, EventArgs e)
         {
+            int i = tblHoaDonDichVu.CurrentRow.Index;
             btnXoaCTDichVu.Enabled = true;
+            lblTenDichVu.Text = tblHoaDonDichVu.Rows[i].Cells[1].Value.ToString();
+            lblGiaDichVu.Text = dvbll.LayGiaByTenDichVu(tblHoaDonDichVu.Rows[i].Cells[1].Value.ToString()).ToString();
         }
 
         private void btnSuaCTDichVu_Click(object sender, EventArgs e)
         {
-            int i = tblHoaDonDichVu.CurrentRow.Index;
-            string iddv = dvbll.LayIDDichVuByTenDichVu(tblHoaDonDichVu.Rows[i].Cells[1].Value.ToString());
-            string iddatphong = txtIDHoaDonBookingForm.Text.Trim();
-            ctdvbll.SuaSoLuongChiTietSuDungDichVu(iddatphong, iddv, int.Parse(txtSoLuongDV.Text));
-            LoadDataChiTietDichVu();
-            lblTongTienDV1.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
-            lblTongTienDV2.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+            DialogResult result = MessageBox.Show("Bạn có cập nhật hóa đơn dịch vụ này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                if (lblTenDichVu.Text != string.Empty)
+                {
+                    if (txtSoLuongDV.Text != string.Empty)
+                    {
+                        int i = tblHoaDonDichVu.CurrentRow.Index;
+                        string iddv = dvbll.LayIDDichVuByTenDichVu(tblHoaDonDichVu.Rows[i].Cells[1].Value.ToString());
+                        string iddatphong = txtIDHoaDonBookingForm.Text.Trim();
+                        ctdvbll.SuaSoLuongChiTietSuDungDichVu(iddatphong, iddv, int.Parse(txtSoLuongDV.Text));
+                        LoadDataChiTietDichVu();
+                        if (ctdvbll.DemSoLuongIDDatPhongTrongChiTietSuDungDichVu(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
+                        {
+                            lblTongTienDV1.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                            lblTongTienDV2.Text = ctdvbll.TinhTongTienDichVuTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                        }
+                        else
+                        {
+                            lblTongTienDV1.Text = "0";
+                            lblTongTienDV2.Text = "0";
+                        }
+                        lblTenDichVu.Text = "";
+                        lblGiaDichVu.Text = "";
+                        txtSoLuongDV.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Chưa nhập số lượng cho dịch vụ cần sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtSoLuongDV.Focus();
+                    }
+                }
+                else
+                    MessageBox.Show("Chưa chọn hóa đơn dịch vụ cần sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (txtTimKiemDV.Text == string.Empty)
+            {
+                LoadDataDichVu();
+            }
+            else
+            {
+                List<dichvu> lstNew = dvbll.TimKiemDichVu(txtTimKiemDV.Text.Trim());
+                tblDichVu.DataSource = lstNew;
+            }
         }
     }
 }

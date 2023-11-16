@@ -40,10 +40,25 @@ namespace BLL
             try
             {
                 var tongTienDichVu = qLKSDataContext.chitietsudungdvs
-                    .Where(ct => ct.id_datphong == idDatPhong)
-                    .Sum(ct => ct.tong_tien_dv);
+                    .Where(ct => ct.id_datphong == idDatPhong && ct.tong_tien_dv != null)
+                    .Sum(ct => ct.tong_tien_dv ?? 0.0);
 
                 return (double)tongTienDichVu;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+        public int DemSoLuongIDDatPhongTrongChiTietSuDungDichVu(string idDatPhong)
+        {
+            try
+            {
+                var soLuong = qLKSDataContext.chitietsudungdvs
+                    .Count(ct => ct.id_datphong == idDatPhong);
+
+                return soLuong;
             }
             catch (Exception ex)
             {
@@ -55,15 +70,8 @@ namespace BLL
         {
             try
             {
-                var chiTiet = qLKSDataContext.chitietsudungdvs
-                    .Where(ct => ct.id_datphong == mahd && ct.id_dichvu == madv)
-                    .FirstOrDefault();
-
-                if (chiTiet != null)
-                {
-                    qLKSDataContext.chitietsudungdvs.DeleteOnSubmit(chiTiet);
-                    qLKSDataContext.SubmitChanges();
-                }
+                qLKSDataContext.Xoa_chi_tiet_su_dung_dv(mahd, madv);
+                qLKSDataContext.SubmitChanges();
             }
             catch (Exception ex)
             {
@@ -75,15 +83,8 @@ namespace BLL
         {
             try
             {
-                var chiTiet = qLKSDataContext.chitietsudungdvs
-                    .Where(ct => ct.id_datphong == idDatPhong && ct.id_dichvu == idDichVu)
-                    .FirstOrDefault();
-
-                if (chiTiet != null)
-                {
-                    chiTiet.so_luong = soLuongMoi;
-                    qLKSDataContext.SubmitChanges();
-                }
+                qLKSDataContext.Capnhat_chi_tiet_su_dung_dv(idDatPhong, idDichVu, soLuongMoi);
+                qLKSDataContext.SubmitChanges();
             }
             catch (Exception ex)
             {

@@ -77,6 +77,22 @@ namespace BLL
                 throw ex;
             }
         }
+        public int LayGiaByTenDichVu(string tenDichVu)
+        {
+            try
+            {
+                var giadv = _qLKSDataContext.dichvus
+                    .Where(dv => dv.ten_dichvu == tenDichVu)
+                    .Select(dv => dv.gia)
+                    .FirstOrDefault();
 
+                return giadv;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
     }
 }

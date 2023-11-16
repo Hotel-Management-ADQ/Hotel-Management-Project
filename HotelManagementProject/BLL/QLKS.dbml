@@ -1,33 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLKS" Class="QLKSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=Tuan-Anh;Initial Catalog=QLKS;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.chitietsudungdv" Member="chitietsudungdvs">
-    <Type Name="chitietsudungdv">
-      <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="id_dichvu" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="ngay_thue" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="so_luong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="tong_tien_dv" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="datphong_chitietsudungdv" Member="datphong" ThisKey="id_datphong" OtherKey="id_datphong" Type="datphong" IsForeignKey="true" />
-      <Association Name="dichvu_chitietsudungdv" Member="dichvu" ThisKey="id_dichvu" OtherKey="id_dichvu" Type="dichvu" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.thietbi" Member="thietbis">
     <Type Name="thietbi">
       <Column Name="id_thietbi" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ten_thietbi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="gia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="thietbi_chitietsudungtb" Member="chitietsudungtbs" ThisKey="id_thietbi" OtherKey="id_thietbi" Type="chitietsudungtb" />
-    </Type>
-  </Table>
-  <Table Name="dbo.chitietsudungtb" Member="chitietsudungtbs">
-    <Type Name="chitietsudungtb">
-      <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="id_thietbi" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="ngay_thue" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="so_luong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="tong_tien_tb" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="thietbi_chitietsudungtb" Member="thietbi" ThisKey="id_thietbi" OtherKey="id_thietbi" Type="thietbi" IsForeignKey="true" />
-      <Association Name="datphong_chitietsudungtb" Member="datphong" ThisKey="id_datphong" OtherKey="id_datphong" Type="datphong" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.datphong" Member="datphongs">
@@ -171,6 +149,28 @@
       <Column Name="ten_khachhang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.chitietsudungdv" Member="chitietsudungdvs">
+    <Type Name="chitietsudungdv">
+      <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_dichvu" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ngay_thue" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="so_luong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tong_tien_dv" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="datphong_chitietsudungdv" Member="datphong" ThisKey="id_datphong" OtherKey="id_datphong" Type="datphong" IsForeignKey="true" />
+      <Association Name="dichvu_chitietsudungdv" Member="dichvu" ThisKey="id_dichvu" OtherKey="id_dichvu" Type="dichvu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.chitietsudungtb" Member="chitietsudungtbs">
+    <Type Name="chitietsudungtb">
+      <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_thietbi" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ngay_thue" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="so_luong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tong_tien_tb" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="datphong_chitietsudungtb" Member="datphong" ThisKey="id_datphong" OtherKey="id_datphong" Type="datphong" IsForeignKey="true" />
+      <Association Name="thietbi_chitietsudungtb" Member="thietbi" ThisKey="id_thietbi" OtherKey="id_thietbi" Type="thietbi" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.Them_Dich_Vu" Method="Them_Dich_Vu">
     <Parameter Name="ten_dichvu" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="gia" Type="System.Int32" DbType="Int" />
@@ -214,10 +214,21 @@
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.Them_chi_tiet_su_dung_dv" Method="Them_chi_tiet_su_dung_dv">
-    <Parameter Name="id_datphong" Type="System.String" DbType="VarChar(5)" />
-    <Parameter Name="id_dvu" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="id_datphong" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="id_dvu" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="ngaythue" Type="System.DateTime" DbType="Date" />
     <Parameter Name="so_luong" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Xoa_chi_tiet_su_dung_dv" Method="Xoa_chi_tiet_su_dung_dv">
+    <Parameter Name="iddatphong" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="iddv" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Capnhat_chi_tiet_su_dung_dv" Method="Capnhat_chi_tiet_su_dung_dv">
+    <Parameter Name="iddatphong" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="iddv" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="soluong" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
