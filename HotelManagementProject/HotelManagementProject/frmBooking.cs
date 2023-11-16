@@ -98,6 +98,17 @@ namespace HotelManagementProject
                 lblTongTienDV1.Text = "0";
                 lblTongTienDV2.Text = "0";
             }
+
+            if (cttbbll.DemSoLuongIDDatPhongTrongChiTietSuDungThietBi(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
+            {
+                lblTongTienTB1.Text = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                lblTongTienTB2.Text = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+            }
+            else
+            {
+                lblTongTienTB1.Text = "0";
+                lblTongTienTB2.Text = "0";
+            }
         }
         private void DesignAnimationForForm()
         {
@@ -536,6 +547,125 @@ namespace HotelManagementProject
                 List<dichvu> lstNew = dvbll.TimKiemDichVu(txtTimKiemDV.Text.Trim());
                 tblDichVu.DataSource = lstNew;
             }
+        }
+
+        private void btnThemTB_Click(object sender, EventArgs e)
+        {
+            if (lblTenThietBi.Text == string.Empty)
+                MessageBox.Show("Bạn chưa chọn thiết bị nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                if (txtSoLuongTB.Text == string.Empty)
+                    MessageBox.Show("Chưa nhập số lượng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    int i = tblThietBi.CurrentRow.Index;
+                    cttbbll.ThemChiTietThietBi(txtIDHoaDonBookingForm.Text.Trim(), tblThietBi.Rows[i].Cells[0].Value.ToString(), DateTime.Now, int.Parse(txtSoLuongTB.Text.Trim()));
+                    LoadDataChiTietThietBi();
+                    lblTenThietBi.Text = string.Empty;
+                    lblGiaThietBi.Text = string.Empty;
+                    txtSoLuongTB.Text = string.Empty;
+                    if (cttbbll.DemSoLuongIDDatPhongTrongChiTietSuDungThietBi(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
+                    {
+                        lblTongTienTB1.Text = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                        lblTongTienTB2.Text = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                    }
+                    else
+                    {
+                        lblTongTienTB1.Text = "0";
+                        lblTongTienTB2.Text = "0";
+                    }
+                    lblTenThietBi.Text = "";
+                    lblGiaThietBi.Text = "";
+                    txtSoLuongTB.Text = "";
+                }
+            }
+        }
+
+        private void btnXoaTB_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa hóa đơn thiết bị này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int i = tblHoaDonThietBi.CurrentRow.Index;
+                string idtb = tbbll.LayIDThietBiByTenThietBi(tblHoaDonThietBi.Rows[i].Cells[1].Value.ToString());
+                string iddatphong = txtIDHoaDonBookingForm.Text.Trim();
+                cttbbll.XoaChiTietSuDungThietBi(iddatphong, idtb);
+                LoadDataChiTietThietBi();
+                if (cttbbll.DemSoLuongIDDatPhongTrongChiTietSuDungThietBi(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
+                {
+                    lblTongTienTB1.Text = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                    lblTongTienTB2.Text = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                }
+                else
+                {
+                    lblTongTienTB1.Text = "0";
+                    lblTongTienTB2.Text = "0";
+                }
+                lblTenThietBi.Text = "";
+                lblGiaThietBi.Text = "";
+                txtSoLuongTB.Text = "";
+            }
+        }
+
+        private void btnSuaTB_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có cập nhật hóa đơn thiết bị này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                if (lblTenThietBi.Text != string.Empty)
+                {
+                    if (txtSoLuongTB.Text != string.Empty)
+                    {
+                        int i = tblHoaDonThietBi.CurrentRow.Index;
+                        string idtb = tbbll.LayIDThietBiByTenThietBi(tblHoaDonThietBi.Rows[i].Cells[1].Value.ToString());
+                        string iddatphong = txtIDHoaDonBookingForm.Text.Trim();
+                        cttbbll.SuaSoLuongChiTietSuDungThietBi(iddatphong, idtb, int.Parse(txtSoLuongTB.Text));
+                        LoadDataChiTietThietBi();
+                        if (cttbbll.DemSoLuongIDDatPhongTrongChiTietSuDungThietBi(dpbll.LayIdDatPhongChuaThanhToan(idphong)) > 0)
+                        {
+                            lblTongTienTB1.Text = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                            lblTongTienTB2.Text = cttbbll.TinhTongTienThietBiTheoIDDatPhong(txtIDHoaDonBookingForm.Text.Trim()).ToString("N0") + " đ";
+                        }
+                        else
+                        {
+                            lblTongTienTB1.Text = "0";
+                            lblTongTienTB2.Text = "0";
+                        }
+                        lblTenThietBi.Text = "";
+                        lblGiaThietBi.Text = "";
+                        txtSoLuongTB.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Chưa nhập số lượng cho thiết bị cần sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtSoLuongDV.Focus();
+                    }
+                }
+                else
+                    MessageBox.Show("Chưa chọn hóa đơn thiết bị cần sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTimTB_Click(object sender, EventArgs e)
+        {
+            if (txtTimKiemTB.Text == string.Empty)
+            {
+                LoadDataThietBi();
+            }
+            else
+            {
+                List<thietbi> lstNew = tbbll.TimKiemThietBi(txtTimKiemTB.Text.Trim());
+                tblThietBi.DataSource = lstNew;
+            }
+        }
+
+        private void tblHoaDonThietBi_Click(object sender, EventArgs e)
+        {
+            int i = tblHoaDonThietBi.CurrentRow.Index;
+            btnXoaTB.Enabled = true;
+            lblTenThietBi.Text = tblHoaDonThietBi.Rows[i].Cells[1].Value.ToString();
+            lblGiaThietBi.Text = tbbll.LayGiaByTenThietBi(tblHoaDonThietBi.Rows[i].Cells[1].Value.ToString()).ToString();
         }
     }
 }

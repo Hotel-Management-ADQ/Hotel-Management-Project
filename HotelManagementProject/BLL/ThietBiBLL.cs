@@ -62,5 +62,39 @@ namespace BLL
             return query.ToList();
         }
 
+        public string LayIDThietBiByTenThietBi(string tenThietBi)
+        {
+            try
+            {
+                var idThietBi = _qLKSDataContext.thietbis
+                    .Where(dv => dv.ten_thietbi == tenThietBi)
+                    .Select(dv => dv.id_thietbi)
+                    .FirstOrDefault();
+
+                return idThietBi;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+        public int LayGiaByTenThietBi(string tenThietBi)
+        {
+            try
+            {
+                var giatb = _qLKSDataContext.thietbis
+                    .Where(tb => tb.ten_thietbi == tenThietBi)
+                    .Select(tb => tb.gia)
+                    .FirstOrDefault();
+
+                return giatb;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
     }
 }

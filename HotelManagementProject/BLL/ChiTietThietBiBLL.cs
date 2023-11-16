@@ -29,5 +29,72 @@ namespace BLL
 
             return query.ToList();
         }
+
+        public void ThemChiTietThietBi(string idhoadon, string idtb, DateTime thoigian, int soluong)
+        {
+            qLKSDataContext.Them_chi_tiet_su_dung_tb(idhoadon, idtb, thoigian, soluong);
+            qLKSDataContext.SubmitChanges();
+        }
+
+        public double TinhTongTienThietBiTheoIDDatPhong(string idDatPhong)
+        {
+            try
+            {
+                var tongTienThietBi = qLKSDataContext.chitietsudungtbs
+                    .Where(ct => ct.id_datphong == idDatPhong && ct.tong_tien_tb != null)
+                    .Sum(ct => ct.tong_tien_tb ?? 0.0);
+
+                return (double)tongTienThietBi;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public int DemSoLuongIDDatPhongTrongChiTietSuDungThietBi(string idDatPhong)
+        {
+            try
+            {
+                var soLuong = qLKSDataContext.chitietsudungtbs
+                    .Count(ct => ct.id_datphong == idDatPhong);
+
+                return soLuong;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public void XoaChiTietSuDungThietBi(string mahd, string matb)
+        {
+            try
+            {
+                qLKSDataContext.Xoa_chi_tiet_su_dung_tb(mahd, matb);
+                qLKSDataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+        public void SuaSoLuongChiTietSuDungThietBi(string idDatPhong, string idThietBi, int soLuongMoi)
+        {
+            try
+            {
+                qLKSDataContext.Capnhat_chi_tiet_su_dung_tb(idDatPhong, idThietBi, soLuongMoi);
+                qLKSDataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
     }
 }

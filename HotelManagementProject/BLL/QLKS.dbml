@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLKS" Class="QLKSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=Tuan-Anh;Initial Catalog=QLKS;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-P250IPBQ;Initial Catalog=QLKS;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKSConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.thietbi" Member="thietbis">
     <Type Name="thietbi">
       <Column Name="id_thietbi" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -229,6 +229,24 @@
     <Parameter Name="iddatphong" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="iddv" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="soluong" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Capnhat_chi_tiet_su_dung_tb" Method="Capnhat_chi_tiet_su_dung_tb">
+    <Parameter Name="iddatphong" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="idtb" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="soluong" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Xoa_chi_tiet_su_dung_tb" Method="Xoa_chi_tiet_su_dung_tb">
+    <Parameter Name="iddatphong" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="idtb" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Them_chi_tiet_su_dung_tb" Method="Them_chi_tiet_su_dung_tb">
+    <Parameter Name="id_datphong" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="id_tbi" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="ngaythue" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="so_luong" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

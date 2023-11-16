@@ -286,6 +286,27 @@ namespace BLL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iddatphong, iddv, soluong);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Capnhat_chi_tiet_su_dung_tb")]
+		public int Capnhat_chi_tiet_su_dung_tb([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string iddatphong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string idtb, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> soluong)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iddatphong, idtb, soluong);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Xoa_chi_tiet_su_dung_tb")]
+		public int Xoa_chi_tiet_su_dung_tb([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string iddatphong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string idtb)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iddatphong, idtb);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Them_chi_tiet_su_dung_tb")]
+		public int Them_chi_tiet_su_dung_tb([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string id_datphong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string id_tbi, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> ngaythue, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> so_luong)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_datphong, id_tbi, ngaythue, so_luong);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.thietbi")]
