@@ -76,12 +76,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLKS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="rptInHoaDon.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptInHoaDon.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="TaiKhoanBLL.cs" />
     <Compile Include="ThietBiBLL.cs" />
   </ItemGroup>
@@ -114,12 +108,6 @@
     <None Include="QLKS.xss">
       <DependentUpon>QLKS.xsd</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="rptInHoaDon.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptInHoaDon.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

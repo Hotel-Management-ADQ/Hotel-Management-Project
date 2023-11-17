@@ -720,8 +720,8 @@ namespace HotelManagementProject
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
-            //List<XemHoaDonDTO> hoadons = ihdbll.viewHoaDon(dpbll.LayIdDatPhongChuaThanhToan(idphong));
-            List<XemHoaDonDTO> hoadons = ihdbll.viewHoaDon("HD001");
+            List<XemHoaDonDTO> hoadons = ihdbll.viewHoaDon(dpbll.LayIdDatPhongChuaThanhToan(idphong));
+            //List<XemHoaDonDTO> hoadons = ihdbll.viewHoaDon("HD001");
 
             DataTable dt = new DataTable();
             dt.Columns.Add("id_datphong", typeof(string));
@@ -748,14 +748,14 @@ namespace HotelManagementProject
                 row[3] = hoadon.Phong;
                 row[4] = hoadon.CheckIn;
                 row[5] = hoadon.CheckOut;
-                row[6] = hoadon.DatCoc;
-                row[7] = hoadon.TienPhong;
-                row[8] = hoadon.PhuThuCheckin;
-                row[9] = hoadon.PhuThuCheckout;
-                row[10] = hoadon.TongTienDV;
-                row[11] = hoadon.TongTienTB;
-                row[12] = hoadon.TongTienHoaDon;
-                row[13] = hoadon.TongTien;
+                row[6] = hoadon.DatCoc.ToString("N0");
+                row[7] = hoadon.TienPhong.ToString("N0");
+                row[8] = hoadon.PhuThuCheckin.ToString("N0");
+                row[9] = hoadon.PhuThuCheckout.ToString("N0");
+                row[10] = hoadon.TongTienDV.ToString("N0");
+                row[11] = hoadon.TongTienTB.ToString("N0");
+                row[12] = hoadon.TongTienHoaDon.ToString("N0");
+                row[13] = hoadon.TongTien.ToString("N0");
                 dt.Rows.Add(row);
             }
 
@@ -763,6 +763,7 @@ namespace HotelManagementProject
             rpt.SetDataSource(dt);
             frmPreviewInvoice frm = new frmPreviewInvoice();
             frm.crystalReportViewer1.ReportSource = rpt;
+            
             frm.ShowDialog();
         }
     }
