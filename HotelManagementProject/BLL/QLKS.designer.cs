@@ -224,6 +224,14 @@ namespace BLL
 			}
 		}
 		
+		public System.Data.Linq.Table<XemHoaDon> XemHoaDons
+		{
+			get
+			{
+				return this.GetTable<XemHoaDon>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Capnhat_chi_tiet_su_dung_dv")]
 		public int Capnhat_chi_tiet_su_dung_dv([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string iddatphong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string iddv, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> soluong)
 		{
@@ -3829,6 +3837,267 @@ namespace BLL
 				if ((this._ten_khachhang != value))
 				{
 					this._ten_khachhang = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.XemHoaDon")]
+	public partial class XemHoaDon
+	{
+		
+		private string _datphong;
+		
+		private string _nhanvien;
+		
+		private string _khachhang;
+		
+		private string _phong;
+		
+		private System.DateTime _check_in;
+		
+		private System.Nullable<System.DateTime> _check_out;
+		
+		private System.Nullable<double> _dat_coc;
+		
+		private System.Nullable<double> _tien_phong;
+		
+		private System.Nullable<double> _phu_thu_checkin;
+		
+		private System.Nullable<double> _phu_thu_checkout;
+		
+		private System.Nullable<double> _tong_tien_dv;
+		
+		private System.Nullable<double> _tong_tien_tb;
+		
+		private System.Nullable<double> _tong_tien_hoa_don;
+		
+		private System.Nullable<double> _tong_tien;
+		
+		public XemHoaDon()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datphong", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string datphong
+		{
+			get
+			{
+				return this._datphong;
+			}
+			set
+			{
+				if ((this._datphong != value))
+				{
+					this._datphong = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nhanvien", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string nhanvien
+		{
+			get
+			{
+				return this._nhanvien;
+			}
+			set
+			{
+				if ((this._nhanvien != value))
+				{
+					this._nhanvien = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_khachhang", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string khachhang
+		{
+			get
+			{
+				return this._khachhang;
+			}
+			set
+			{
+				if ((this._khachhang != value))
+				{
+					this._khachhang = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phong", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string phong
+		{
+			get
+			{
+				return this._phong;
+			}
+			set
+			{
+				if ((this._phong != value))
+				{
+					this._phong = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_check_in", DbType="DateTime NOT NULL")]
+		public System.DateTime check_in
+		{
+			get
+			{
+				return this._check_in;
+			}
+			set
+			{
+				if ((this._check_in != value))
+				{
+					this._check_in = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_check_out", DbType="DateTime")]
+		public System.Nullable<System.DateTime> check_out
+		{
+			get
+			{
+				return this._check_out;
+			}
+			set
+			{
+				if ((this._check_out != value))
+				{
+					this._check_out = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dat_coc", DbType="Float")]
+		public System.Nullable<double> dat_coc
+		{
+			get
+			{
+				return this._dat_coc;
+			}
+			set
+			{
+				if ((this._dat_coc != value))
+				{
+					this._dat_coc = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tien_phong", DbType="Float")]
+		public System.Nullable<double> tien_phong
+		{
+			get
+			{
+				return this._tien_phong;
+			}
+			set
+			{
+				if ((this._tien_phong != value))
+				{
+					this._tien_phong = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phu_thu_checkin", DbType="Float")]
+		public System.Nullable<double> phu_thu_checkin
+		{
+			get
+			{
+				return this._phu_thu_checkin;
+			}
+			set
+			{
+				if ((this._phu_thu_checkin != value))
+				{
+					this._phu_thu_checkin = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phu_thu_checkout", DbType="Float")]
+		public System.Nullable<double> phu_thu_checkout
+		{
+			get
+			{
+				return this._phu_thu_checkout;
+			}
+			set
+			{
+				if ((this._phu_thu_checkout != value))
+				{
+					this._phu_thu_checkout = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tong_tien_dv", DbType="Float")]
+		public System.Nullable<double> tong_tien_dv
+		{
+			get
+			{
+				return this._tong_tien_dv;
+			}
+			set
+			{
+				if ((this._tong_tien_dv != value))
+				{
+					this._tong_tien_dv = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tong_tien_tb", DbType="Float")]
+		public System.Nullable<double> tong_tien_tb
+		{
+			get
+			{
+				return this._tong_tien_tb;
+			}
+			set
+			{
+				if ((this._tong_tien_tb != value))
+				{
+					this._tong_tien_tb = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tong_tien_hoa_don", DbType="Float")]
+		public System.Nullable<double> tong_tien_hoa_don
+		{
+			get
+			{
+				return this._tong_tien_hoa_don;
+			}
+			set
+			{
+				if ((this._tong_tien_hoa_don != value))
+				{
+					this._tong_tien_hoa_don = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tong_tien", DbType="Float")]
+		public System.Nullable<double> tong_tien
+		{
+			get
+			{
+				return this._tong_tien;
+			}
+			set
+			{
+				if ((this._tong_tien != value))
+				{
+					this._tong_tien = value;
 				}
 			}
 		}

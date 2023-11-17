@@ -23,6 +23,7 @@ namespace HotelManagementProject
         ThietBiBLL tbbll;
         ChiTietThietBiBLL cttbbll;
         NhanVienBLL nvbll;
+        InHoaDonBLL ihdbll;
 
         string idphong = FrmMain.idphongfrmMain;
         private Timer opacityTimer = new Timer();
@@ -41,6 +42,7 @@ namespace HotelManagementProject
             nvbll = new NhanVienBLL();
             ctdvbll = new ChiTietDichVuBLL();
             cttbbll = new ChiTietThietBiBLL();
+            ihdbll = new InHoaDonBLL();
             LoadDataForHeader();
             LoadDataForBody();
             if (FrmMain.trangthaifrmMain.Equals("Còn trống"))
@@ -718,7 +720,50 @@ namespace HotelManagementProject
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
+            //List<XemHoaDonDTO> hoadons = ihdbll.viewHoaDon(dpbll.LayIdDatPhongChuaThanhToan(idphong));
+            List<XemHoaDonDTO> hoadons = ihdbll.viewHoaDon("HD001");
 
+            DataTable dt = new DataTable();
+            dt.Columns.Add("id_datphong", typeof(string));
+            dt.Columns.Add("ten_nhanvien", typeof(string));
+            dt.Columns.Add("ten_khachhang", typeof(string));
+            dt.Columns.Add("ten", typeof(string));
+            dt.Columns.Add("check_in", typeof(DateTime));
+            dt.Columns.Add("check_out", typeof(DateTime));
+            dt.Columns.Add("dat_coc", typeof(float));
+            dt.Columns.Add("tien_phong", typeof(float));
+            dt.Columns.Add("phu_thu_checkin", typeof(float));
+            dt.Columns.Add("phu_thu_checkout", typeof(float));
+            dt.Columns.Add("tong_tien_dv", typeof(float));
+            dt.Columns.Add("tong_tien_tb", typeof(float));
+            dt.Columns.Add("tong_tien_hoa_don", typeof(float));
+            dt.Columns.Add("tong_tien", typeof(float));
+
+            foreach (var hoadon in hoadons)
+            {
+                DataRow row = dt.NewRow();
+                row[0] = hoadon.DatPhong;
+                row[1] = hoadon.NhanVien;
+                row[2] = hoadon.KhachHang;
+                row[3] = hoadon.Phong;
+                row[4] = hoadon.CheckIn;
+                row[5] = hoadon.CheckOut;
+                row[6] = hoadon.DatCoc;
+                row[7] = hoadon.TienPhong;
+                row[8] = hoadon.PhuThuCheckin;
+                row[9] = hoadon.PhuThuCheckout;
+                row[10] = hoadon.TongTienDV;
+                row[11] = hoadon.TongTienTB;
+                row[12] = hoadon.TongTienHoaDon;
+                row[13] = hoadon.TongTien;
+                dt.Rows.Add(row);
+            }
+
+            rptInHoaDon rpt = new rptInHoaDon();
+            rpt.SetDataSource(dt);
+            frmPreviewInvoice frm = new frmPreviewInvoice();
+            frm.crystalReportViewer1.ReportSource = rpt;
+            frm.ShowDialog();
         }
     }
 }

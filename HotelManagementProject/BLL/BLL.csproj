@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DTO">
       <HintPath>..\DTO\bin\Debug\DTO.dll</HintPath>
     </Reference>
@@ -39,6 +42,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +55,7 @@
     <Compile Include="ChiTietThietBiBLL.cs" />
     <Compile Include="DatPhongBLL.cs" />
     <Compile Include="DichVuBLL.cs" />
+    <Compile Include="InHoaDonBLL.cs" />
     <Compile Include="KhachHangBLL.cs" />
     <Compile Include="LoaiPhongBLL.cs" />
     <Compile Include="NhanVienBLL.cs" />
@@ -66,11 +71,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLKS.dbml</DependentUpon>
     </Compile>
+    <Compile Include="QLKS2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="rptInHoaDon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptInHoaDon.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TaiKhoanBLL.cs" />
     <Compile Include="ThietBiBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -86,6 +103,23 @@
     <None Include="QLKS.dbml.layout">
       <DependentUpon>QLKS.dbml</DependentUpon>
     </None>
+    <None Include="QLKS.xsc">
+      <DependentUpon>QLKS.xsd</DependentUpon>
+    </None>
+    <None Include="QLKS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLKS2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="QLKS.xss">
+      <DependentUpon>QLKS.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="rptInHoaDon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptInHoaDon.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

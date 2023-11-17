@@ -175,6 +175,24 @@
       <Column Name="ten_khachhang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.XemHoaDon" Member="XemHoaDons">
+    <Type Name="XemHoaDon">
+      <Column Name="datphong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="nhanvien" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="khachhang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="phong" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="check_in" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="check_out" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dat_coc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tien_phong" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="phu_thu_checkin" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="phu_thu_checkout" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tong_tien_dv" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tong_tien_tb" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tong_tien_hoa_don" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tong_tien" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.Capnhat_chi_tiet_su_dung_dv" Method="Capnhat_chi_tiet_su_dung_dv">
     <Parameter Name="iddatphong" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="iddv" Type="System.String" DbType="NVarChar(50)" />
