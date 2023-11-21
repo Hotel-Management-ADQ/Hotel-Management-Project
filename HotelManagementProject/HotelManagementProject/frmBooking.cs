@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -720,51 +721,48 @@ namespace HotelManagementProject
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
-            List<XemHoaDonDTO> hoadons = ihdbll.viewHoaDon(dpbll.LayIdDatPhongChuaThanhToan(idphong));
-            //List<XemHoaDonDTO> hoadons = ihdbll.viewHoaDon("HD001");
+            PreviewInvoice();
+        }
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("id_datphong", typeof(string));
-            dt.Columns.Add("ten_nhanvien", typeof(string));
-            dt.Columns.Add("ten_khachhang", typeof(string));
-            dt.Columns.Add("ten", typeof(string));
-            dt.Columns.Add("check_in", typeof(DateTime));
-            dt.Columns.Add("check_out", typeof(DateTime));
-            dt.Columns.Add("dat_coc", typeof(float));
-            dt.Columns.Add("tien_phong", typeof(float));
-            dt.Columns.Add("phu_thu_checkin", typeof(float));
-            dt.Columns.Add("phu_thu_checkout", typeof(float));
-            dt.Columns.Add("tong_tien_dv", typeof(float));
-            dt.Columns.Add("tong_tien_tb", typeof(float));
-            dt.Columns.Add("tong_tien_hoa_don", typeof(float));
-            dt.Columns.Add("tong_tien", typeof(float));
-
-            foreach (var hoadon in hoadons)
+        public void PreviewInvoice()
+        {
+            if (File.Exists("Invoice.html"))
             {
-                DataRow row = dt.NewRow();
-                row[0] = hoadon.DatPhong;
-                row[1] = hoadon.NhanVien;
-                row[2] = hoadon.KhachHang;
-                row[3] = hoadon.Phong;
-                row[4] = hoadon.CheckIn;
-                row[5] = hoadon.CheckOut;
-                row[6] = hoadon.DatCoc.ToString("N0");
-                row[7] = hoadon.TienPhong.ToString("N0");
-                row[8] = hoadon.PhuThuCheckin.ToString("N0");
-                row[9] = hoadon.PhuThuCheckout.ToString("N0");
-                row[10] = hoadon.TongTienDV.ToString("N0");
-                row[11] = hoadon.TongTienTB.ToString("N0");
-                row[12] = hoadon.TongTienHoaDon.ToString("N0");
-                row[13] = hoadon.TongTien.ToString("N0");
-                dt.Rows.Add(row);
-            }
+                //string htmlContentDefault = File.ReadAllText("InvoiceDefault.html");
+                File.WriteAllText("Invoice.html", ihdbll.PrintInvoice());
 
-            //rptInHoaDon rpt = new rptInHoaDon();
-            //rpt.SetDataSource(dt);
-            //frmPreviewInvoice frm = new frmPreviewInvoice();
-            //frm.crystalReportViewer1.ReportSource = rpt;
-            
-            //frm.ShowDialog();
+                string htmlContent = File.ReadAllText("Invoice.html");
+
+                htmlContent = htmlContent.Replace("{{NgayLapHoaDon}}", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+                htmlContent = htmlContent.Replace("{{MaHoaDon}}", txtIDHoaDonBookingForm.Text);
+                htmlContent = htmlContent.Replace("{{TenKhachHang}}", cboKhachHang.Text);
+                htmlContent = htmlContent.Replace("{{TenNhanVien}}", txtNhanVien.Text);
+                htmlContent = htmlContent.Replace("{{CheckIn}}", dateCheckIn.Value.ToString());
+                htmlContent = htmlContent.Replace("{{CheckOut}}", dateCheckOut.Value.ToString());
+                htmlContent = htmlContent.Replace("{{TongSoNgay}}", lblTongThoiGianNgayVaGio.Text);
+                htmlContent = htmlContent.Replace("{{TenPhong}}", lblTenPhong.Text);
+
+                htmlContent = htmlContent.Replace("{{TongSoDichVu}}", ctdvbll.DemSoLuongIDDatPhongTrongChiTietSuDungDichVu(txtIDHoaDonBookingForm.Text).ToString());
+                htmlContent = htmlContent.Replace("{{TongSoThietBi}}", cttbbll.DemSoLuongIDDatPhongTrongChiTietSuDungThietBi(txtIDHoaDonBookingForm.Text).ToString());
+
+                htmlContent = htmlContent.Replace("{{TienDatCoc}}", label23.Text);
+                htmlContent = htmlContent.Replace("{{TongTienPhong}}", label27.Text);
+                htmlContent = htmlContent.Replace("{{PhuThuCheckIn}}", lblPhuThuCheckIn.Text);
+                htmlContent = htmlContent.Replace("{{PhuThuCheckOut}}", lblPhuThuCheckOut.Text);
+                htmlContent = htmlContent.Replace("{{TongTienDV}}", lblTongTienDV2.Text);
+                htmlContent = htmlContent.Replace("{{TongTienTB}}", lblTongTienTB2.Text);
+                htmlContent = htmlContent.Replace("{{TongHoaDon}}", lblTongHoaDon.Text);
+                htmlContent = htmlContent.Replace("{{TienThanhToan}}", lblTongTienThanhToan.Text);
+
+
+                File.WriteAllText("Invoice.html", htmlContent);
+
+                System.Diagnostics.Process.Start("Invoice.html");
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy tệp hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
