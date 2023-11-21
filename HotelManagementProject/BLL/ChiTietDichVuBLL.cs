@@ -15,10 +15,11 @@ namespace BLL
         {
             qLKSDataContext = new QLKSDataContext();
         }
-        public List<ChiTietSuDungDichVu> GetThongTinSuDungDichVu()
+        public List<ChiTietSuDungDichVu> GetThongTinSuDungDichVu(string iddatphong)
         {
             var query = from ctsd in qLKSDataContext.chitietsudungdvs
                         join dv in qLKSDataContext.dichvus on ctsd.id_dichvu equals dv.id_dichvu
+                        where ctsd.id_datphong == iddatphong.Trim()
                         select new ChiTietSuDungDichVu
                         {
                             Iddatphong = ctsd.id_datphong,

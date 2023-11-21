@@ -192,7 +192,7 @@ namespace HotelManagementProject
         }
         private void LoadDataChiTietDichVu()
         {
-            List<ChiTietSuDungDichVu> lstCTDichVu = ctdvbll.GetThongTinSuDungDichVu();
+            List<ChiTietSuDungDichVu> lstCTDichVu = ctdvbll.GetThongTinSuDungDichVu(dpbll.LayIdDatPhongChuaThanhToan(idphong));
             tblHoaDonDichVu.DataSource = lstCTDichVu;
             tblHoaDonDichVu.Columns[0].HeaderText = "Mã Hóa Đơn";
             tblHoaDonDichVu.Columns[1].HeaderText = "Dịch Vụ Đã Chọn";
@@ -216,7 +216,7 @@ namespace HotelManagementProject
         }
         private void LoadDataChiTietThietBi()
         {
-            List<ChiTietSuDungThietBi> lstCTThietBi = cttbbll.GetThongTinSuDungThietBi();
+            List<ChiTietSuDungThietBi> lstCTThietBi = cttbbll.GetThongTinSuDungThietBi(dpbll.LayIdDatPhongChuaThanhToan(idphong));
             tblHoaDonThietBi.DataSource = lstCTThietBi;
             tblHoaDonThietBi.Columns[0].HeaderText = "Mã Hóa Đơn";
             tblHoaDonThietBi.Columns[1].HeaderText = "Thiết Bị Đã Chọn";
@@ -263,7 +263,7 @@ namespace HotelManagementProject
         private void button5_Click(object sender, EventArgs e)
         {
             tblDichVu.DataSource = dvbll.GetDichVuList();
-            tblHoaDonDichVu.DataSource = ctdvbll.GetThongTinSuDungDichVu();
+            tblHoaDonDichVu.DataSource = ctdvbll.GetThongTinSuDungDichVu(dpbll.LayIdDatPhongChuaThanhToan(idphong));
             lblTenDichVu.Text = "";
             lblGiaDichVu.Text = "";
             txtSoLuongDV.Text = string.Empty;
@@ -275,7 +275,7 @@ namespace HotelManagementProject
         private void button8_Click(object sender, EventArgs e)
         {
             tblThietBi.DataSource = tbbll.GetThietBiList();
-            tblHoaDonThietBi.DataSource = cttbbll.GetThongTinSuDungThietBi();
+            tblHoaDonThietBi.DataSource = cttbbll.GetThongTinSuDungThietBi(dpbll.LayIdDatPhongChuaThanhToan(idphong));
             lblTenThietBi.Text = "";
             lblGiaThietBi.Text = "";
             txtSoLuongTB.Text = string.Empty;
@@ -759,12 +759,12 @@ namespace HotelManagementProject
                 dt.Rows.Add(row);
             }
 
-            rptInHoaDon rpt = new rptInHoaDon();
-            rpt.SetDataSource(dt);
-            frmPreviewInvoice frm = new frmPreviewInvoice();
-            frm.crystalReportViewer1.ReportSource = rpt;
+            //rptInHoaDon rpt = new rptInHoaDon();
+            //rpt.SetDataSource(dt);
+            //frmPreviewInvoice frm = new frmPreviewInvoice();
+            //frm.crystalReportViewer1.ReportSource = rpt;
             
-            frm.ShowDialog();
+            //frm.ShowDialog();
         }
     }
 }
