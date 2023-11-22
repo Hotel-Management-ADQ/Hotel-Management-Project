@@ -15,11 +15,26 @@ namespace BLL
         {
             qLKSDataContext = new QLKSDataContext();
         }
-        public List<ChiTietSuDungDichVu> GetThongTinSuDungDichVu(string iddatphong)
+        public List<ChiTietSuDungDichVu> GetThongTinSuDungDichVu_DaCoDV(string iddatphong)
         {
             var query = from ctsd in qLKSDataContext.chitietsudungdvs
                         join dv in qLKSDataContext.dichvus on ctsd.id_dichvu equals dv.id_dichvu
                         where ctsd.id_datphong == iddatphong.Trim()
+                        select new ChiTietSuDungDichVu
+                        {
+                            Iddatphong = ctsd.id_datphong,
+                            Tendichvu = dv.ten_dichvu,
+                            Ngaythue = (DateTime)ctsd.ngay_thue,
+                            Soluong = (int)ctsd.so_luong,
+                            Tongtiendv = (float)ctsd.tong_tien_dv
+                        };
+
+            return query.ToList();
+        }
+        public List<ChiTietSuDungDichVu> GetThongTinSuDungDichVu()
+        {
+            var query = from ctsd in qLKSDataContext.chitietsudungdvs
+                        join dv in qLKSDataContext.dichvus on ctsd.id_dichvu equals dv.id_dichvu
                         select new ChiTietSuDungDichVu
                         {
                             Iddatphong = ctsd.id_datphong,

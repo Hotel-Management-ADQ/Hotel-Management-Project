@@ -331,5 +331,26 @@ namespace BLL
             return tongTienTBOutput ?? 0;
         }
 
+        public void CapNhatTrangThaiHoaDon(string idDatPhong)
+        {
+            var hoaDon = _qLKSDataContext.datphongs.SingleOrDefault(dp => dp.id_datphong == idDatPhong);
+
+            if (hoaDon != null)
+            {
+                hoaDon.trang_thai = "Đã thanh toán";
+                _qLKSDataContext.SubmitChanges();
+            }
+        }
+
+        public void CapNhatTrangThaiPhong(string idphong)
+        {
+            var phong = _qLKSDataContext.phongs.SingleOrDefault(dp => dp.id_phong == idphong);
+
+            if (phong != null)
+            {
+                phong.trang_thai = "Đang dọn phòng";
+                _qLKSDataContext.SubmitChanges();
+            }
+        }
     }
 }
