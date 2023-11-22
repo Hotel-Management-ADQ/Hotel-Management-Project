@@ -96,6 +96,20 @@ namespace BLL
                 throw ex;
             }
         }
+        public List<HoaDonSuDungThietBiDTO> LayThongTinHoaDonThietBi(string iddatphong)
+        {
+            var query = from chiTiet in qLKSDataContext.chitietsudungtbs
+                        join dichvu in qLKSDataContext.thietbis on chiTiet.id_thietbi equals dichvu.id_thietbi
+                        where chiTiet.id_datphong == iddatphong
+                        select new HoaDonSuDungThietBiDTO
+                        {
+                            TenThietBi = dichvu.ten_thietbi,
+                            SoLuong = (int)chiTiet.so_luong,
+                            GiaThietBi = (int)dichvu.gia,
+                            NgayThue = (DateTime)chiTiet.ngay_thue
+                        };
 
+            return query.ToList();
+        }
     }
 }

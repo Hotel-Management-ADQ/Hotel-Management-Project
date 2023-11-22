@@ -71,11 +71,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLKS.dbml</DependentUpon>
     </Compile>
-    <Compile Include="QLKS2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLKS.xsd</DependentUpon>
-    </Compile>
     <Compile Include="TaiKhoanBLL.cs" />
     <Compile Include="ThietBiBLL.cs" />
   </ItemGroup>
@@ -96,17 +91,6 @@
     </None>
     <None Include="QLKS.dbml.layout">
       <DependentUpon>QLKS.dbml</DependentUpon>
-    </None>
-    <None Include="QLKS.xsc">
-      <DependentUpon>QLKS.xsd</DependentUpon>
-    </None>
-    <None Include="QLKS.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QLKS2.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="QLKS.xss">
-      <DependentUpon>QLKS.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

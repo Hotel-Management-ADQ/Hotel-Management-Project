@@ -55,7 +55,7 @@ namespace HotelManagementProject
             txtPassword.PasswordChar = '*';
         }
 
-        private void btnDangNhap_Click(object sender, EventArgs e)
+        public void Login()
         {
             string username = tk.GetTenDangNhap(txtUsername.Text.Trim());
             string password = tk.GetMatKhau(txtUsername.Text.Trim());
@@ -85,11 +85,29 @@ namespace HotelManagementProject
             }
         }
 
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+
         private void label4_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
                 Application.Exit();
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Login();
+            
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Login();
         }
     }
 }
