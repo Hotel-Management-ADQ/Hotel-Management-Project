@@ -643,6 +643,13 @@ namespace HotelManagementProject
             }
         }
 
+        private void btnQLHoaDon_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.billForm = new frmBill();
+            Program.billForm.Show();
+        }
+
         private void btn_Click(object sender, EventArgs e)
         {
             this.Visible = false;
