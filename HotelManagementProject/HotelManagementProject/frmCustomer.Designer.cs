@@ -52,7 +52,6 @@
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtCmnd = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtSdt = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.rdNu = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rdNam = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -66,6 +65,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtSdt = new AllControl.TextBoxOnlyNumber();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -338,13 +338,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtSdt);
             this.panel1.Controls.Add(this.btnTimKiem);
             this.panel1.Controls.Add(this.dateNgaySinh);
             this.panel1.Controls.Add(this.txtNhapTimKiem);
             this.panel1.Controls.Add(this.guna2HtmlLabel7);
             this.panel1.Controls.Add(this.txtCmnd);
             this.panel1.Controls.Add(this.guna2HtmlLabel6);
-            this.panel1.Controls.Add(this.txtSdt);
             this.panel1.Controls.Add(this.guna2HtmlLabel5);
             this.panel1.Controls.Add(this.rdNu);
             this.panel1.Controls.Add(this.rdNam);
@@ -449,25 +449,6 @@
             this.guna2HtmlLabel6.Size = new System.Drawing.Size(74, 35);
             this.guna2HtmlLabel6.TabIndex = 17;
             this.guna2HtmlLabel6.Text = "CMND";
-            // 
-            // txtSdt
-            // 
-            this.txtSdt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSdt.DefaultText = "";
-            this.txtSdt.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSdt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSdt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSdt.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSdt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSdt.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSdt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSdt.Location = new System.Drawing.Point(1030, 95);
-            this.txtSdt.Name = "txtSdt";
-            this.txtSdt.PasswordChar = '\0';
-            this.txtSdt.PlaceholderText = "";
-            this.txtSdt.SelectedText = "";
-            this.txtSdt.Size = new System.Drawing.Size(200, 36);
-            this.txtSdt.TabIndex = 16;
             // 
             // guna2HtmlLabel5
             // 
@@ -625,7 +606,7 @@
             this.tblKhachHang.ReadOnly = true;
             this.tblKhachHang.RowHeadersVisible = false;
             this.tblKhachHang.RowTemplate.Height = 24;
-            this.tblKhachHang.Size = new System.Drawing.Size(1732, 307);
+            this.tblKhachHang.Size = new System.Drawing.Size(1731, 307);
             this.tblKhachHang.TabIndex = 0;
             this.tblKhachHang.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tblKhachHang.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -655,7 +636,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
             this.tableLayoutPanel3.Controls.Add(this.tblKhachHang, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 133);
@@ -700,6 +681,14 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1838, 127);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // txtSdt
+            // 
+            this.txtSdt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSdt.Location = new System.Drawing.Point(1030, 100);
+            this.txtSdt.Name = "txtSdt";
+            this.txtSdt.Size = new System.Drawing.Size(200, 31);
+            this.txtSdt.TabIndex = 23;
             // 
             // frmCustomer
             // 
@@ -762,10 +751,10 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2TextBox txtCmnd;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
-        private Guna.UI2.WinForms.Guna2TextBox txtSdt;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2TextBox txtNhapTimKiem;
         private Guna.UI2.WinForms.Guna2DateTimePicker dateNgaySinh;
         private Guna.UI2.WinForms.Guna2CircleButton btnTimKiem;
+        private AllControl.TextBoxOnlyNumber txtSdt;
     }
 }

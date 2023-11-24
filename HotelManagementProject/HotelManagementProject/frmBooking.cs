@@ -448,20 +448,25 @@ namespace HotelManagementProject
 
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
-            string idnv = nvbll.GetIdNhanVienByTen(frmLogin.tentaikhoan.Trim());
-            string idkh = khbll.GetIdKHByTen(cboKhachHang.Text.Trim());
-            //string idphong = idphong
-            DateTime checkin = dateCheckIn.Value;
-            DateTime checkout = dateCheckOut.Value;
-            int songuoio = int.Parse(txtSoNguoiO.Text.Trim());
-            string loaithue = cboLoaiThue.Text.Trim();
-            double tiencoc = tiendatcoc;
+            if (txtSoNguoiO.Text == string.Empty || txtDatCoc.Text == string.Empty)
+                MessageBox.Show("Phải nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                string idnv = nvbll.GetIdNhanVienByTen(frmLogin.tentaikhoan.Trim());
+                string idkh = khbll.GetIdKHByTen(cboKhachHang.Text.Trim());
+                //string idphong = idphong
+                DateTime checkin = dateCheckIn.Value;
+                DateTime checkout = dateCheckOut.Value;
+                int songuoio = int.Parse(txtSoNguoiO.Text.Trim());
+                string loaithue = cboLoaiThue.Text.Trim();
+                double tiencoc = tiendatcoc;
 
-            dpbll.DatPhong(idnv, idkh, idphong, checkin, checkout, songuoio, loaithue, tiencoc);
-            dpbll.UpdateTrangThaiPhong(idphong);
-            this.Visible = false;
-            Program.mainForm = new FrmMain();
-            Program.mainForm.Show();
+                dpbll.DatPhong(idnv, idkh, idphong, checkin, checkout, songuoio, loaithue, tiencoc);
+                dpbll.UpdateTrangThaiPhong(idphong);
+                this.Visible = false;
+                Program.mainForm = new FrmMain();
+                Program.mainForm.Show();
+            }
         }
 
         private void btnThemCTDichVu_Click(object sender, EventArgs e)

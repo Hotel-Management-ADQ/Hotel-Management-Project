@@ -21,6 +21,8 @@ namespace HotelManagementProject
             hdbll = new HoaDonBLL();
 
             InitializeComponent();
+            cboFind.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
         }
 
         public void loadtablehoadon()
@@ -87,6 +89,8 @@ namespace HotelManagementProject
             dataTB.Columns[2].HeaderText = "Ngày Thuê";
             dataTB.Columns[3].HeaderText = "Số Lượng";
             dataTB.Columns[4].HeaderText = "Tổng Tiền";
+
+            panel1.Visible = true;
         }
 
 
@@ -103,8 +107,48 @@ namespace HotelManagementProject
                 tblHoaDon.DataSource = hdbll.GetHoaDonList_TenPhong(txtFind.Text.Trim());
             if(txtFind.Text == string.Empty)
                 loadtablehoadon();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cboFind.Text == "Mã Hóa Đơn")
+                tblHoaDon.DataSource = hdbll.GetHoaDonList_MaHoaDon(txtFind.Text);
+            if (cboFind.Text == "Tên Khách Hàng")
+                tblHoaDon.DataSource = hdbll.GetHoaDonList_TenKH(txtFind.Text.Trim());
+            if (cboFind.Text == "Tên Nhân Viên")
+                tblHoaDon.DataSource = hdbll.GetHoaDonList_TenNV(txtFind.Text.Trim());
+            if (cboFind.Text == "Tên Phòng")
+                tblHoaDon.DataSource = hdbll.GetHoaDonList_TenPhong(txtFind.Text.Trim());
+            if (txtFind.Text == string.Empty)
+                loadtablehoadon();
+        }
 
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFind.Text == string.Empty)
+                loadtablehoadon();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.billForm = new frmBill();
+            Program.billForm.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if ()
+            //    ;
+            //if ()
+            //    ;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.mainForm = new FrmMain();
+            Program.mainForm.Show();
         }
     }
 }
