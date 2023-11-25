@@ -13,6 +13,22 @@ namespace BLL
         {
             _qLKSDataContext = new QLKSDataContext();
         }
+
+        public List<nhanvien> GetNhanVienList()
+        {
+            try
+            {
+                var nhanvienList = (from p in _qLKSDataContext.nhanviens select p).ToList();
+
+                return nhanvienList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
         public string GetIdNhanVienByTen(string ten)
         {
             var tenLoaiPhong = (from nv in _qLKSDataContext.nhanviens
@@ -20,5 +36,34 @@ namespace BLL
                                 select nv.id_nhanvien).FirstOrDefault();
             return tenLoaiPhong;
         }
+
+
+        public void XoaNhanVien(string id_nhanvien)
+        {
+            var nhanvienToRemove = _qLKSDataContext.nhanviens.SingleOrDefault(dv => dv.id_nhanvien == id_nhanvien);
+            if (nhanvienToRemove != null)
+            {
+                _qLKSDataContext.nhanviens.DeleteOnSubmit(nhanvienToRemove);
+                _qLKSDataContext.SubmitChanges();
+            }
+        }
+
+        public void CapNhatNhanVien(string id_nhanvien, string ten_nhanvien, DateTime ngaysinh_nhanvien, string sdt_nhanvien, string gioitinh_nhanvien, string email_nhanvien, string hinhanh_nhanvien)
+        {
+            var nhanvienToUpdate = _qLKSDataContext.nhanviens.SingleOrDefault(dv => dv.id_nhanvien == id_nhanvien);
+            if (nhanvienToUpdate != null)
+            {
+                nhanvienToUpdate.ten_nhanvien = ten_nhanvien;
+                nhanvienToUpdate.ngay_sinh = ngaysinh_nhanvien;
+                nhanvienToUpdate.sdt = sdt_nhanvien;
+                nhanvienToUpdate.gioi_tinh = gioitinh_nhanvien;
+                nhanvienToUpdate.email = email_nhanvien;
+                nhanvienToUpdate.hinh_anh = hinhanh_nhanvien;
+
+                _qLKSDataContext.SubmitChanges();
+            }
+        }
+
+
     }
 }

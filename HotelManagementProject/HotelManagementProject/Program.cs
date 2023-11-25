@@ -16,6 +16,7 @@ namespace HotelManagementProject
         public static frmBooking bookingForm = null;
         public static frmRoom roomForm = null;
         public static frmBill billForm = null;
+        public static frmStaff staffForm = null;
 
 
         /// <summary>
@@ -26,7 +27,7 @@ namespace HotelManagementProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmCustomer());
         }
     }
 }

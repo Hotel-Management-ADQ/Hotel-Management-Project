@@ -650,6 +650,13 @@ namespace HotelManagementProject
             Program.billForm.Show();
         }
 
+        private void btnQLNhanVien_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.staffForm = new frmStaff();
+            Program.staffForm.Show();
+        }
+
         private void btn_Click(object sender, EventArgs e)
         {
             this.Visible = false;

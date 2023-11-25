@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using System.Globalization;
 
 namespace HotelManagementProject
 {
@@ -27,6 +28,11 @@ namespace HotelManagementProject
             opacityTimer.Interval = 5;
             opacityTimer.Tick += new EventHandler(OnTimerTick);
             opacityTimer.Start();
+            txtSdt.KeyPress += new KeyPressEventHandler(txtSdt_KeyPress);
+            btnSua.Visible = false;
+            btnXoa.Visible = false;
+            btnLuu.Visible = false;
+
         }
         private void OnTimerTick(object sender, EventArgs e)
         {
@@ -85,8 +91,29 @@ namespace HotelManagementProject
                     rdNam.Checked = false;
                     rdNu.Checked = false;
                 }
+                btnSua.Visible = true;
+                btnXoa.Visible = true;
+                btnLuu.Visible = false;
+            }
+
+            
+        }
+
+        private void txtSdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho phép nhập chữ số và kiểm tra độ dài của số điện thoại
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn chặn ký tự không phải số
+            }
+
+            // Kiểm tra độ dài của số điện thoại
+            if (txtSdt.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn chặn nhập thêm khi đã đủ 10 số
             }
         }
+
 
 
         private void btnThem_Click_1(object sender, EventArgs e)
@@ -94,6 +121,9 @@ namespace HotelManagementProject
             
             txtTen.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
             txtTen.Focus();
+            btnLuu.Visible = true;
+            btnSua.Visible = false;
+            btnXoa.Visible = false;
         }
 
         private void btnXoa_Click_1(object sender, EventArgs e)
@@ -107,7 +137,7 @@ namespace HotelManagementProject
                 LoadTableKhachHang();
             }
             txtTen.Text = string.Empty; dateNgaySinh.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
-
+            
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -116,16 +146,40 @@ namespace HotelManagementProject
 
             if (result == DialogResult.Yes)
             {
+                string ngaySinhText = dateNgaySinh.Text.Trim();
+                DateTime ngaySinh;
+
+                if (!DateTime.TryParseExact(ngaySinhText, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out ngaySinh))
+                {
+                    MessageBox.Show("Ngày sinh không hợp lệ. Vui lòng nhập theo định dạng dd/MM/yyyy.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int tuoi = DateTime.Now.Year - ngaySinh.Year;
+
+                if (tuoi < 18)
+                {
+                    MessageBox.Show("Khách hàng phải đủ 18 tuổi trở lên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (rdNam.Checked)
                 {
-                    khbll.ThemKhachHang(txtTen.Text.Trim(), DateTime.Parse(dateNgaySinh.Text.Trim()), txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNam.Text);
-
+                    khbll.ThemKhachHang(txtTen.Text.Trim(), ngaySinh, txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNam.Text);
                 }
                 else if (rdNu.Checked)
                 {
-                    khbll.ThemKhachHang(txtTen.Text.Trim(), DateTime.Parse(dateNgaySinh.Text.Trim()), txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNu.Text);
-
+                    khbll.ThemKhachHang(txtTen.Text.Trim(), ngaySinh, txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNu.Text);
                 }
+
+                string phoneNumber = txtSdt.Text.Trim();
+
+                if (phoneNumber.Length != 10 || !phoneNumber.All(char.IsDigit))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 LoadTableKhachHang();
             }
         }
@@ -135,10 +189,45 @@ namespace HotelManagementProject
         {
             DialogResult result = MessageBox.Show("Bạn có muốn cập nhật lại khách hàng này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             int i = tblKhachHang.CurrentRow.Index;
+
             if (result == DialogResult.Yes)
             {
-                khbll.CapNhatKhachHang(tblKhachHang.Rows[i].Cells[0].Value.ToString().Trim(), txtTen.Text.Trim(), DateTime.Parse(dateNgaySinh.Text.Trim()), txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNu.Text);
-                LoadTableKhachHang();
+                string ngaySinhText = dateNgaySinh.Text.Trim();
+                DateTime ngaySinh;
+
+                if (!DateTime.TryParseExact(ngaySinhText, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out ngaySinh))
+                {
+                    MessageBox.Show("Ngày sinh không hợp lệ. Vui lòng nhập theo định dạng dd/MM/yyyy.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int tuoi = DateTime.Now.Year - ngaySinh.Year;
+
+                if (tuoi < 18)
+                {
+                    MessageBox.Show("Khách hàng phải đủ 18 tuổi trở lên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (rdNu.Checked)
+                {
+                    khbll.CapNhatKhachHang(tblKhachHang.Rows[i].Cells[0].Value.ToString().Trim(), txtTen.Text.Trim(), ngaySinh, txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNu.Text);
+                    LoadTableKhachHang();
+                }
+
+                if (rdNam.Checked)
+                {
+                    khbll.CapNhatKhachHang(tblKhachHang.Rows[i].Cells[0].Value.ToString().Trim(), txtTen.Text.Trim(), ngaySinh, txtDiaChi.Text.Trim(), txtSdt.Text.Trim(), txtCmnd.Text.Trim(), rdNam.Text);
+                    LoadTableKhachHang();
+                }
+
+                string phoneNumber = txtSdt.Text.Trim();
+
+                if (phoneNumber.Length != 10 || !phoneNumber.All(char.IsDigit))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
         }
 
@@ -171,5 +260,7 @@ namespace HotelManagementProject
             Program.mainForm = new FrmMain();
             Program.mainForm.Show();
         }
+
+        
     }
 }

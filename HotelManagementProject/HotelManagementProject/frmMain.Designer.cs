@@ -345,6 +345,7 @@
             this.btnQLNhanVien.TabIndex = 8;
             this.btnQLNhanVien.Text = "      Quản Lý Nhân Viên";
             this.btnQLNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLNhanVien.Click += new System.EventHandler(this.btnQLNhanVien_Click);
             // 
             // btnQLQuyen
             // 
@@ -568,7 +569,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.464041F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 271F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 357F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 359F));
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.currentTimeLabelApp2, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.currentDateLabelApp2, 2, 0);
@@ -592,7 +593,7 @@
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label10.Size = new System.Drawing.Size(727, 82);
+            this.label10.Size = new System.Drawing.Size(725, 82);
             this.label10.TabIndex = 0;
             this.label10.Text = "The Three Musketeers Hotel";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -602,12 +603,12 @@
             this.currentTimeLabelApp2.AutoSize = true;
             this.currentTimeLabelApp2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.currentTimeLabelApp2.Font = new System.Drawing.Font("Calibri", 30.75F);
-            this.currentTimeLabelApp2.Location = new System.Drawing.Point(1136, 0);
+            this.currentTimeLabelApp2.Location = new System.Drawing.Point(1134, 0);
             this.currentTimeLabelApp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentTimeLabelApp2.Name = "currentTimeLabelApp2";
-            this.currentTimeLabelApp2.Size = new System.Drawing.Size(354, 82);
+            this.currentTimeLabelApp2.Size = new System.Drawing.Size(356, 82);
             this.currentTimeLabelApp2.TabIndex = 1;
-            this.currentTimeLabelApp2.Text = "15:19:11";
+            this.currentTimeLabelApp2.Text = "23:15:12";
             this.currentTimeLabelApp2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // currentDateLabelApp2
@@ -616,7 +617,7 @@
             this.currentDateLabelApp2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.currentDateLabelApp2.Font = new System.Drawing.Font("Calibri", 30.75F);
             this.currentDateLabelApp2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.currentDateLabelApp2.Location = new System.Drawing.Point(783, 0);
+            this.currentDateLabelApp2.Location = new System.Drawing.Point(781, 0);
             this.currentDateLabelApp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentDateLabelApp2.Name = "currentDateLabelApp2";
             this.currentDateLabelApp2.Size = new System.Drawing.Size(267, 82);
@@ -628,7 +629,7 @@
             // 
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Image = ((System.Drawing.Image)(resources.GetObject("label18.Image")));
-            this.label18.Location = new System.Drawing.Point(1055, 0);
+            this.label18.Location = new System.Drawing.Point(1053, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(76, 82);
             this.label18.TabIndex = 5;
@@ -637,7 +638,7 @@
             // 
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label19.Image = ((System.Drawing.Image)(resources.GetObject("label19.Image")));
-            this.label19.Location = new System.Drawing.Point(734, 0);
+            this.label19.Location = new System.Drawing.Point(732, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(44, 82);
             this.label19.TabIndex = 6;
