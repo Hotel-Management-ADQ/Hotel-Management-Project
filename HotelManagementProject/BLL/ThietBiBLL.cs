@@ -30,6 +30,7 @@ namespace BLL
 
         public void XoaThietBi(string id_thietbi)
         {
+
             var thietbiToRemove = _qLKSDataContext.thietbis.SingleOrDefault(tb => tb.id_thietbi == id_thietbi);
             if (thietbiToRemove != null)
             {

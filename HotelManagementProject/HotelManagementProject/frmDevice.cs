@@ -25,6 +25,10 @@ namespace HotelManagementProject
             opacityTimer.Interval = 5;
             opacityTimer.Tick += new EventHandler(OnTimerTick);
             opacityTimer.Start();
+            btnXoa.Enabled = false;
+            btnSua.Enabled = false;
+            btnLuu.Enabled = false;
+
         }
         private void OnTimerTick(object sender, EventArgs e)
         {
@@ -48,6 +52,7 @@ namespace HotelManagementProject
             tblThietBi.Columns[2].HeaderText = "Giá";
 
             tblThietBi.AllowUserToResizeRows = false;
+            
         }
 
         private void tblThietBi_Click(object sender, EventArgs e)
@@ -58,25 +63,41 @@ namespace HotelManagementProject
                 txtTenThietBi.Text = selectedRow.Cells[1].Value.ToString();
                 txtGiaThietBi.Text = selectedRow.Cells[2].Value.ToString();
             }
+            btnLuu.Enabled = false;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+            txtTenThietBi.Enabled = true;
+            txtGiaThietBi.Enabled=true;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             txtTenThietBi.Enabled = true; txtGiaThietBi.Enabled = true;
+            btnLuu.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
             txtGiaThietBi.Text = string.Empty; txtTenThietBi.Text = string.Empty;
             txtTenThietBi.Focus();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            int i = tblThietBi.CurrentRow.Index;
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa thiết bị này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                tbbll.XoaThietBi(tblThietBi.Rows[i].Cells[0].Value.ToString().Trim());
-                LoadTableThietBi();
+                int i = tblThietBi.CurrentRow.Index;
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa thiết bị này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    tbbll.XoaThietBi(tblThietBi.Rows[i].Cells[0].Value.ToString().Trim());
+                    LoadTableThietBi();
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Thiết bị " + txtTenThietBi.Text + " đã được sử dụng, Không được xóa","Thông Báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)

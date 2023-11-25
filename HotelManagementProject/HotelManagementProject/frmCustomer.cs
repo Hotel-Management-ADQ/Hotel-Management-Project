@@ -29,9 +29,9 @@ namespace HotelManagementProject
             opacityTimer.Tick += new EventHandler(OnTimerTick);
             opacityTimer.Start();
             txtSdt.KeyPress += new KeyPressEventHandler(txtSdt_KeyPress);
-            btnSua.Visible = false;
-            btnXoa.Visible = false;
-            btnLuu.Visible = false;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            btnLuu.Enabled = false;
 
         }
         private void OnTimerTick(object sender, EventArgs e)
@@ -91,9 +91,9 @@ namespace HotelManagementProject
                     rdNam.Checked = false;
                     rdNu.Checked = false;
                 }
-                btnSua.Visible = true;
-                btnXoa.Visible = true;
-                btnLuu.Visible = false;
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
+                btnLuu.Enabled = false;
             }
 
             
@@ -101,16 +101,15 @@ namespace HotelManagementProject
 
         private void txtSdt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Chỉ cho phép nhập chữ số và kiểm tra độ dài của số điện thoại
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; // Ngăn chặn ký tự không phải số
+                e.Handled = true; 
             }
 
             // Kiểm tra độ dài của số điện thoại
             if (txtSdt.Text.Length >= 10 && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true; // Ngăn chặn nhập thêm khi đã đủ 10 số
+                e.Handled = true; 
             }
         }
 
@@ -121,22 +120,30 @@ namespace HotelManagementProject
             
             txtTen.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
             txtTen.Focus();
-            btnLuu.Visible = true;
-            btnSua.Visible = false;
-            btnXoa.Visible = false;
+            btnLuu.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
         }
 
         private void btnXoa_Click_1(object sender, EventArgs e)
         {
-            int i = tblKhachHang.CurrentRow.Index;
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                khbll.XoaKhachHang(tblKhachHang.Rows[i].Cells[0].Value.ToString().Trim());
-                LoadTableKhachHang();
+                int i = tblKhachHang.CurrentRow.Index;
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    khbll.XoaKhachHang(tblKhachHang.Rows[i].Cells[0].Value.ToString().Trim());
+                    LoadTableKhachHang();
+                }
+                txtTen.Text = string.Empty; dateNgaySinh.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
+
             }
-            txtTen.Text = string.Empty; dateNgaySinh.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
+            catch (Exception)
+            {
+                MessageBox.Show("Khách hàng " + txtTen.Text + " đã có hóa đơn, Không được xóa");
+            }
             
         }
 

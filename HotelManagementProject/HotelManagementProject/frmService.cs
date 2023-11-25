@@ -37,7 +37,7 @@ namespace HotelManagementProject
         private void frmService_Load(object sender, EventArgs e)
         {
             LoadTableDichVu();
-            
+
         }
 
         public void LoadTableDichVu()
@@ -59,26 +59,37 @@ namespace HotelManagementProject
                 txtTenDichVu.Text = selectedRow.Cells[1].Value.ToString();
                 txtGiaDichVu.Text = selectedRow.Cells[2].Value.ToString();
             }
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btnLuu.Enabled = false;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            txtTenDichVu.Enabled = true; txtGiaDichVu.Enabled = true;
+            txtTenDichVu.Enabled = true; txtGiaDichVu.Enabled = true; btnLuu.Enabled = true; btnXoa.Enabled = false; btnSua.Enabled = false;
             txtGiaDichVu.Text = string.Empty; txtTenDichVu.Text = string.Empty;
             txtTenDichVu.Focus();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            int i = tblDichVu.CurrentRow.Index;
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa dịch vụ này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                dvbll.XoaDichVu(tblDichVu.Rows[i].Cells[0].Value.ToString().Trim());
-                LoadTableDichVu();
+                int i = tblDichVu.CurrentRow.Index;
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa dịch vụ này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    dvbll.XoaDichVu(tblDichVu.Rows[i].Cells[0].Value.ToString().Trim());
+                    LoadTableDichVu();
+                }
             }
-            //MessageBox.Show(tblDichVu.Rows[i].Cells[0].Value.ToString());
+            catch (Exception)
+            {
+                MessageBox.Show("Dịch vụ " + txtTenDichVu.Text + " đã được sử dụng, Không được xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -126,107 +137,6 @@ namespace HotelManagementProject
             Program.serviceForm.Show();
         }
 
-        
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel14_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel15_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel16_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel17_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtNhapTimKiem_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel13_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTenDichVu_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtGiaDichVu_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel12_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel11_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel10_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
@@ -235,24 +145,6 @@ namespace HotelManagementProject
             Program.mainForm.Show();
         }
 
-        private void tableLayoutPanel9_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void tableLayoutPanel8_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tblDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
