@@ -68,6 +68,7 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.currentTimeLabelApp1 = new AllControl.CurrentTimeLabelApp();
@@ -77,7 +78,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cboFind = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtFind = new Guna.UI2.WinForms.Guna2TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblHoaDon)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -97,7 +97,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel3.Controls.Add(this.tblHoaDon, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 191);
@@ -139,7 +139,7 @@
             this.tblHoaDon.ReadOnly = true;
             this.tblHoaDon.RowHeadersVisible = false;
             this.tblHoaDon.RowTemplate.Height = 24;
-            this.tblHoaDon.Size = new System.Drawing.Size(1806, 448);
+            this.tblHoaDon.Size = new System.Drawing.Size(1805, 448);
             this.tblHoaDon.TabIndex = 0;
             this.tblHoaDon.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.GreenSea;
             this.tblHoaDon.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
@@ -655,6 +655,17 @@
             this.panel6.Size = new System.Drawing.Size(1918, 183);
             this.panel6.TabIndex = 3;
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1029, 124);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(165, 36);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Quay về";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -687,7 +698,7 @@
             this.currentTimeLabelApp1.Name = "currentTimeLabelApp1";
             this.currentTimeLabelApp1.Size = new System.Drawing.Size(120, 31);
             this.currentTimeLabelApp1.TabIndex = 31;
-            this.currentTimeLabelApp1.Text = "14:41:01";
+            this.currentTimeLabelApp1.Text = "09:31:12";
             // 
             // currentDateLabelApp1
             // 
@@ -697,7 +708,7 @@
             this.currentDateLabelApp1.Name = "currentDateLabelApp1";
             this.currentDateLabelApp1.Size = new System.Drawing.Size(150, 31);
             this.currentDateLabelApp1.TabIndex = 30;
-            this.currentDateLabelApp1.Text = "24/11/2023";
+            this.currentDateLabelApp1.Text = "26/11/2023";
             // 
             // label2
             // 
@@ -773,17 +784,6 @@
             this.txtFind.TabIndex = 24;
             this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1029, 124);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(165, 36);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Quay về";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // frmBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -793,7 +793,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBill";
-            this.Text = "frmBill";
+            this.Text = "Quản lý hóa đơn";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmBill_Load);
             this.tableLayoutPanel3.ResumeLayout(false);

@@ -657,6 +657,12 @@ namespace HotelManagementProject
             Program.staffForm.Show();
         }
 
+        private void btnThongKeDoanhThu_Click(object sender, EventArgs e)
+        {
+            frmChooseForStatistic frm = new frmChooseForStatistic();
+            frm.ShowDialog();
+        }
+
         private void btn_Click(object sender, EventArgs e)
         {
             this.Visible = false;

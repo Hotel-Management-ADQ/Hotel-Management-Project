@@ -258,7 +258,7 @@
             this.currentTimeLabelApp1.Name = "currentTimeLabelApp1";
             this.currentTimeLabelApp1.Size = new System.Drawing.Size(377, 69);
             this.currentTimeLabelApp1.TabIndex = 1;
-            this.currentTimeLabelApp1.Text = "14:57:38";
+            this.currentTimeLabelApp1.Text = "09:32:08";
             this.currentTimeLabelApp1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // currentDateLabelApp1
@@ -271,7 +271,7 @@
             this.currentDateLabelApp1.Name = "currentDateLabelApp1";
             this.currentDateLabelApp1.Size = new System.Drawing.Size(376, 69);
             this.currentDateLabelApp1.TabIndex = 2;
-            this.currentDateLabelApp1.Text = "24/11/2023";
+            this.currentDateLabelApp1.Text = "26/11/2023";
             this.currentDateLabelApp1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTenNhanVien
@@ -2120,7 +2120,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBooking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmBooking";
+            this.Text = "Đặt phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.layoutContainer.ResumeLayout(false);
             this.layoutHeader.ResumeLayout(false);
