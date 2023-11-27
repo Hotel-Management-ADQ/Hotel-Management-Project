@@ -19,6 +19,7 @@ namespace HotelManagementProject
         public static frmStaff staffForm = null;
         public static frmBillStatistics billStatisticsForm = null;
         public static frmBillStatisticsService billStatisticsServiceForm = null;
+        public static frmBillStatisticsDevice billStatisticsDeviceForm = null;
 
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace HotelManagementProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmBillStatisticsDevice());
         }
     }
 }

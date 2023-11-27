@@ -80,6 +80,12 @@
     <Compile Include="frmBillStatistics.Designer.cs">
       <DependentUpon>frmBillStatistics.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBillStatisticsDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBillStatisticsDevice.Designer.cs">
+      <DependentUpon>frmBillStatisticsDevice.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBillStatisticsService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBillStatistics.resx">
       <DependentUpon>frmBillStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBillStatisticsDevice.resx">
+      <DependentUpon>frmBillStatisticsDevice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBillStatisticsService.resx">
       <DependentUpon>frmBillStatisticsService.cs</DependentUpon>

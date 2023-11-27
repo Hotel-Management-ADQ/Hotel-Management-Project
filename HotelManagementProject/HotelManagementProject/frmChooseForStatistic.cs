@@ -37,5 +37,13 @@ namespace HotelManagementProject
             Program.billStatisticsServiceForm = new frmBillStatisticsService();
             Program.billStatisticsServiceForm.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Program.mainForm.Visible = false;
+            this.Visible = false;
+            Program.billStatisticsDeviceForm = new frmBillStatisticsDevice();
+            Program.billStatisticsDeviceForm.Show();
+        }
     }
 }

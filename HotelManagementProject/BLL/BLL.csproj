@@ -76,6 +76,7 @@
     <Compile Include="ThietBiBLL.cs" />
     <Compile Include="ThongKeDatPhongBLL.cs" />
     <Compile Include="ThongKeDichVuBLL.cs" />
+    <Compile Include="ThongKeThietBiBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
