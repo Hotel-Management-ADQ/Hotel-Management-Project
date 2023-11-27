@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +82,147 @@ namespace BLL
                     .Sum(dp => (decimal?)dp.tong_tien_dv) ?? 0;
 
             return totalRevenue;
+        }
+        //------------------------------
+        public string TenDichVuDuocDatNhieuNhat(int thang)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Month == thang
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) descending
+                        select grp.Key;
+
+            string idDichVuNhieuNhat = query.FirstOrDefault();
+
+            return idDichVuNhieuNhat ?? "Không có dữ liệu";
+        }
+        public string LaySoLuongDichVuNhieuNhat(int thang)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Month == thang
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) descending
+                        select grp.Sum(x => x.so_luong);
+
+            return query.FirstOrDefault().ToString() ?? "Không có dữ liệu";
+
+        }
+        public string TenDichVuDuocDatItNhat(int thang)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Month == thang
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) ascending
+                        select grp.Key;
+
+            string idDichVuNhieuNhat = query.FirstOrDefault();
+
+            return idDichVuNhieuNhat ?? "Không có dữ liệu";
+        }
+        public string LaySoLuongDichVuItNhat(int thang)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Month == thang
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) ascending
+                        select grp.Sum(x => x.so_luong);
+
+            return query.FirstOrDefault().ToString() ?? "Không có dữ liệu";
+
+        }
+        //------------------------------
+        public string TenDichVuDuocDatNhieuNhatTheoQuy(int quy)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Month >= (quy - 1) * 3 + 1 && chiTiet.ngay_thue.Value.Month <= quy * 3
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) descending
+                        select grp.Key;
+
+            string idDichVuNhieuNhat = query.FirstOrDefault();
+
+            return idDichVuNhieuNhat ?? "Không có dữ liệu";
+        }
+        public string LaySoLuongDichVuNhieuNhatTheoQuy(int quy)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Month >= (quy - 1) * 3 + 1 && chiTiet.ngay_thue.Value.Month <= quy * 3
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) descending
+                        select grp.Sum(x => x.so_luong);
+
+            return query.FirstOrDefault().ToString() ?? "Không có dữ liệu";
+
+        }
+        public string TenDichVuDuocDatItNhatTheoQuy(int quy)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Month >= (quy - 1) * 3 + 1 && chiTiet.ngay_thue.Value.Month <= quy * 3
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) ascending
+                        select grp.Key;
+
+            string idDichVuNhieuNhat = query.FirstOrDefault();
+
+            return idDichVuNhieuNhat ?? "Không có dữ liệu";
+        }
+        public string LaySoLuongDichVuItNhatTheoQuy(int quy)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Month >= (quy - 1) * 3 + 1 && chiTiet.ngay_thue.Value.Month <= quy * 3
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) ascending
+                        select grp.Sum(x => x.so_luong);
+
+            return query.FirstOrDefault().ToString() ?? "Không có dữ liệu";
+
+        }
+        //----------------------------
+        public string TenDichVuDuocDatNhieuNhatTheoNam(int nam)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Year == nam
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) descending
+                        select grp.Key;
+
+            string idDichVuNhieuNhat = query.FirstOrDefault();
+
+            return idDichVuNhieuNhat ?? "Không có dữ liệu";
+        }
+        public string LaySoLuongDichVuNhieuNhatTheoNam(int nam)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Year == nam
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) descending
+                        select grp.Sum(x => x.so_luong);
+
+            return query.FirstOrDefault().ToString() ?? "Không có dữ liệu";
+
+        }
+        public string TenDichVuDuocDatItNhatTheoNam(int nam)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Year == nam
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) ascending
+                        select grp.Key;
+
+            string idDichVuNhieuNhat = query.FirstOrDefault();
+
+            return idDichVuNhieuNhat ?? "Không có dữ liệu";
+        }
+        public string LaySoLuongDichVuItNhatTheoNam(int nam)
+        {
+            var query = from chiTiet in context.chitietsudungdvs
+                        where chiTiet.ngay_thue.Value.Year == nam
+                        group chiTiet by chiTiet.id_dichvu into grp
+                        orderby grp.Sum(x => x.so_luong) ascending
+                        select grp.Sum(x => x.so_luong);
+
+            return query.FirstOrDefault().ToString() ?? "Không có dữ liệu";
+
         }
     }
 }
