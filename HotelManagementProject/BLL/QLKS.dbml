@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLKS_Main" Class="QLKSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=Tuan-Anh;Initial Catalog=QLKS_Main;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKS_MainConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TUAN-ANH;Initial Catalog=QLKS_Main;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="QLKS_MainConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.chitietsudungdv" Member="chitietsudungdvs">
     <Type Name="chitietsudungdv">
       <Column Name="id_datphong" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -145,16 +145,6 @@
       <Association Name="tang_phong" Member="tang" ThisKey="id_tang" OtherKey="id_tang" Type="tang" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.taikhoan" Member="taikhoans">
-    <Type Name="taikhoan">
-      <Column Name="id_taikhoan" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_nhanvien" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Column Name="ten_dang_nhap" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="mat_khau" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="hoat_dong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="nhanvien_taikhoan" Member="nhanvien" ThisKey="id_nhanvien" OtherKey="id_nhanvien" Type="nhanvien" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tang" Member="tangs">
     <Type Name="tang">
       <Column Name="id_tang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -191,6 +181,17 @@
       <Column Name="tong_tien_tb" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="tong_tien_hoa_don" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="tong_tien" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.taikhoan" Member="taikhoans">
+    <Type Name="taikhoan">
+      <Column Name="id_taikhoan" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_nhanvien" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="ten_dang_nhap" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="mat_khau" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="hoat_dong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="quyen" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="nhanvien_taikhoan" Member="nhanvien" ThisKey="id_nhanvien" OtherKey="id_nhanvien" Type="nhanvien" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.Capnhat_chi_tiet_su_dung_dv" Method="Capnhat_chi_tiet_su_dung_dv">

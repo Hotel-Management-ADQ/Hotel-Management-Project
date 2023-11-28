@@ -15,6 +15,8 @@ namespace HotelManagementProject
     {
         //private Timer opacityTimer = new Timer();
         public static string tentaikhoan = "";
+        public static string tendangnhap = "";
+        public static string quyen = "";
         TaiKhoanBLL tk;
         private Timer opacityTimer = new Timer();
 
@@ -74,7 +76,9 @@ namespace HotelManagementProject
                     }
                     else
                     {
+                        tendangnhap = txtUsername.Text.Trim();
                         tentaikhoan = tk.GetTenTaiKhoan(txtUsername.Text.Trim());
+                        quyen = tk.GetQuyen(txtUsername.Text.Trim());
                         txtUsername.Text = ""; txtPassword.Text = "";
                         MessageBox.Show("Thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Program.mainForm = new FrmMain();

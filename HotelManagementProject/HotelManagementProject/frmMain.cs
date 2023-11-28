@@ -40,6 +40,19 @@ namespace HotelManagementProject
             opacityTimer.Interval = 5;
             opacityTimer.Tick += new EventHandler(OnTimerTick);
             opacityTimer.Start();
+            if (frmLogin.quyen.Equals("staff"))
+            {
+                label5.Text = "Nhân Viên";
+                label15.Visible = false;
+                btnQLHoaDon.Visible = false;
+                btnQLNhanVien.Visible = false;
+                btnQLQuyen.Visible = false;
+                btnThongKeDoanhThu.Visible = false;
+            }
+            if (frmLogin.quyen.Equals("admin"))
+            {
+                label5.Text = "Quản Lý";
+            }    
         }
 
         private void OnTimerTick(object sender, EventArgs e)
@@ -661,6 +674,24 @@ namespace HotelManagementProject
         {
             frmChooseForStatistic frm = new frmChooseForStatistic();
             frm.ShowDialog();
+        }
+
+        private void btnXemDonDatPhong_Click(object sender, EventArgs e)
+        {
+            Program.bookingOnlineForm = new frmBookingOnline();
+            Program.bookingOnlineForm.ShowDialog();
+        }
+
+        private void btnQLQuyen_Click(object sender, EventArgs e)
+        {
+            Program.accountForm = new frmAccount();
+            Program.accountForm.ShowDialog();
+        }
+
+        private void btnDoiMatKhau_Click(object sender, EventArgs e)
+        {
+            Program.changePasswordForm = new frmChangePassword();
+            Program.changePasswordForm.ShowDialog();
         }
 
         private void btn_Click(object sender, EventArgs e)

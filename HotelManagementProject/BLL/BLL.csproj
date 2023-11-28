@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DTO">
       <HintPath>..\DTO\bin\Debug\DTO.dll</HintPath>
     </Reference>
@@ -54,6 +51,7 @@
     <Compile Include="ChiTietDichVuBLL.cs" />
     <Compile Include="ChiTietThietBiBLL.cs" />
     <Compile Include="DatPhongBLL.cs" />
+    <Compile Include="DatPhongOnlineBLL.cs" />
     <Compile Include="DichVuBLL.cs" />
     <Compile Include="HoaDonBLL.cs" />
     <Compile Include="InHoaDonBLL.cs" />

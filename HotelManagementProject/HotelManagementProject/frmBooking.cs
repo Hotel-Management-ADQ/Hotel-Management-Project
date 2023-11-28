@@ -29,7 +29,6 @@ namespace HotelManagementProject
         string idphong = FrmMain.idphongfrmMain;
         private Timer opacityTimer = new Timer();
 
-
         public frmBooking()
         {
             InitializeComponent();
@@ -923,7 +922,12 @@ namespace HotelManagementProject
 
         public void PreviewInvoice()
         {
-            if (File.Exists("Invoice.html"))
+            
+            string templateFileName = "Invoice.html";
+            string appDirectory = Path.Combine(Environment.CurrentDirectory, "Bill");
+            string templateFilePath = Path.Combine(appDirectory, templateFileName);
+            //File.Exists("Invoice.html")
+            if (File.Exists(templateFilePath))
             {
                 //string htmlContentDefault = File.ReadAllText("InvoiceDefault.html");
                 File.WriteAllText("Invoice.html", htmlContentDefault);

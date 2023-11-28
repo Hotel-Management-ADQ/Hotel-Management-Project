@@ -14,12 +14,15 @@ namespace HotelManagementProject
         public static frmDevice deviceForm = null;
         public static frmCustomer customerForm = null;
         public static frmBooking bookingForm = null;
+        public static frmBookingOnline bookingOnlineForm = null;
         public static frmRoom roomForm = null;
         public static frmBill billForm = null;
         public static frmStaff staffForm = null;
         public static frmBillStatistics billStatisticsForm = null;
         public static frmBillStatisticsService billStatisticsServiceForm = null;
         public static frmBillStatisticsDevice billStatisticsDeviceForm = null;
+        public static frmAccount accountForm = null;
+        public static frmChangePassword changePasswordForm = null;
 
 
         /// <summary>
@@ -30,7 +33,7 @@ namespace HotelManagementProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBillStatisticsDevice());
+            Application.Run(new frmLogin());
         }
     }
 }
