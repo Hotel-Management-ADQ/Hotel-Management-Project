@@ -161,5 +161,11 @@ namespace BLL
             taiKhoanSua.mat_khau = "123";
             _qLKSDataContext.SubmitChanges();
         }
+        public void ChangePassword(string user, string pass)
+        {
+            var acc = _qLKSDataContext.taikhoans.SingleOrDefault(tk => tk.ten_dang_nhap == user);
+            acc.mat_khau = pass;
+            _qLKSDataContext.SubmitChanges();
+        }
     }
 }
