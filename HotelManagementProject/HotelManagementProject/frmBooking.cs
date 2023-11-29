@@ -69,8 +69,6 @@ namespace HotelManagementProject
                 label4.Visible = false;
                 lblSoTienDatCoc.Visible = false;
                 btnDatCoc.Enabled = false;
-                btnCapNhat.Enabled = true;
-                btnDoiPhong.Enabled = true;
                 btnThanhToan.Enabled = true;
                 btnInHoaDon.Enabled = false;
                 LoadFormForCheckOutHaveIdDatPhong();
@@ -734,9 +732,7 @@ namespace HotelManagementProject
                 btnCheckOut.Visible = true;
                 btnCheckOut.Enabled = true;
                 btnInHoaDon.Enabled = true;
-                btnDoiPhong.Enabled = false;
                 btnDatCoc.Enabled = false;
-                btnCapNhat.Enabled = false;
 
                 label44.Visible = true;
                 label45.Visible = true;
