@@ -1,9 +1,11 @@
 ﻿using BLL;
+using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +16,12 @@ namespace HotelManagementProject
     public partial class frmBillStatisticsService : Form
     {
         ThongKeDichVuBLL tkdvbll;
+        ThongKeDichVuBLL dvbll;
         public frmBillStatisticsService()
         {
             InitializeComponent();
             tkdvbll = new ThongKeDichVuBLL();
+            dvbll = new ThongKeDichVuBLL();
             LoadTableHoaDonDatPhong();
             LoadComboxboxNam();
             cboLuaChon.SelectedIndex = 0;
@@ -442,6 +446,135 @@ namespace HotelManagementProject
             Program.mainForm.Show();
         }
 
+        private void MoTepWordTuDuongDanTuongDoi()
+        {
+            string duongDanUngDung = AppDomain.CurrentDomain.BaseDirectory;
+            string duongDanTepWord = Path.Combine(duongDanUngDung, @"Bill\DocThongKe.docx");
+
+            if (File.Exists(duongDanTepWord))
+            {
+                Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+                Microsoft.Office.Interop.Word.Document doc = wordApp.Documents.Open(duongDanTepWord, ReadOnly: true);
+
+            }
+            else
+                MessageBox.Show("Tệp Word không tồn tại.");
+        }
+
+        private void ThemDuLieuVaoFileWord(string ngaylaphd, string tennv, string thoigian, string tonghoadon,
+            string doanhthu, string iddv_max, string iddv_min)
+        {
+            string duongDanUngDung = AppDomain.CurrentDomain.BaseDirectory;
+            string duongDanTepWord = Path.Combine(duongDanUngDung, @"Bill\DocThongKe.docx");
+            if (File.Exists(duongDanTepWord))
+            {
+                Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+                Document doc = wordApp.Documents.Open(duongDanTepWord, ReadOnly: true);
+                ThayDoiGiaTriTruong(doc, "NgayLapHoaDon", ngaylaphd);
+                ThayDoiGiaTriTruong(doc, "TenNhanVien", tennv);
+
+
+                var datPhongList = dvbll.GetThongTinSuDungDichVu();
+                if (datPhongList.Any())
+                {
+                    var dplist = dvbll.GetThongTinSuDungDichVu();
+
+                    Range endRange = doc.Range();
+                    endRange.Find.Execute("Tên Nhân Viên: ", Forward: false);
+                    Range endOfTenNhanVien = endRange.Duplicate;
+                    endOfTenNhanVien.MoveEnd(WdUnits.wdParagraph, 1);
+                    int endPosition = endOfTenNhanVien.End;
+
+                    Table table = doc.Tables.Add(doc.Range(endPosition), 1, 5);
+                    table.Borders.Enable = 1;
+                    table.Cell(1, 1).Range.Text = "Mã Hóa Đơn";
+                    table.Cell(1, 2).Range.Text = "Tên Dịch Vụ";
+                    table.Cell(1, 3).Range.Text = "Ngày Thuê";
+                    table.Cell(1, 4).Range.Text = "Số Lượng";
+                    table.Cell(1, 5).Range.Text = "Tổng Tiền";
+                    table.Range.Font.Size = 10;
+
+                    int rowIndex = 2;
+                    foreach (var dp in dplist)
+                    {
+                        table.Rows.Add();
+                        table.Cell(rowIndex, 1).Range.Text = dp.Iddatphong;
+                        table.Cell(rowIndex, 2).Range.Text = dp.Tendichvu;
+                        table.Cell(rowIndex, 3).Range.Text = dp.Ngaythue.ToString("dd/MM/yyyy HH:MM:ss");
+                        table.Cell(rowIndex, 4).Range.Text = dp.Soluong.ToString();
+                        table.Cell(rowIndex, 5).Range.Text = double.Parse(dp.Tongtiendv.ToString()).ToString("N0") + "đ";
+                        rowIndex++;
+                    }
+                }
+
+                doc.Paragraphs.Add();
+                Paragraph text1 = doc.Paragraphs.Add();
+                text1.Range.Text = "THỐNG KÊ HÓA ĐƠN " + thoigian.ToUpper() + "\n";
+                text1.Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                text1.Range.Font.Bold = 0;
+                text1.Range.Font.Size = 13;
+                Paragraph text2 = doc.Paragraphs.Add();
+                text2.Range.Text = "Tổng hóa đơn có trong " + thoigian + " là: " + tonghoadon + "\n";
+                text2.Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                text2.Range.Font.Bold = 0;
+                text2.Range.Font.Size = 13;
+                Paragraph text3 = doc.Paragraphs.Add();
+                text3.Range.Text = "Tổng doanh thu trong " + thoigian + " là: " + doanhthu + "\n";
+                text3.Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                text3.Range.Font.Bold = 0;
+                text3.Range.Font.Size = 13;
+                Paragraph text4 = doc.Paragraphs.Add();
+                text4.Range.Text = "Dịch vụ được đặt nhiều nhất là: " + iddv_max + "\n";
+                text4.Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                text4.Range.Font.Bold = 0;
+                text4.Range.Font.Size = 13;
+                Paragraph text5 = doc.Paragraphs.Add();
+                text5.Range.Text = "Dịch vụ được đặt ít nhất là: " + iddv_min + "\n";
+                text5.Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                text5.Range.Font.Bold = 0;
+                text5.Range.Font.Size = 13;
+
+
+                wordApp.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Tệp Word không tồn tại.");
+            }
+        }
+
+        private void ThayDoiGiaTriTruong(Microsoft.Office.Interop.Word.Document doc, string tenTruong, string giaTriMoi)
+        {
+            foreach (Microsoft.Office.Interop.Word.Field field in doc.Fields)
+            {
+                if (field.Code.Text.Contains(tenTruong))
+                {
+                    field.Select();
+                    Microsoft.Office.Interop.Word.Selection selection = doc.Application.Selection;
+                    selection.Range.InsertAfter(giaTriMoi);
+                    selection.TypeBackspace();
+                    break;
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ThemDuLieuVaoFileWord(DateTime.Now.ToString(), FrmMain.tennvfrmMain,
+                cboThang.Text, label9.Text, label8.Text, label25.Text, label26.Text);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ThemDuLieuVaoFileWord(DateTime.Now.ToString(), FrmMain.tennvfrmMain,
+                cboQuy.Text, label13.Text, label12.Text, label16.Text, label11.Text);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ThemDuLieuVaoFileWord(DateTime.Now.ToString(), FrmMain.tennvfrmMain,
+                cboNam.Text, label18.Text, label17.Text, label28.Text, label27.Text);
+        }
     }
 }
 

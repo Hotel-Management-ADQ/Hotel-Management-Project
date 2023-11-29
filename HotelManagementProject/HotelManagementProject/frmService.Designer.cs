@@ -114,7 +114,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel3.Controls.Add(this.tblDichVu, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 225);
@@ -155,7 +155,7 @@
             this.tblDichVu.ReadOnly = true;
             this.tblDichVu.RowHeadersVisible = false;
             this.tblDichVu.RowTemplate.Height = 24;
-            this.tblDichVu.Size = new System.Drawing.Size(1804, 530);
+            this.tblDichVu.Size = new System.Drawing.Size(1803, 530);
             this.tblDichVu.TabIndex = 0;
             this.tblDichVu.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tblDichVu.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -659,7 +659,7 @@
             this.currentTimeLabelApp1.Name = "currentTimeLabelApp1";
             this.currentTimeLabelApp1.Size = new System.Drawing.Size(120, 31);
             this.currentTimeLabelApp1.TabIndex = 38;
-            this.currentTimeLabelApp1.Text = "22:49:06";
+            this.currentTimeLabelApp1.Text = "15:53:26";
             // 
             // currentDateLabelApp1
             // 
@@ -669,7 +669,7 @@
             this.currentDateLabelApp1.Name = "currentDateLabelApp1";
             this.currentDateLabelApp1.Size = new System.Drawing.Size(150, 31);
             this.currentDateLabelApp1.TabIndex = 37;
-            this.currentDateLabelApp1.Text = "25/11/2023";
+            this.currentDateLabelApp1.Text = "29/11/2023";
             // 
             // label4
             // 

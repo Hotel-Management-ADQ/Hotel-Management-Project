@@ -20,7 +20,7 @@ namespace HotelManagementProject
         RoomPanel panelroom;
         private Timer opacityTimer = new Timer();
 
-        public static string idphongfrmMain, trangthaifrmMain;
+        public static string idphongfrmMain, trangthaifrmMain, tennvfrmMain;
 
         public FrmMain()
         {
@@ -672,6 +672,7 @@ namespace HotelManagementProject
 
         private void btnThongKeDoanhThu_Click(object sender, EventArgs e)
         {
+            tennvfrmMain = label4.Text;
             frmChooseForStatistic frm = new frmChooseForStatistic();
             frm.ShowDialog();
         }

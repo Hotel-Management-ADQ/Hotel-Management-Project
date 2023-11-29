@@ -16,6 +16,20 @@ namespace BLL
         {
             _qLKSDataContext = new QLKSDataContext();
         }
+        public List<datphong> GetListDatPhong()
+        {
+            var dplist = _qLKSDataContext.datphongs.ToList();
+            return dplist;
+        }
+        public List<datphong> GetListDatPhongDaThanhToan()
+        {
+            var dplist = _qLKSDataContext.datphongs
+                .Where(dp => dp.trang_thai == "Đã thanh toán")
+                .ToList();
+
+            return dplist;
+        }
+
         public string GetTenPhong(string id)
         {
             try
