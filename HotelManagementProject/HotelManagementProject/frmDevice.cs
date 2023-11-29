@@ -28,7 +28,7 @@ namespace HotelManagementProject
             btnXoa.Enabled = false;
             btnSua.Enabled = false;
             btnLuu.Enabled = false;
-
+            cboFind.SelectedIndex = 0;
         }
         private void OnTimerTick(object sender, EventArgs e)
         {
@@ -129,27 +129,24 @@ namespace HotelManagementProject
             Program.deviceForm.Show();
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            if (txtNhapTimKiem.Text.Trim().Equals(""))
-                LoadTableThietBi();
-            else
-            {
-                List<thietbi> lstTimKiem = tbbll.TimKiemThietBi(txtNhapTimKiem.Text.Trim());
-                if (lstTimKiem.Count > 0)
-                {
-                    tblThietBi.DataSource = lstTimKiem;
-                }
-                else
-                    MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Visible = false;
             Program.mainForm = new FrmMain();
             Program.mainForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cboFind.Text == "Mã Thiết Bị")
+                tblThietBi.DataSource = tbbll.GetHoaDonList_MaHoaDon(txtFind.Text.Trim());
+            if (cboFind.Text == "Tên Thiết Bị")
+                tblThietBi.DataSource = tbbll.GetHoaDonList_TenHoaDon(txtFind.Text.Trim());
+            if (txtFind.Text.Equals(string.Empty))
+                LoadTableThietBi();
+            
         }
     }
 }

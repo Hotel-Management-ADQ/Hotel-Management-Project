@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -134,5 +135,110 @@ namespace BLL
                         select kh.gioi_tinh).FirstOrDefault();
             return gioitinh;
         }
+
+        public List<KhachHangDTO> GetHoaDonList_MaHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.khachhangs
+                                  where p.id_khachhang == id_DatPhong
+                                  select new KhachHangDTO
+                                  {
+                                      Id_KH = p.id_khachhang,
+                                      Ten_KH = p.ten_khachhang,
+                                      NgaySinh = p.ngay_sinh,
+                                      diachi = p.dia_chi,
+                                      sdt = p.sdt,
+                                      cmnd = p.cmnd,
+                                      gioitinh = p.gioi_tinh
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<KhachHangDTO> GetHoaDonList_TenHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.khachhangs
+                                  where p.ten_khachhang == id_DatPhong
+                                  select new KhachHangDTO
+                                  {
+                                      Id_KH = p.id_khachhang,
+                                      Ten_KH = p.ten_khachhang,
+                                      NgaySinh = p.ngay_sinh,
+                                      diachi = p.dia_chi,
+                                      sdt = p.sdt,
+                                      cmnd = p.cmnd,
+                                      gioitinh = p.gioi_tinh
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<KhachHangDTO> GetHoaDonList_sdtHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.khachhangs
+                                  where p.sdt == id_DatPhong
+                                  select new KhachHangDTO
+                                  {
+                                      Id_KH = p.id_khachhang,
+                                      Ten_KH = p.ten_khachhang,
+                                      NgaySinh = p.ngay_sinh,
+                                      diachi = p.dia_chi,
+                                      sdt = p.sdt,
+                                      cmnd = p.cmnd,
+                                      gioitinh = p.gioi_tinh
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<KhachHangDTO> GetHoaDonList_CmndHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.khachhangs
+                                  where p.cmnd == id_DatPhong
+                                  select new KhachHangDTO
+                                  {
+                                      Id_KH = p.id_khachhang,
+                                      Ten_KH = p.ten_khachhang,
+                                      NgaySinh = p.ngay_sinh,
+                                      diachi = p.dia_chi,
+                                      sdt = p.sdt,
+                                      cmnd = p.cmnd,
+                                      gioitinh = p.gioi_tinh
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
     }
 }

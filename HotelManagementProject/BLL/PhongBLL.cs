@@ -72,8 +72,8 @@ namespace BLL
                 phongToUpdate.id_phong = id_phong;
                 phongToUpdate.id_loaiphong = id_loaiphong;
                 phongToUpdate.id_tang = id_tang;
-                phongToUpdate.trang_thai = tenphong;
-                phongToUpdate.ten = trangthai;
+                phongToUpdate.trang_thai = trangthai;
+                phongToUpdate.ten = tenphong;
                 phongToUpdate.gia = gia;
                 _qLKSDataContext.SubmitChanges();
             }
@@ -203,6 +203,163 @@ namespace BLL
                                 select phong.ten).FirstOrDefault();
 
                 return tenPhong;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<ThietBiDTO> GetHoaDonList_MaHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.thietbis
+                                  where p.id_thietbi == id_DatPhong
+                                  select new ThietBiDTO
+                                  {
+                                      Id_TB = p.id_thietbi,
+                                      Ten_TB = p.ten_thietbi,
+                                      Gia_TB = p.gia
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<PhongDTO1> GetHoaDonList_IDHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.phongs
+                                  where p.id_phong == id_DatPhong
+                                  select new PhongDTO1
+                                  {
+                                      Idphong = p.id_phong,
+                                      Loaiphong = p.id_loaiphong.ToString(),
+                                      Sotang = p.id_tang,
+                                      Tenphong = p.ten,
+                                      Trangthai = p.trang_thai,
+                                      Gia = p.gia
+                                      
+                                       
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<PhongDTO1> GetHoaDonList_TenHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.phongs
+                                  where p.ten == id_DatPhong
+                                  select new PhongDTO1
+                                  {
+                                      Idphong = p.id_phong,
+                                      Loaiphong = p.id_loaiphong.ToString(),
+                                      Sotang = p.id_tang,
+                                      Tenphong = p.ten,
+                                      Trangthai = p.trang_thai,
+                                      Gia = p.gia
+
+
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<PhongDTO1> GetHoaDonList_TTHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.phongs
+                                  where p.trang_thai == id_DatPhong
+                                  select new PhongDTO1
+                                  {
+                                      Idphong = p.id_phong,
+                                      Loaiphong = p.id_loaiphong.ToString(),
+                                      Sotang = p.id_tang,
+                                      Tenphong = p.ten,
+                                      Trangthai = p.trang_thai,
+                                      Gia = p.gia
+
+
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<PhongDTO1> GetHoaDonList_TangHoaDon(int id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.phongs
+                                  where p.id_tang == id_DatPhong
+                                  select new PhongDTO1
+                                  {
+                                      Idphong = p.id_phong,
+                                      Loaiphong = p.id_loaiphong.ToString(),
+                                      Sotang = p.id_tang,
+                                      Tenphong = p.ten,
+                                      Trangthai = p.trang_thai,
+                                      Gia = p.gia
+
+
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<PhongDTO1> GetHoaDonList_LoaiHoaDon(int id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.phongs
+                                  where p.id_loaiphong == id_DatPhong
+                                  select new PhongDTO1
+                                  {
+                                      Idphong = p.id_phong,
+                                      Loaiphong = p.id_loaiphong.ToString(),
+                                      Sotang = p.id_tang,
+                                      Tenphong = p.ten,
+                                      Trangthai = p.trang_thai,
+                                      Gia = p.gia
+
+
+                                  }).ToList();
+
+                return hoadonList;
             }
             catch (Exception ex)
             {

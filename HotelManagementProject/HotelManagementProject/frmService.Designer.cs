@@ -38,11 +38,8 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
-            this.txtNhapTimKiem = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,7 +74,6 @@
             this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
-            this.tableLayoutPanel17.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -114,7 +110,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel3.Controls.Add(this.tblDichVu, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 225);
@@ -155,7 +151,7 @@
             this.tblDichVu.ReadOnly = true;
             this.tblDichVu.RowHeadersVisible = false;
             this.tblDichVu.RowTemplate.Height = 24;
-            this.tblDichVu.Size = new System.Drawing.Size(1803, 530);
+            this.tblDichVu.Size = new System.Drawing.Size(1800, 530);
             this.tblDichVu.TabIndex = 0;
             this.tblDichVu.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tblDichVu.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -232,7 +228,6 @@
             this.tableLayoutPanel15.ColumnCount = 2;
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.65957F));
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.34042F));
-            this.tableLayoutPanel15.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel16, 1, 0);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel15.Location = new System.Drawing.Point(2, 2);
@@ -244,27 +239,12 @@
             this.tableLayoutPanel15.Size = new System.Drawing.Size(993, 92);
             this.tableLayoutPanel15.TabIndex = 2;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(2, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(38, 8, 8, 0);
-            this.label3.Size = new System.Drawing.Size(270, 92);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Tìm kiếm dịch vụ ";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // tableLayoutPanel16
             // 
             this.tableLayoutPanel16.ColumnCount = 2;
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.50848F));
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.49152F));
             this.tableLayoutPanel16.Controls.Add(this.tableLayoutPanel17, 1, 0);
-            this.tableLayoutPanel16.Controls.Add(this.txtNhapTimKiem, 0, 0);
             this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel16.Location = new System.Drawing.Point(276, 2);
             this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(2);
@@ -280,7 +260,6 @@
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.53846F));
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.67949F));
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.46154F));
-            this.tableLayoutPanel17.Controls.Add(this.btnTimKiem, 1, 1);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel17.Location = new System.Drawing.Point(398, 2);
             this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(2);
@@ -291,34 +270,6 @@
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel17.Size = new System.Drawing.Size(315, 84);
             this.tableLayoutPanel17.TabIndex = 4;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTimKiem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTimKiem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTimKiem.FillColor = System.Drawing.Color.Green;
-            this.btnTimKiem.Font = new System.Drawing.Font("Calibri", 20.25F);
-            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.Location = new System.Drawing.Point(38, 21);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(231, 44);
-            this.btnTimKiem.TabIndex = 0;
-            this.btnTimKiem.Text = " Tìm Kiếm";
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // txtNhapTimKiem
-            // 
-            this.txtNhapTimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNhapTimKiem.Font = new System.Drawing.Font("Calibri", 20.25F);
-            this.txtNhapTimKiem.Location = new System.Drawing.Point(2, 28);
-            this.txtNhapTimKiem.Margin = new System.Windows.Forms.Padding(2, 28, 2, 2);
-            this.txtNhapTimKiem.Name = "txtNhapTimKiem";
-            this.txtNhapTimKiem.Size = new System.Drawing.Size(392, 40);
-            this.txtNhapTimKiem.TabIndex = 0;
             // 
             // tableLayoutPanel13
             // 
@@ -659,7 +610,7 @@
             this.currentTimeLabelApp1.Name = "currentTimeLabelApp1";
             this.currentTimeLabelApp1.Size = new System.Drawing.Size(120, 31);
             this.currentTimeLabelApp1.TabIndex = 38;
-            this.currentTimeLabelApp1.Text = "15:53:26";
+            this.currentTimeLabelApp1.Text = "23:35:46";
             // 
             // currentDateLabelApp1
             // 
@@ -700,6 +651,7 @@
             this.button1.TabIndex = 34;
             this.button1.Text = "Tìm kiếm";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cboFind
             // 
@@ -712,10 +664,8 @@
             this.cboFind.ForeColor = System.Drawing.Color.Black;
             this.cboFind.ItemHeight = 30;
             this.cboFind.Items.AddRange(new object[] {
-            "Mã Khách Hàng",
-            "Tên Khách Hàng",
-            "Số Điện Thoại",
-            "CMND"});
+            "Mã Dịch Vụ",
+            "Tên Dịch Vụ"});
             this.cboFind.Location = new System.Drawing.Point(573, 122);
             this.cboFind.Name = "cboFind";
             this.cboFind.Size = new System.Drawing.Size(284, 36);
@@ -762,10 +712,7 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel15.ResumeLayout(false);
-            this.tableLayoutPanel15.PerformLayout();
             this.tableLayoutPanel16.ResumeLayout(false);
-            this.tableLayoutPanel16.PerformLayout();
-            this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
@@ -808,11 +755,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTenDichVu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.TextBox txtNhapTimKiem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
-        private Guna.UI2.WinForms.Guna2Button btnTimKiem;
         private AllControl.TextBoxOnlyNumber txtGiaDichVu;
         private System.Windows.Forms.Panel panel1;
         private AllControl.CurrentTimeLabelApp currentTimeLabelApp1;

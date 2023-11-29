@@ -32,6 +32,7 @@ namespace HotelManagementProject
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnLuu.Enabled = false;
+            cboFind.SelectedIndex = 0;
 
         }
         private void OnTimerTick(object sender, EventArgs e)
@@ -96,20 +97,20 @@ namespace HotelManagementProject
                 btnLuu.Enabled = false;
             }
 
-            
+
         }
 
         private void txtSdt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
 
             // Kiểm tra độ dài của số điện thoại
             if (txtSdt.Text.Length >= 10 && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
         }
 
@@ -117,7 +118,7 @@ namespace HotelManagementProject
 
         private void btnThem_Click_1(object sender, EventArgs e)
         {
-            
+
             txtTen.Text = string.Empty; txtDiaChi.Text = string.Empty; txtSdt.Text = string.Empty; txtCmnd.Text = string.Empty;
             txtTen.Focus();
             btnLuu.Enabled = true;
@@ -144,7 +145,7 @@ namespace HotelManagementProject
             {
                 MessageBox.Show("Khách hàng " + txtTen.Text + " đã có hóa đơn, Không được xóa");
             }
-            
+
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -238,22 +239,6 @@ namespace HotelManagementProject
             }
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            if (txtNhapTimKiem.Text.Trim().Equals(""))
-                LoadTableKhachHang();
-            else
-            {
-                List<khachhang> lstTimKiem = khbll.TimKiemKhachHang(txtNhapTimKiem.Text.Trim());
-                if (lstTimKiem.Count > 0)
-                {
-                    tblKhachHang.DataSource = lstTimKiem;
-                }
-                else
-                    MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void btnClear_Click(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -268,6 +253,17 @@ namespace HotelManagementProject
             Program.mainForm.Show();
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cboFind.Text == "Mã Khách Hàng")
+                tblKhachHang.DataSource = khbll.GetHoaDonList_MaHoaDon(txtFind.Text.Trim());
+            if (cboFind.Text == "Tên Khách Hàng")
+                tblKhachHang.DataSource = khbll.GetHoaDonList_TenHoaDon(txtFind.Text.Trim());
+            if (cboFind.Text == "Số Điện Thoại")
+                tblKhachHang.DataSource = khbll.GetHoaDonList_sdtHoaDon(txtFind.Text.Trim());
+            if (cboFind.Text == "CMND")
+                tblKhachHang.DataSource = khbll.GetHoaDonList_CmndHoaDon(txtFind.Text.Trim());
+
+        }
     }
 }

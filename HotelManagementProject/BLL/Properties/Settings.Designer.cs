@@ -26,11 +26,11 @@ namespace BLL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TUAN-ANH;Initial Catalog=QLKS_Main;Persist Security Info=True;User ID" +
-            "=sa;Password=123")]
-        public string QLKS_MainConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-P250IPBQ;Initial Catalog=QLKS;Persist Security Info=True;User " +
+            "ID=sa;Password=123")]
+        public string QLKSConnectionString {
             get {
-                return ((string)(this["QLKS_MainConnectionString"]));
+                return ((string)(this["QLKSConnectionString"]));
             }
         }
     }

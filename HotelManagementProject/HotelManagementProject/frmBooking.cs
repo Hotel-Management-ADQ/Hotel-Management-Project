@@ -685,18 +685,7 @@ namespace HotelManagementProject
             }
         }
 
-        private void btnTimTB_Click(object sender, EventArgs e)
-        {
-            if (txtTimKiemTB.Text == string.Empty)
-            {
-                LoadDataThietBi();
-            }
-            else
-            {
-                List<thietbi> lstNew = tbbll.TimKiemThietBi(txtTimKiemTB.Text.Trim());
-                tblThietBi.DataSource = lstNew;
-            }
-        }
+        
 
         private void tblHoaDonThietBi_Click(object sender, EventArgs e)
         {

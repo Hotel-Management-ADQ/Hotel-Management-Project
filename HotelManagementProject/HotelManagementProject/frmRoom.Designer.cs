@@ -93,7 +93,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.47578F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.52422F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel3.Controls.Add(this.tblPhong, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 191);
@@ -142,7 +142,7 @@
             this.tblPhong.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.tblPhong.RowHeadersVisible = false;
             this.tblPhong.RowTemplate.Height = 24;
-            this.tblPhong.Size = new System.Drawing.Size(1805, 448);
+            this.tblPhong.Size = new System.Drawing.Size(1803, 448);
             this.tblPhong.TabIndex = 0;
             this.tblPhong.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tblPhong.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -664,7 +664,7 @@
             this.currentTimeLabelApp1.Name = "currentTimeLabelApp1";
             this.currentTimeLabelApp1.Size = new System.Drawing.Size(120, 31);
             this.currentTimeLabelApp1.TabIndex = 45;
-            this.currentTimeLabelApp1.Text = "22:56:47";
+            this.currentTimeLabelApp1.Text = "23:16:41";
             // 
             // currentDateLabelApp1
             // 
@@ -674,7 +674,7 @@
             this.currentDateLabelApp1.Name = "currentDateLabelApp1";
             this.currentDateLabelApp1.Size = new System.Drawing.Size(150, 31);
             this.currentDateLabelApp1.TabIndex = 44;
-            this.currentDateLabelApp1.Text = "25/11/2023";
+            this.currentDateLabelApp1.Text = "29/11/2023";
             // 
             // label4
             // 
@@ -705,6 +705,7 @@
             this.button1.TabIndex = 41;
             this.button1.Text = "Tìm kiếm";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cboFind
             // 
@@ -717,10 +718,11 @@
             this.cboFind.ForeColor = System.Drawing.Color.Black;
             this.cboFind.ItemHeight = 30;
             this.cboFind.Items.AddRange(new object[] {
-            "Mã Khách Hàng",
-            "Tên Khách Hàng",
-            "Số Điện Thoại",
-            "CMND"});
+            "Mã Phòng",
+            "Tên Phòng",
+            "Tên Loại Phòng",
+            "Số Tầng",
+            "Trạng Thái"});
             this.cboFind.Location = new System.Drawing.Point(577, 128);
             this.cboFind.Name = "cboFind";
             this.cboFind.Size = new System.Drawing.Size(284, 36);
@@ -754,6 +756,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmRoom";
             this.Text = "frmRoom";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -25,6 +25,7 @@ namespace HotelManagementProject
             opacityTimer.Interval = 5;
             opacityTimer.Tick += new EventHandler(OnTimerTick);
             opacityTimer.Start();
+            cboFind.SelectedIndex = 0;
         }
         private void OnTimerTick(object sender, EventArgs e)
         {
@@ -114,21 +115,7 @@ namespace HotelManagementProject
             }
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            if (txtNhapTimKiem.Text.Trim().Equals(""))
-                LoadTableDichVu();
-            else
-            {
-                List<dichvu> lstTimKiem = dvbll.TimKiemDichVu(txtNhapTimKiem.Text.Trim());
-                if (lstTimKiem.Count > 0)
-                {
-                    tblDichVu.DataSource = lstTimKiem;
-                }
-                else
-                    MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -145,6 +132,19 @@ namespace HotelManagementProject
             Program.mainForm.Show();
         }
 
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cboFind.Text == "Mã Dịch Vụ")
+                tblDichVu.DataSource = dvbll.GetHoaDonList_MaHoaDon(txtFind.Text.Trim());
+            if (cboFind.Text == "Tên Dịch Vụ")
+                tblDichVu.DataSource = dvbll.GetHoaDonList_TenHoaDon(txtFind.Text.Trim());
+            if (txtFind.Text == string.Empty)
+                LoadTableDichVu();
+        }
     }
 }

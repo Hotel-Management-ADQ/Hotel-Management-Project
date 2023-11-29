@@ -25,6 +25,8 @@ namespace HotelManagementProject
             pbll = new PhongBLL();
             lpBLL = new LoaiPhongBLL();
             InitializeComponent();
+
+            cboFind.SelectedIndex = 0;
         }
 
 
@@ -141,6 +143,19 @@ namespace HotelManagementProject
             }
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cboFind.Text == "Mã Phòng")
+                tblPhong.DataSource = pbll.GetHoaDonList_MaHoaDon(txtFind.Text.Trim());
+            if (cboFind.Text == "Tên Phòng")
+                tblPhong.DataSource = pbll.GetHoaDonList_TenHoaDon(txtFind.Text.Trim());
+            if (cboFind.Text == "Mã Loại Phòng")
+                tblPhong.DataSource = pbll.GetHoaDonList_LoaiHoaDon(int.Parse(txtFind.Text.Trim()));
+            if (cboFind.Text == "Số Tầng")
+                tblPhong.DataSource = pbll.GetHoaDonList_TangHoaDon(int.Parse(txtFind.Text.Trim()));
+            if (cboFind.Text == "Trạng Thái")
+                tblPhong.DataSource = pbll.GetHoaDonList_TTHoaDon(txtFind.Text.Trim());
+            
+        }
     }
 }

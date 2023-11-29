@@ -34,7 +34,20 @@ namespace HotelManagementProject
             tblNhanVien.Columns[3].HeaderText = "Số Điện Thoại";
             tblNhanVien.Columns[4].HeaderText = "Giới Tính";
             tblNhanVien.Columns[5].HeaderText = "Email";
-            tblNhanVien.Columns[6].HeaderText = "Hình Ảnh";
+
+            tblNhanVien.AllowUserToResizeRows = false;
+        }
+
+        public void TimKimNhanVien(string str)
+        {
+            List<nhanvien> dataFromDatabase = nvbll.TimKiemNhanVien(str);
+            tblNhanVien.DataSource = dataFromDatabase;
+            tblNhanVien.Columns[0].HeaderText = "Mã Nhân Viên";
+            tblNhanVien.Columns[1].HeaderText = "Tên Nhân Viên";
+            tblNhanVien.Columns[2].HeaderText = "Ngày Sinh";
+            tblNhanVien.Columns[3].HeaderText = "Số Điện Thoại";
+            tblNhanVien.Columns[4].HeaderText = "Giới Tính";
+            tblNhanVien.Columns[5].HeaderText = "Email";
 
             tblNhanVien.AllowUserToResizeRows = false;
         }
@@ -46,6 +59,10 @@ namespace HotelManagementProject
 
         private void tblNhanVien_Click(object sender, EventArgs e)
         {
+            btnThemNV.Enabled = false;
+            btnLuuNV.Enabled = false;
+            btnXoaNV.Enabled = true;
+            btnSuaNV.Enabled = true;
             if (tblNhanVien.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = tblNhanVien.SelectedRows[0];
@@ -60,13 +77,12 @@ namespace HotelManagementProject
                 }
                 if (gioiTinh == "Nữ")
                 {
-            
+
                     rdNu.Checked = true;
                 }
-                
+
 
                 txtEmailNV.Text = selectedRow.Cells[5].Value.ToString();
-                txtHinhAnhNV.Text = selectedRow.Cells[6].Value.ToString();
             }
         }
 
@@ -86,7 +102,6 @@ namespace HotelManagementProject
             txtTenNV.Text = string.Empty;
             txtSdtNV.Text = string.Empty;
             txtEmailNV.Text = string.Empty;
-            txtHinhAnhNV.Text = string.Empty;
         }
 
         private void btnThemNV_Click(object sender, EventArgs e)
@@ -96,12 +111,22 @@ namespace HotelManagementProject
             NgaySinhNV.Value = DateTime.Now;
             rdNam.Checked = true;
             txtEmailNV.Text = string.Empty;
-            txtHinhAnhNV.Text = string.Empty;
+            btnXoaNV.Enabled = false;
+            btnSuaNV.Enabled = false;
         }
 
         private void btnLuuNV_Click(object sender, EventArgs e)
         {
-
+            if (txtTenNV.Text.Equals(string.Empty) || txtEmailNV.Text.Equals(string.Empty) || txtSdtNV.Text.Equals(string.Empty))
+                MessageBox.Show("Nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                if (rdNam.Checked)
+                    nvbll.ThemNhanVien(txtTenNV.Text, NgaySinhNV.Value, txtSdtNV.Text, rdNam.Text, txtEmailNV.Text);
+                if (rdNu.Checked)
+                    nvbll.ThemNhanVien(txtTenNV.Text, NgaySinhNV.Value, txtSdtNV.Text, rdNu.Text, txtEmailNV.Text);
+                LoadTableNhanVien();
+            }
         }
 
         private void btnSuaNV_Click(object sender, EventArgs e)
@@ -110,13 +135,15 @@ namespace HotelManagementProject
             int i = tblNhanVien.CurrentRow.Index;
             if (result == DialogResult.Yes)
             {
-                if(rdNu.Checked) {
-                nvbll.CapNhatNhanVien(tblNhanVien.Rows[i].Cells[0].Value.ToString().Trim(), txtTenNV.Text.Trim(), NgaySinhNV.Value,  txtSdtNV.Text.Trim(), rdNu.Text, txtEmailNV.Text.Trim(), txtHinhAnhNV.Text.Trim());
-                LoadTableNhanVien(); 
+                if (rdNu.Checked)
+                {
+                    nvbll.CapNhatNhanVien(tblNhanVien.Rows[i].Cells[0].Value.ToString().Trim(), txtTenNV.Text.Trim(), NgaySinhNV.Value, txtSdtNV.Text.Trim(), rdNu.Text, txtEmailNV.Text.Trim());
+                    LoadTableNhanVien();
                 }
-                
-                if (rdNam.Checked) {
-                    nvbll.CapNhatNhanVien(tblNhanVien.Rows[i].Cells[0].Value.ToString().Trim(), txtTenNV.Text.Trim(), NgaySinhNV.Value,  txtSdtNV.Text.Trim(), rdNam.Text, txtEmailNV.Text.Trim(), txtHinhAnhNV.Text.Trim());
+
+                if (rdNam.Checked)
+                {
+                    nvbll.CapNhatNhanVien(tblNhanVien.Rows[i].Cells[0].Value.ToString().Trim(), txtTenNV.Text.Trim(), NgaySinhNV.Value, txtSdtNV.Text.Trim(), rdNam.Text, txtEmailNV.Text.Trim());
                     LoadTableNhanVien();
                 }
 
@@ -128,6 +155,21 @@ namespace HotelManagementProject
             this.Visible = false;
             Program.mainForm = new FrmMain();
             Program.mainForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Program.staffForm = new frmStaff();
+            Program.staffForm.Show();
+        }
+
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFind.Text.Equals(string.Empty))
+                LoadTableNhanVien();
+            else
+                TimKimNhanVien(txtFind.Text);
         }
     }
 }

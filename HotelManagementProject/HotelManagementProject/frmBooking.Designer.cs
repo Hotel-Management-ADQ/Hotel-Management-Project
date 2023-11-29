@@ -1108,7 +1108,6 @@
             this.btnTimTB.TabIndex = 32;
             this.btnTimTB.Text = "Tìm kiếm";
             this.btnTimTB.UseVisualStyleBackColor = true;
-            this.btnTimTB.Click += new System.EventHandler(this.btnTimTB_Click);
             // 
             // btnClearTB
             // 

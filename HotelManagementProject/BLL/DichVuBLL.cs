@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -94,5 +95,50 @@ namespace BLL
                 throw ex;
             }
         }
+
+        public List<DichVuDTO> GetHoaDonList_MaHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.dichvus
+                                  where p.id_dichvu == id_DatPhong
+                                  select new DichVuDTO
+                                  {
+                                      Id_DV = p.id_dichvu,
+                                      Ten_DV = p.ten_dichvu,
+                                      Gia_DV = p.gia
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<DichVuDTO> GetHoaDonList_TenHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.dichvus
+                                  where p.ten_dichvu == id_DatPhong
+                                  select new DichVuDTO
+                                  {
+                                      Id_DV = p.id_dichvu,
+                                      Ten_DV = p.ten_dichvu,
+                                      Gia_DV = p.gia
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
     }
 }

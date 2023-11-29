@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,14 +55,7 @@ namespace BLL
                 _qLKSDataContext.SubmitChanges();
             }
         }
-        public List<thietbi> TimKiemThietBi(string timkiem)
-        {
-            var query = from tb in _qLKSDataContext.thietbis
-                        where tb.id_thietbi == timkiem || tb.ten_thietbi == timkiem
-                        select tb;
 
-            return query.ToList();
-        }
 
         public string LayIDThietBiByTenThietBi(string tenThietBi)
         {
@@ -90,6 +84,50 @@ namespace BLL
                     .FirstOrDefault();
 
                 return giatb;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<ThietBiDTO> GetHoaDonList_MaHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.thietbis
+                                  where p.id_thietbi == id_DatPhong
+                                  select new ThietBiDTO
+                                  {
+                                      Id_TB = p.id_thietbi,
+                                      Ten_TB = p.ten_thietbi,
+                                      Gia_TB = p.gia
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
+        public List<ThietBiDTO> GetHoaDonList_TenHoaDon(string id_DatPhong)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.thietbis
+                                  where p.ten_thietbi == id_DatPhong
+                                  select new ThietBiDTO
+                                  {
+                                      Id_TB = p.id_thietbi,
+                                      Ten_TB = p.ten_thietbi,
+                                      Gia_TB = p.gia
+                                  }).ToList();
+
+                return hoadonList;
             }
             catch (Exception ex)
             {

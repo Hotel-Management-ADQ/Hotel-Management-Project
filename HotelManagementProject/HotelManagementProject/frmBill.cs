@@ -58,41 +58,6 @@ namespace HotelManagementProject
         }
 
 
-        private void tblHoaDon_Click(object sender, EventArgs e)
-        {
-
-            int i = tblHoaDon.CurrentRow.Index;
-            txtTenKH.Text = hdbll.LayTenTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
-            dateNgaySinhKH.Value = hdbll.LayNgaySinhTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
-            txtDiaChiKH.Text = hdbll.LayDiaChiTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
-            txtSdtKH.Text = hdbll.LaySDTTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
-            txtCmndKH.Text = hdbll.LayCMNDTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
-            txtGtKH.Text = hdbll.LayGioiTinhTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
-
-            txtTenNV.Text = hdbll.LayTenTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
-            dateNgaySinhNV.Value = hdbll.LayNgaySinhTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
-            txtSdtNV.Text = hdbll.LaySdtTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
-            txtGtNV.Text = hdbll.LayGioiTinhTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
-            txtEmailNV.Text = hdbll.LayEmailTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
-
-
-            dataDV.DataSource = hdbll.LayDichVu(tblHoaDon.Rows[i].Cells[0].Value.ToString());
-            dataDV.Columns[0].HeaderText = "Mã Hóa Đơn";
-            dataDV.Columns[1].HeaderText = "Tên Dịch Vụ";
-            dataDV.Columns[2].HeaderText = "Ngày Thuê";
-            dataDV.Columns[3].HeaderText = "Số Lượng";
-            dataDV.Columns[4].HeaderText = "Tổng Tiền";
-
-            dataTB.DataSource = hdbll.LayThietBi(tblHoaDon.Rows[i].Cells[0].Value.ToString());
-            dataTB.Columns[0].HeaderText = "Mã Hóa Đơn";
-            dataTB.Columns[1].HeaderText = "Tên Thiết Bị";
-            dataTB.Columns[2].HeaderText = "Ngày Thuê";
-            dataTB.Columns[3].HeaderText = "Số Lượng";
-            dataTB.Columns[4].HeaderText = "Tổng Tiền";
-
-            panel1.Visible = true;
-        }
-
 
 
         private void btnFindBill_Click(object sender, EventArgs e)
@@ -105,7 +70,7 @@ namespace HotelManagementProject
                 tblHoaDon.DataSource = hdbll.GetHoaDonList_TenNV(txtFind.Text.Trim());
             if (cboFind.Text == "Tên Phòng")
                 tblHoaDon.DataSource = hdbll.GetHoaDonList_TenPhong(txtFind.Text.Trim());
-            if(txtFind.Text == string.Empty)
+            if (txtFind.Text == string.Empty)
                 loadtablehoadon();
         }
 
@@ -149,6 +114,48 @@ namespace HotelManagementProject
             this.Visible = false;
             Program.mainForm = new FrmMain();
             Program.mainForm.Show();
+        }
+
+        private void tblHoaDon_Click(object sender, EventArgs e)
+        {
+            if (tblHoaDon != null && tblHoaDon.Rows.Count > 0)
+            {
+                
+                int i = tblHoaDon.CurrentRow.Index;
+                txtTenKH.Text = hdbll.LayTenTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
+                dateNgaySinhKH.Value = hdbll.LayNgaySinhTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
+                txtDiaChiKH.Text = hdbll.LayDiaChiTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
+                txtSdtKH.Text = hdbll.LaySDTTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
+                txtCmndKH.Text = hdbll.LayCMNDTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
+                txtGtKH.Text = hdbll.LayGioiTinhTuKhachHang(tblHoaDon.Rows[i].Cells[2].Value.ToString());
+
+                txtTenNV.Text = hdbll.LayTenTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
+                dateNgaySinhNV.Value = hdbll.LayNgaySinhTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
+                txtSdtNV.Text = hdbll.LaySdtTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
+                txtGtNV.Text = hdbll.LayGioiTinhTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
+                txtEmailNV.Text = hdbll.LayEmailTuNhanVien(tblHoaDon.Rows[i].Cells[1].Value.ToString());
+
+
+                dataDV.DataSource = hdbll.LayDichVu(tblHoaDon.Rows[i].Cells[0].Value.ToString());
+                dataDV.Columns[0].HeaderText = "Mã Hóa Đơn";
+                dataDV.Columns[1].HeaderText = "Tên Dịch Vụ";
+                dataDV.Columns[2].HeaderText = "Ngày Thuê";
+                dataDV.Columns[3].HeaderText = "Số Lượng";
+                dataDV.Columns[4].HeaderText = "Tổng Tiền";
+
+                dataTB.DataSource = hdbll.LayThietBi(tblHoaDon.Rows[i].Cells[0].Value.ToString());
+                dataTB.Columns[0].HeaderText = "Mã Hóa Đơn";
+                dataTB.Columns[1].HeaderText = "Tên Thiết Bị";
+                dataTB.Columns[2].HeaderText = "Ngày Thuê";
+                dataTB.Columns[3].HeaderText = "Số Lượng";
+                dataTB.Columns[4].HeaderText = "Tổng Tiền";
+
+                panel1.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Chưa có dữ liệu");
+            }
         }
     }
 }

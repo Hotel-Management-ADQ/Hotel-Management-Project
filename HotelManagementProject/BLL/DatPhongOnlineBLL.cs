@@ -94,7 +94,7 @@ namespace BLL
 
             if (bookingInfo != null)
             {
-                int numberOfDays = (bookingInfo.check_out - bookingInfo.check_in).Value.Days;
+                int numberOfDays = (bookingInfo.check_out - bookingInfo.check_in).Days;
                 decimal totalAmount = (numberOfDays * bookingInfo.gia) / 2;
                 return totalAmount;
             }
