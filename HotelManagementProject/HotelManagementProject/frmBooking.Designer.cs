@@ -102,8 +102,6 @@
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnInHoaDon = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
-            this.btnDoiPhong = new System.Windows.Forms.Button();
-            this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnDatCoc = new System.Windows.Forms.Button();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -258,7 +256,7 @@
             this.currentTimeLabelApp1.Name = "currentTimeLabelApp1";
             this.currentTimeLabelApp1.Size = new System.Drawing.Size(377, 69);
             this.currentTimeLabelApp1.TabIndex = 1;
-            this.currentTimeLabelApp1.Text = "09:32:08";
+            this.currentTimeLabelApp1.Text = "05:36:12";
             this.currentTimeLabelApp1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // currentDateLabelApp1
@@ -271,7 +269,7 @@
             this.currentDateLabelApp1.Name = "currentDateLabelApp1";
             this.currentDateLabelApp1.Size = new System.Drawing.Size(376, 69);
             this.currentDateLabelApp1.TabIndex = 2;
-            this.currentDateLabelApp1.Text = "26/11/2023";
+            this.currentDateLabelApp1.Text = "30/11/2023";
             this.currentDateLabelApp1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTenNhanVien
@@ -937,8 +935,6 @@
             this.panel3.Controls.Add(this.btnThoat);
             this.panel3.Controls.Add(this.btnInHoaDon);
             this.panel3.Controls.Add(this.btnThanhToan);
-            this.panel3.Controls.Add(this.btnDoiPhong);
-            this.panel3.Controls.Add(this.btnCapNhat);
             this.panel3.Controls.Add(this.btnDatCoc);
             this.panel3.Controls.Add(this.btnCheckIn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -953,7 +949,7 @@
             this.btnCheckOut.Enabled = false;
             this.btnCheckOut.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckOut.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCheckOut.Location = new System.Drawing.Point(43, 26);
+            this.btnCheckOut.Location = new System.Drawing.Point(266, 26);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(189, 58);
             this.btnCheckOut.TabIndex = 7;
@@ -967,7 +963,7 @@
             this.btnThoat.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.btnThoat.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnThoat.Location = new System.Drawing.Point(1287, 29);
+            this.btnThoat.Location = new System.Drawing.Point(1098, 29);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(189, 58);
             this.btnThoat.TabIndex = 6;
@@ -981,7 +977,7 @@
             this.btnInHoaDon.Enabled = false;
             this.btnInHoaDon.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInHoaDon.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnInHoaDon.Location = new System.Drawing.Point(1078, 29);
+            this.btnInHoaDon.Location = new System.Drawing.Point(889, 29);
             this.btnInHoaDon.Name = "btnInHoaDon";
             this.btnInHoaDon.Size = new System.Drawing.Size(189, 58);
             this.btnInHoaDon.TabIndex = 5;
@@ -995,7 +991,7 @@
             this.btnThanhToan.Enabled = false;
             this.btnThanhToan.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThanhToan.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnThanhToan.Location = new System.Drawing.Point(872, 29);
+            this.btnThanhToan.Location = new System.Drawing.Point(683, 29);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(189, 58);
             this.btnThanhToan.TabIndex = 4;
@@ -1003,39 +999,13 @@
             this.btnThanhToan.UseVisualStyleBackColor = false;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
-            // btnDoiPhong
-            // 
-            this.btnDoiPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDoiPhong.Enabled = false;
-            this.btnDoiPhong.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiPhong.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDoiPhong.Location = new System.Drawing.Point(668, 29);
-            this.btnDoiPhong.Name = "btnDoiPhong";
-            this.btnDoiPhong.Size = new System.Drawing.Size(189, 58);
-            this.btnDoiPhong.TabIndex = 3;
-            this.btnDoiPhong.Text = "ĐỔI PHÒNG";
-            this.btnDoiPhong.UseVisualStyleBackColor = false;
-            // 
-            // btnCapNhat
-            // 
-            this.btnCapNhat.BackColor = System.Drawing.Color.SlateBlue;
-            this.btnCapNhat.Enabled = false;
-            this.btnCapNhat.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCapNhat.Location = new System.Drawing.Point(459, 29);
-            this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(189, 58);
-            this.btnCapNhat.TabIndex = 2;
-            this.btnCapNhat.Text = "CẬP NHẬT";
-            this.btnCapNhat.UseVisualStyleBackColor = false;
-            // 
             // btnDatCoc
             // 
             this.btnDatCoc.BackColor = System.Drawing.Color.LimeGreen;
             this.btnDatCoc.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDatCoc.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnDatCoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDatCoc.Location = new System.Drawing.Point(252, 29);
+            this.btnDatCoc.Location = new System.Drawing.Point(475, 29);
             this.btnDatCoc.Name = "btnDatCoc";
             this.btnDatCoc.Size = new System.Drawing.Size(189, 58);
             this.btnDatCoc.TabIndex = 1;
@@ -1049,7 +1019,7 @@
             this.btnCheckIn.Enabled = false;
             this.btnCheckIn.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckIn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCheckIn.Location = new System.Drawing.Point(43, 29);
+            this.btnCheckIn.Location = new System.Drawing.Point(266, 29);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(189, 58);
             this.btnCheckIn.TabIndex = 0;
@@ -2279,8 +2249,6 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnInHoaDon;
         private System.Windows.Forms.Button btnThanhToan;
-        private System.Windows.Forms.Button btnDoiPhong;
-        private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnDatCoc;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
