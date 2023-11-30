@@ -395,7 +395,7 @@ namespace HotelManagementProject
                 {
                     TimeSpan duration = checkout - checkin;
                     int songay = (int)duration.TotalDays;
-                    lblTongThoiGianNgayVaGio.Text = (songay + 1).ToString();
+                    lblTongThoiGianNgayVaGio.Text = (songay).ToString();
                     label15.Visible = true;
                 }
             }

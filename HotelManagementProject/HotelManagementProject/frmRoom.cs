@@ -127,21 +127,6 @@ namespace HotelManagementProject
             Program.roomForm.Show();
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            if (txtNhapTimKiem.Text.Trim().Equals(""))
-                LoadTablePhong();
-            else
-            {
-                List<PhongDTO1> lstTimKiem = pbll.TimKiemPhong(txtNhapTimKiem.Text.Trim());
-                if (lstTimKiem.Count > 0)
-                {
-                    tblPhong.DataSource = lstTimKiem;
-                }
-                else
-                    MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {

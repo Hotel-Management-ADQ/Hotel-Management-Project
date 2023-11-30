@@ -50,6 +50,42 @@ namespace BLL
             }
         }
 
+        public List<HoaDonDTO> GetHoaDonListTrangThai(string trangthai)
+        {
+            try
+            {
+                var hoadonList = (from p in _qLKSDataContext.datphongs
+                                  where p.trang_thai == trangthai
+                                  select new HoaDonDTO
+                                  {
+                                      IdDatPhong = p.id_datphong,
+                                      IdNhanVien = p.id_nhanvien,
+                                      IdKhachHang = p.id_khachhang,
+                                      IdPhong = p.id_phong,
+                                      CheckIn = p.check_in,
+                                      CheckOut = p.check_out,
+                                      DatCoc = (double)p.dat_coc,
+                                      TienPhong = (double)p.tien_phong,
+                                      PhuThuCheckIn = (double)p.phu_thu_checkin,
+                                      PhuThuCheckOut = (double)p.phu_thu_checkout,
+                                      TongTienDichVu = (double)p.tong_tien_dv,
+                                      TongTienThucPham = (double)p.tong_tien_tb,
+                                      TongTienHoaDon = (double)p.tong_tien_hoa_don,
+                                      TongTien = (double)p.tong_tien,
+                                      SoNguoiO = (int)p.so_nguoi_o,
+                                      Loai = p.loai,
+                                      TrangThai = p.trang_thai
+                                  }).ToList();
+
+                return hoadonList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
+        }
+
         public List<HoaDonDTO> GetHoaDonList_MaHoaDon(string id_DatPhong)
         {
             try

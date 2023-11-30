@@ -50,6 +50,31 @@ namespace HotelManagementProject
             tblHoaDon.AllowUserToResizeRows = false;
         }
 
+        public void loadtablehoadontheotrangthai(string trangthai)
+        {
+            List<HoaDonDTO> dataFromDatabase = hdbll.GetHoaDonListTrangThai(trangthai);
+            tblHoaDon.DataSource = dataFromDatabase;
+            tblHoaDon.Columns[0].HeaderText = "Mã Hóa Đơn";
+            tblHoaDon.Columns[1].HeaderText = "Mã Nhân Viên";
+            tblHoaDon.Columns[2].HeaderText = "Mã Khách Hàng";
+            tblHoaDon.Columns[3].HeaderText = "Mã Phòng";
+            tblHoaDon.Columns[4].HeaderText = "Check-In";
+            tblHoaDon.Columns[5].HeaderText = "Check-Out";
+            tblHoaDon.Columns[6].HeaderText = "Tiền Đặt Cọc";
+            tblHoaDon.Columns[7].HeaderText = "Tiền Phòng";
+            tblHoaDon.Columns[8].HeaderText = "Phụ Thu Check-In";
+            tblHoaDon.Columns[9].HeaderText = "Phụ Thu Check-Out";
+            tblHoaDon.Columns[10].HeaderText = "Tổng Tiền Dịch Vụ";
+            tblHoaDon.Columns[11].HeaderText = "Tổng Tiền Thiết Bị";
+            tblHoaDon.Columns[12].HeaderText = "Tổng Tiền Hóa Đơn";
+            tblHoaDon.Columns[13].HeaderText = "Tiền Thanh Toán";
+            tblHoaDon.Columns[14].HeaderText = "Số Người Ở";
+            tblHoaDon.Columns[15].HeaderText = "Loại Thuê";
+            tblHoaDon.Columns[16].HeaderText = "Trạng Thái";
+
+            tblHoaDon.AllowUserToResizeRows = false;
+        }
+
 
 
         private void frmBill_Load(object sender, EventArgs e)
@@ -101,13 +126,6 @@ namespace HotelManagementProject
             Program.billForm.Show();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if ()
-            //    ;
-            //if ()
-            //    ;
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -156,6 +174,14 @@ namespace HotelManagementProject
             {
                 MessageBox.Show("Chưa có dữ liệu");
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+                loadtablehoadontheotrangthai(comboBox1.Text);
+            if (comboBox1.SelectedIndex == 1)
+                loadtablehoadontheotrangthai(comboBox1.Text);
         }
     }
 }

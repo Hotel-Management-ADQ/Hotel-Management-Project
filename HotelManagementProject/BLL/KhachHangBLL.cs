@@ -100,7 +100,6 @@ namespace BLL
             }
         }
 
-        //Function for form Booking
         public string GetIdKHByTen(string ten)
         {
             var sdt = (from kh in _qLKSDataContext.khachhangs
